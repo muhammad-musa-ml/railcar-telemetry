@@ -46,14 +46,16 @@ export function registerStreamGauges(registry: Registry, redis: Redis): void {
   new Gauge({
     name: "railcar_stream_length",
     help: "Entries currently held in the event stream",
+    // Labelled so that reset() removes the sample rather than reporting 0.
+    labelNames: ["stream"],
     registers: [registry],
     async collect() {
+      this.reset();
       try {
-        this.set(await redis.xlen(STREAM_KEY));
+        this.set({ stream: STREAM_KEY }, await redis.xlen(STREAM_KEY));
       } catch {
         // XLEN of a missing key is 0, so any error here is a real one.
         errors.inc();
-        this.reset();
       }
     },
   });
