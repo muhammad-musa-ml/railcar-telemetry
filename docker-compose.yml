@@ -9,6 +9,11 @@ x-app: &app
     timeout: 3s
     retries: 10
 
+# Tracing settings shared by the three pipeline services.
+x-otel: &otel
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+  OTEL_TRACES_SAMPLER: parentbased_always_on
+
 services:
   redis:
     image: redis:7.4-alpine
@@ -51,8 +56,10 @@ services:
 
   ingest:
     <<: *app
-    command: ["node", "dist/ingest/main.js"]
+    command: ["node", "--require", "./dist/shared/tracing.js", "dist/ingest/main.js"]
     environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: ingest
       REDIS_URL: redis://redis:6379
     ports:
       - "8081:8080"
@@ -62,8 +69,10 @@ services:
 
   tracker:
     <<: *app
-    command: ["node", "dist/tracker/main.js"]
+    command: ["node", "--require", "./dist/shared/tracing.js", "dist/tracker/main.js"]
     environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: tracker
       REDIS_URL: redis://redis:6379
       DATABASE_URL: postgres://railcar:railcar@toxiproxy:15432/railcar
       TRACKER_CONSUMER: tracker-1
@@ -77,8 +86,10 @@ services:
 
   query:
     <<: *app
-    command: ["node", "dist/query/main.js"]
+    command: ["node", "--require", "./dist/shared/tracing.js", "dist/query/main.js"]
     environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: query
       DATABASE_URL: postgres://railcar:railcar@toxiproxy:15432/railcar
     ports:
       - "8083:8080"
@@ -86,6 +97,7 @@ services:
       toxiproxy:
         condition: service_started
 
+  # Stands in for the on-call paging service. Alertmanager posts to it.
   pager:
     <<: *app
     command: ["node", "dist/pager/main.js"]
@@ -109,6 +121,19 @@ services:
         condition: service_healthy
       query:
         condition: service_healthy
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.130.0
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./observability/otel-collector/config.yaml:/etc/otelcol/config.yaml:ro
+    depends_on:
+      - jaeger
+
+  jaeger:
+    image: jaegertracing/jaeger:2.8.0
+    ports:
+      - "16686:16686"
 
   prometheus:
     image: prom/prometheus:v3.5.0

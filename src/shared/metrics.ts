@@ -1,3 +1,4 @@
+import { trace } from "@opentelemetry/api";
 import type { FastifyInstance } from "fastify";
 import { collectDefaultMetrics, Counter, Histogram, Registry } from "prom-client";
 
@@ -28,6 +29,17 @@ export function instrumentHttp(app: FastifyInstance, registry: Registry): void {
     labelNames: ["route", "method"],
     buckets: LATENCY_BUCKETS,
     registers: [registry],
+  });
+
+  // Name the HTTP server span after the route ("GET /v1/cars/:carId")
+  // instead of the bare method that the http instrumentation can see.
+  app.addHook("onRequest", async (request) => {
+    const route = request.routeOptions.url;
+    const span = trace.getActiveSpan();
+    if (span && route) {
+      span.setAttribute("http.route", route);
+      span.updateName(`${request.method} ${route}`);
+    }
   });
 
   app.addHook("onResponse", async (request, reply) => {
