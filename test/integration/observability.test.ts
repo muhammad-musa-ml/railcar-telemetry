@@ -37,6 +37,7 @@ describe("metrics", () => {
       "sum(rate(tracker_events_processed_total[1m]))",
       'sum(railcar_stream_group_lag{group="tracker"})',
       "max(railcar_positions_freshness_seconds)",
+      'max(railcar_stream_oldest_unacked_age_seconds{group="tracker"})',
     ]) {
       const result = await eventually(async () => {
         const r = await promQuery(expr);
