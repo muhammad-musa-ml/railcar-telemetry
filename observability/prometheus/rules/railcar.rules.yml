@@ -1,0 +1,94 @@
+# Alert rules for the railcar pipeline. severity=critical pages the on-call
+# person; severity=warning opens a ticket (see alertmanager.yml). Every alert
+# links to its runbook in docs/runbooks/.
+groups:
+  - name: railcar-availability
+    rules:
+      - alert: ServiceDown
+        expr: up{job=~"ingest|tracker|query"} == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $labels.job }} has failed every scrape for 5 minutes"
+          description: "Prometheus cannot reach {{ $labels.instance }}. The container may be stopped, crash-looping or hung."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/service-down.md
+
+  - name: railcar-pipeline
+    rules:
+      - alert: RailcarPositionsStale
+        expr: max(railcar_positions_freshness_seconds) > 300
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "No car position has been written for {{ $value | humanizeDuration }}"
+          description: "The tracker has not updated car_positions in over 5 minutes, so the query API is serving old locations."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/railcar-positions-stale.md
+
+      - alert: StreamBacklogHigh
+        expr: sum(railcar_stream_group_lag{group="tracker"}) + sum(railcar_stream_group_pending{group="tracker"}) > 5000
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $value }} events are waiting for the tracker"
+          description: "The tracker group's backlog (undelivered plus unacknowledged entries) has been over 5000 for 10 minutes."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/stream-backlog-high.md
+
+      - alert: TrackerProcessingErrors
+        expr: sum(rate(tracker_events_failed_total[5m])) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "The tracker has been failing to write events for 5 minutes"
+          description: "Writes to Postgres or acknowledgements to Redis are failing; failed events are retried."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/tracker-processing-errors.md
+
+      - alert: DeadLetteredEvents
+        expr: sum(increase(tracker_events_dead_lettered_total[15m])) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: "Events were moved to the dead-letter stream in the last 15 minutes"
+          description: "The tracker could not decode these events. They are in the Redis stream railcar:events:dead."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/dead-lettered-events.md
+
+  - name: railcar-api
+    rules:
+      - alert: IngestErrorRateHigh
+        expr: |
+          sum(rate(http_server_requests_total{job="ingest",route="/v1/events",status_code=~"5.."}[5m]))
+            / sum(rate(http_server_requests_total{job="ingest",route="/v1/events"}[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $value | humanizePercentage }} of event batches are failing at ingest"
+          description: "Readers get 5xx responses, so tag reads are being dropped or retried."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/ingest-error-rate-high.md
+
+      - alert: QueryErrorRateHigh
+        expr: |
+          sum(rate(http_server_requests_total{job="query",route=~"/v1/.*",status_code=~"5.."}[5m]))
+            / sum(rate(http_server_requests_total{job="query",route=~"/v1/.*"}[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $value | humanizePercentage }} of position lookups are failing"
+          description: "The query API is returning 5xx responses, usually because Postgres is unreachable."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/query-error-rate-high.md
+
+      - alert: QueryLatencyHigh
+        expr: |
+          histogram_quantile(0.95,
+            sum by (le) (rate(http_server_request_duration_seconds_bucket{job="query",route=~"/v1/.*"}[5m]))) > 0.5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "p95 position lookup latency is {{ $value | humanizeDuration }}"
+          description: "95th percentile latency of the query API has been over 500 ms for 10 minutes."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/query-latency-high.md

@@ -1,0 +1,229 @@
+# Unit tests for the alert rules: run with `promtool test rules`.
+# Each alert gets a case where it must not fire yet and a case where it must.
+rule_files:
+  - ../rules/railcar.rules.yml
+
+evaluation_interval: 1m
+
+tests:
+  - name: ServiceDown waits 5 minutes, then fires for the job that is down
+    interval: 1m
+    input_series:
+      - series: 'up{job="tracker", instance="tracker:8080"}'
+        values: "1 1 0x10"
+      - series: 'up{job="ingest", instance="ingest:8080"}'
+        values: "1x12"
+    alert_rule_test:
+      - eval_time: 6m
+        alertname: ServiceDown
+        exp_alerts: []
+      - eval_time: 7m
+        alertname: ServiceDown
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: tracker
+              instance: tracker:8080
+            exp_annotations:
+              summary: "tracker has failed every scrape for 5 minutes"
+              description: "Prometheus cannot reach tracker:8080. The container may be stopped, crash-looping or hung."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/service-down.md
+
+  - name: RailcarPositionsStale fires after freshness stays over 300 s for 5 minutes
+    interval: 1m
+    input_series:
+      - series: 'railcar_positions_freshness_seconds{job="query", instance="query:8080", table="car_positions"}'
+        values: "1x3 400x10"
+    alert_rule_test:
+      - eval_time: 8m
+        alertname: RailcarPositionsStale
+        exp_alerts: []
+      - eval_time: 9m
+        alertname: RailcarPositionsStale
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+            exp_annotations:
+              summary: "No car position has been written for 6m 40s"
+              description: "The tracker has not updated car_positions in over 5 minutes, so the query API is serving old locations."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/railcar-positions-stale.md
+
+  - name: StreamBacklogHigh adds undelivered and pending entries
+    interval: 1m
+    input_series:
+      - series: 'railcar_stream_group_lag{job="ingest", group="tracker"}'
+        values: "0x2 3000x15"
+      - series: 'railcar_stream_group_pending{job="ingest", group="tracker"}'
+        values: "0x2 3000x15"
+    alert_rule_test:
+      - eval_time: 12m
+        alertname: StreamBacklogHigh
+        exp_alerts: []
+      - eval_time: 13m
+        alertname: StreamBacklogHigh
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+            exp_annotations:
+              summary: "6000 events are waiting for the tracker"
+              description: "The tracker group's backlog (undelivered plus unacknowledged entries) has been over 5000 for 10 minutes."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/stream-backlog-high.md
+
+  - name: StreamBacklogHigh stays quiet under the threshold
+    interval: 1m
+    input_series:
+      - series: 'railcar_stream_group_lag{job="ingest", group="tracker"}'
+        values: "2500x20"
+      - series: 'railcar_stream_group_pending{job="ingest", group="tracker"}'
+        values: "2500x20"
+    alert_rule_test:
+      - eval_time: 20m
+        alertname: StreamBacklogHigh
+        exp_alerts: []
+
+  - name: TrackerProcessingErrors fires after 5 minutes of failed writes, not on a flat counter
+    interval: 1m
+    input_series:
+      - series: 'tracker_events_failed_total{job="tracker"}'
+        values: "0x2 0+10x10"
+    alert_rule_test:
+      - eval_time: 8m
+        alertname: TrackerProcessingErrors
+        exp_alerts: []
+      - eval_time: 9m
+        alertname: TrackerProcessingErrors
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+            exp_annotations:
+              summary: "The tracker has been failing to write events for 5 minutes"
+              description: "Writes to Postgres or acknowledgements to Redis are failing; failed events are retried."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/tracker-processing-errors.md
+
+  - name: TrackerProcessingErrors ignores an old count that is no longer growing
+    interval: 1m
+    input_series:
+      - series: 'tracker_events_failed_total{job="tracker"}'
+        values: "7x20"
+    alert_rule_test:
+      - eval_time: 20m
+        alertname: TrackerProcessingErrors
+        exp_alerts: []
+
+  - name: DeadLetteredEvents fires as soon as one event is dead-lettered
+    interval: 1m
+    input_series:
+      - series: 'tracker_events_dead_lettered_total{job="tracker", reason="undecodable"}'
+        values: "0x3 1x30"
+    alert_rule_test:
+      - eval_time: 3m
+        alertname: DeadLetteredEvents
+        exp_alerts: []
+      - eval_time: 5m
+        alertname: DeadLetteredEvents
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+            exp_annotations:
+              summary: "Events were moved to the dead-letter stream in the last 15 minutes"
+              description: "The tracker could not decode these events. They are in the Redis stream railcar:events:dead."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/dead-lettered-events.md
+      # 15 minutes after the last increase the window no longer covers it.
+      - eval_time: 25m
+        alertname: DeadLetteredEvents
+        exp_alerts: []
+
+  - name: IngestErrorRateHigh fires when a third of batches fail for 5 minutes
+    interval: 1m
+    input_series:
+      - series: 'http_server_requests_total{job="ingest", route="/v1/events", method="POST", status_code="202"}'
+        values: "0+60x20"
+      - series: 'http_server_requests_total{job="ingest", route="/v1/events", method="POST", status_code="503"}'
+        values: "0x5 0+30x15"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: IngestErrorRateHigh
+        exp_alerts: []
+      - eval_time: 12m
+        alertname: IngestErrorRateHigh
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+            exp_annotations:
+              summary: "33.33% of event batches are failing at ingest"
+              description: "Readers get 5xx responses, so tag reads are being dropped or retried."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/ingest-error-rate-high.md
+
+  - name: IngestErrorRateHigh ignores 4xx responses
+    interval: 1m
+    input_series:
+      - series: 'http_server_requests_total{job="ingest", route="/v1/events", method="POST", status_code="202"}'
+        values: "0+60x20"
+      - series: 'http_server_requests_total{job="ingest", route="/v1/events", method="POST", status_code="400"}'
+        values: "0+60x20"
+    alert_rule_test:
+      - eval_time: 20m
+        alertname: IngestErrorRateHigh
+        exp_alerts: []
+
+  - name: QueryErrorRateHigh fires when lookups fail with 503
+    interval: 1m
+    input_series:
+      - series: 'http_server_requests_total{job="query", route="/v1/cars/:carId", method="GET", status_code="200"}'
+        values: "0+60x20"
+      - series: 'http_server_requests_total{job="query", route="/v1/cars/:carId", method="GET", status_code="503"}'
+        values: "0x5 0+30x15"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: QueryErrorRateHigh
+        exp_alerts: []
+      - eval_time: 12m
+        alertname: QueryErrorRateHigh
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+            exp_annotations:
+              summary: "33.33% of position lookups are failing"
+              description: "The query API is returning 5xx responses, usually because Postgres is unreachable."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/query-error-rate-high.md
+
+  - name: QueryLatencyHigh fires when p95 sits between 500 ms and 1 s for 10 minutes
+    interval: 1m
+    input_series:
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="0.1"}'
+        values: "0x30"
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="0.5"}'
+        values: "0x30"
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="1"}'
+        values: "0+10x30"
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="+Inf"}'
+        values: "0+10x30"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: QueryLatencyHigh
+        exp_alerts: []
+      - eval_time: 12m
+        alertname: QueryLatencyHigh
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+            exp_annotations:
+              summary: "p95 position lookup latency is 975ms"
+              description: "95th percentile latency of the query API has been over 500 ms for 10 minutes."
+              runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/query-latency-high.md
+
+  - name: QueryLatencyHigh stays quiet when lookups are fast
+    interval: 1m
+    input_series:
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="0.1"}'
+        values: "0+10x30"
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="0.5"}'
+        values: "0+10x30"
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="1"}'
+        values: "0+10x30"
+      - series: 'http_server_request_duration_seconds_bucket{job="query", route="/v1/cars/:carId", method="GET", le="+Inf"}'
+        values: "0+10x30"
+    alert_rule_test:
+      - eval_time: 30m
+        alertname: QueryLatencyHigh
+        exp_alerts: []
