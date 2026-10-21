@@ -1,5 +1,7 @@
+import { execFile } from "node:child_process";
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { promisify } from "node:util";
 import { compose, repoRoot } from "./lib/clients";
 import { round, seconds } from "./lib/stats";
 
@@ -42,11 +44,39 @@ function upstreamAddress(error: string | undefined): string | null {
   return m ? m[1]! : null;
 }
 
+function ipToInt(ip: string): number {
+  return ip.split(".").reduce((acc, part) => acc * 256 + Number(part), 0);
+}
+
+export function inSubnet(ip: string, cidr: string): boolean {
+  const [base, bits] = cidr.split("/");
+  const size = 2 ** (32 - Number(bits));
+  const start = Math.floor(ipToInt(base!) / size) * size;
+  const value = ipToInt(ip);
+  return value >= start && value < start + size;
+}
+
+// Subnets of every network the compose project created.
+async function composeSubnets(): Promise<string[]> {
+  const run = promisify(execFile);
+  const { stdout: ids } = await run("docker", ["network", "ls", "-q", "--filter", "label=com.docker.compose.project=railcar"]);
+  const subnets: string[] = [];
+  for (const id of ids.split("\n").filter((l) => l.trim() !== "")) {
+    const { stdout } = await run("docker", ["network", "inspect", "-f", "{{range .IPAM.Config}}{{.Subnet}} {{end}}", id.trim()]);
+    subnets.push(...stdout.trim().split(" ").filter((s) => s.includes("/")));
+  }
+  return subnets;
+}
+
 async function main() {
   const label = process.argv[2] ?? "baseline";
   const dir = join(repoRoot, "results", "runs", "postgres-stop");
-  const subnet = (await compose("exec", "-T", "redis", "hostname", "-i")).trim().split(".").slice(0, 2).join(".") + ".";
+  const subnets = await composeSubnets();
   const toxi = parseJsonLines(await compose("logs", "--no-log-prefix", "toxiproxy"));
+  // Container logs go away when the container is recreated. Refuse to write
+  // a report from logs that do not reach back to the runs: it would show
+  // zero dials for runs it never saw.
+  const firstLogTime = toxi.find((l) => l.time)?.time;
   const pgLog = await compose("logs", "--no-log-prefix", "postgres");
   const readyTimes = [...pgLog.matchAll(/^(\S+ \S+) UTC \[\d+\] LOG:\s+database system is ready to accept connections/gm)].map(
     (m) => new Date(`${m[1]!.replace(" ", "T")}Z`).toISOString(),
@@ -57,6 +87,9 @@ async function main() {
     const run = JSON.parse(readFileSync(join(dir, file), "utf8")) as RunFile;
     const at = (name: string) => run.markers.find((m) => m.label === name)!.at;
     const inject = at("inject-start");
+    if (!firstLogTime || firstLogTime > inject) {
+      throw new Error(`toxiproxy logs start at ${firstLogTime ?? "nothing"}, after ${file} was injected at ${inject}; not writing`);
+    }
     const mitigated = at("mitigate-start");
     const recovered = at("recovered");
     // toxiproxy logs with one-second resolution; widen the window by a second.
@@ -64,7 +97,7 @@ async function main() {
     const dials = inWindow.filter((l) => l.message === "Unable to open connection to upstream");
     const outside = dials.filter((l) => {
       const addr = upstreamAddress(l.error);
-      return addr !== null && !addr.startsWith(subnet);
+      return addr !== null && !subnets.some((s) => inSubnet(addr, s));
     });
     const ready = readyTimes.find((t) => t >= mitigated.slice(0, 19));
     const lastOutside = outside.at(-1)?.time;
