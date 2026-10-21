@@ -36,7 +36,7 @@
     {
       "id": 2,
       "type": "stat",
-      "title": "Events accepted / s",
+      "title": "Accepted / s",
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus"
@@ -94,7 +94,7 @@
     {
       "id": 3,
       "type": "stat",
-      "title": "Events processed / s",
+      "title": "Processed / s",
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus"
@@ -156,7 +156,7 @@
     {
       "id": 4,
       "type": "stat",
-      "title": "Backlog (entries)",
+      "title": "Backlog",
       "description": "Entries not yet delivered to the tracker plus entries delivered but not acknowledged.",
       "datasource": {
         "type": "prometheus",
@@ -223,7 +223,7 @@
     {
       "id": 5,
       "type": "stat",
-      "title": "Positions freshness",
+      "title": "Freshness",
       "description": "Seconds since the tracker last wrote any row of car_positions.",
       "datasource": {
         "type": "prometheus",
@@ -290,7 +290,7 @@
     {
       "id": 6,
       "type": "stat",
-      "title": "Dead-lettered (1h)",
+      "title": "Dead letters, 1h",
       "datasource": {
         "type": "prometheus",
         "uid": "prometheus"
