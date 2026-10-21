@@ -18,11 +18,13 @@ export class JsonlLog<T extends { received_at: string }> {
     }
   }
 
+  // Written to disk first: if the write fails the caller gets the error (and
+  // Alertmanager retries), and the record is not half-kept in memory only.
   append(record: T): void {
-    this.records.push(record);
     if (this.path !== null) {
       appendFileSync(this.path, `${JSON.stringify(record)}\n`, "utf8");
     }
+    this.records.push(record);
   }
 
   // Records received at or after `since` (an ISO timestamp).

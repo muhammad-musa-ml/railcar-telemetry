@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
@@ -81,6 +81,22 @@ describe("pager", () => {
     const { app } = setup();
     const res = await app.inject({ method: "POST", url: "/v1/alertmanager/page", payload: { hello: 1 } });
     expect(res.statusCode).toBe(400);
+  });
+
+  it("returns 500 and keeps nothing in memory when the log file cannot be written", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "pager-"));
+    dirs.push(dir);
+    const pagesPath = join(dir, "pages.jsonl");
+    const app = buildPagerApp({
+      pages: new JsonlLog<PageRecord>(pagesPath),
+      markers: new JsonlLog<MarkerRecord>(join(dir, "markers.jsonl")),
+      registry: createRegistry("pager", false),
+    });
+    // Put a directory where the log file should be, so the append fails.
+    mkdirSync(pagesPath);
+    const res = await app.inject({ method: "POST", url: "/v1/alertmanager/page", payload: webhook });
+    expect(res.statusCode).toBe(500);
+    expect((await app.inject({ method: "GET", url: "/v1/pages" })).json().pages).toEqual([]);
   });
 
   it("stamps drill markers with its own clock and reloads them after a restart", async () => {
