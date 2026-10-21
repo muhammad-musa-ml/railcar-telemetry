@@ -12,7 +12,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
     "test": "vitest run --config vitest.config.mts",
-    "test:integration": "vitest run --config vitest.integration.config.mts"
+    "test:integration": "vitest run --config vitest.integration.config.mts",
+    "check:alerting": "sh scripts/check-alerting.sh"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.10.0",
