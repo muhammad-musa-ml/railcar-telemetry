@@ -1,0 +1,9461 @@
+{
+  "run": 4,
+  "drill": "postgres-latency",
+  "description": "Add 100 ms to every response from Postgres (toxiproxy latency toxic). Postgres stays up, but each tracker write takes over 100 ms.",
+  "label": "baseline",
+  "observation_window_s": 1200,
+  "canary_car": "CNRY 286516",
+  "injected_at": "2026-10-21T22:43:04.926Z",
+  "paged": false,
+  "ttd_page_s": null,
+  "first_page_alert": null,
+  "ttd_ticket_s": 928.7,
+  "first_ticket_alert": "StreamBacklogHigh",
+  "mitigated_after_s": 1200.5,
+  "ttr_s": 37.1,
+  "impact_s": 1237.6,
+  "all_clear_after_s": 1243.7,
+  "baseline_canary_delay_s": 0.45,
+  "max_canary_delay_s": 755.1,
+  "peak_backlog": 19214,
+  "peak_freshness_s": 0.2,
+  "peak_oldest_unacked_age_s": null,
+  "failed_attempts": 0,
+  "sim_failed_events": 0,
+  "sim_failed_lookups": 0,
+  "mitigation": {},
+  "markers": [
+    {
+      "label": "start",
+      "at": "2026-10-21T22:42:34.916Z",
+      "after_inject_s": -30
+    },
+    {
+      "label": "inject-start",
+      "at": "2026-10-21T22:43:04.926Z",
+      "after_inject_s": 0
+    },
+    {
+      "label": "inject-done",
+      "at": "2026-10-21T22:43:04.938Z",
+      "after_inject_s": 0
+    },
+    {
+      "label": "mitigate-start",
+      "at": "2026-10-21T23:03:05.423Z",
+      "after_inject_s": 1200.5
+    },
+    {
+      "label": "mitigate-done",
+      "at": "2026-10-21T23:03:05.445Z",
+      "after_inject_s": 1200.5
+    },
+    {
+      "label": "recovered",
+      "at": "2026-10-21T23:03:42.587Z",
+      "after_inject_s": 1237.7
+    },
+    {
+      "label": "all-clear",
+      "at": "2026-10-21T23:03:48.657Z",
+      "after_inject_s": 1243.7
+    }
+  ],
+  "notifications": [
+    {
+      "at": "2026-10-21T22:42:49.480Z",
+      "after_inject_s": -15.4,
+      "receiver": "ticket",
+      "status": "resolved",
+      "alertname": "StreamBacklogHigh",
+      "severity": "warning"
+    },
+    {
+      "at": "2026-10-21T22:58:33.640Z",
+      "after_inject_s": 928.7,
+      "receiver": "ticket",
+      "status": "firing",
+      "alertname": "StreamBacklogHigh",
+      "severity": "warning"
+    }
+  ],
+  "canary_reads": [
+    {
+      "posted_after_inject_s": -28,
+      "delay_s": 0.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -26,
+      "delay_s": 0.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -24,
+      "delay_s": 0.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -22,
+      "delay_s": 0.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -20,
+      "delay_s": 0.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -18,
+      "delay_s": 0.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -16,
+      "delay_s": 0.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -14,
+      "delay_s": 0.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -12,
+      "delay_s": 0.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -10,
+      "delay_s": 0.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -7.9,
+      "delay_s": 0.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -5.9,
+      "delay_s": 0.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -3.9,
+      "delay_s": 0.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -1.9,
+      "delay_s": 0.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 0.1,
+      "delay_s": 0.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 2.1,
+      "delay_s": 4.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 4.1,
+      "delay_s": 7.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 6.1,
+      "delay_s": 10.94,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 8.1,
+      "delay_s": 14.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 10.1,
+      "delay_s": 17.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 12.1,
+      "delay_s": 21.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 14.1,
+      "delay_s": 24.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 16.1,
+      "delay_s": 27.94,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 18.1,
+      "delay_s": 31.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 20.1,
+      "delay_s": 34.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 22.2,
+      "delay_s": 37.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 24.2,
+      "delay_s": 41.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 26.2,
+      "delay_s": 44.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 28.2,
+      "delay_s": 48.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 30.2,
+      "delay_s": 51.64,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 32.2,
+      "delay_s": 54.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 34.2,
+      "delay_s": 58.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 36.2,
+      "delay_s": 61.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 38.2,
+      "delay_s": 65.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 40.2,
+      "delay_s": 68.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 42.2,
+      "delay_s": 71.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 44.3,
+      "delay_s": 75.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 46.3,
+      "delay_s": 78.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 48.3,
+      "delay_s": 82.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 50.3,
+      "delay_s": 85.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 52.3,
+      "delay_s": 88.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 54.3,
+      "delay_s": 92.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 56.3,
+      "delay_s": 95.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 58.3,
+      "delay_s": 99.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 60.3,
+      "delay_s": 102.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 62.3,
+      "delay_s": 105.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 64.3,
+      "delay_s": 108.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 66.3,
+      "delay_s": 112.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 68.3,
+      "delay_s": 116.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 70.3,
+      "delay_s": 119.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 72.3,
+      "delay_s": 122.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 74.3,
+      "delay_s": 125.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 76.4,
+      "delay_s": 129.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 78.4,
+      "delay_s": 132.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 80.4,
+      "delay_s": 136.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 82.4,
+      "delay_s": 139.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 84.4,
+      "delay_s": 142.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 86.4,
+      "delay_s": 146.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 88.4,
+      "delay_s": 149.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 90.4,
+      "delay_s": 153.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 92.4,
+      "delay_s": 156.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 94.4,
+      "delay_s": 159.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 96.4,
+      "delay_s": 163.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 98.4,
+      "delay_s": 166.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 100.4,
+      "delay_s": 170.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 102.4,
+      "delay_s": 173.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 104.4,
+      "delay_s": 176.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 106.4,
+      "delay_s": 180.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 108.4,
+      "delay_s": 183.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 110.4,
+      "delay_s": 189.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 112.4,
+      "delay_s": 193.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 114.5,
+      "delay_s": 196.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 116.5,
+      "delay_s": 200.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 118.5,
+      "delay_s": 203.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 120.5,
+      "delay_s": 206.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 122.5,
+      "delay_s": 209.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 124.5,
+      "delay_s": 213.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 126.5,
+      "delay_s": 217.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 128.5,
+      "delay_s": 220.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 130.5,
+      "delay_s": 223.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 132.5,
+      "delay_s": 226.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 134.5,
+      "delay_s": 230.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 136.5,
+      "delay_s": 233.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 138.6,
+      "delay_s": 237.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 140.6,
+      "delay_s": 240.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 142.6,
+      "delay_s": 243.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 144.6,
+      "delay_s": 247.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 146.6,
+      "delay_s": 250.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 148.6,
+      "delay_s": 254.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 150.6,
+      "delay_s": 257.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 152.6,
+      "delay_s": 260.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 154.6,
+      "delay_s": 263.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 156.6,
+      "delay_s": 267.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 158.6,
+      "delay_s": 271.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 160.7,
+      "delay_s": 274.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 162.7,
+      "delay_s": 277.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 164.7,
+      "delay_s": 280.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 166.7,
+      "delay_s": 284.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 168.7,
+      "delay_s": 288.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 170.7,
+      "delay_s": 291.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 172.7,
+      "delay_s": 294.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 174.7,
+      "delay_s": 297.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 176.7,
+      "delay_s": 301.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 178.7,
+      "delay_s": 304.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 180.7,
+      "delay_s": 308.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 182.7,
+      "delay_s": 311.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 184.7,
+      "delay_s": 315.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 186.7,
+      "delay_s": 318.61,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 188.8,
+      "delay_s": 321.71,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 190.8,
+      "delay_s": 325.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 192.8,
+      "delay_s": 328.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 194.8,
+      "delay_s": 332.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 196.8,
+      "delay_s": 335.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 198.8,
+      "delay_s": 338.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 200.8,
+      "delay_s": 342.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 202.8,
+      "delay_s": 345.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 204.8,
+      "delay_s": 349,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 206.8,
+      "delay_s": 352.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 208.8,
+      "delay_s": 355.7,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 210.9,
+      "delay_s": 359.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 212.9,
+      "delay_s": 362.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 214.9,
+      "delay_s": 365.98,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 216.9,
+      "delay_s": 369.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 218.9,
+      "delay_s": 372.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 220.9,
+      "delay_s": 375.77,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 222.9,
+      "delay_s": 379.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 224.9,
+      "delay_s": 382.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 226.9,
+      "delay_s": 386.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 228.9,
+      "delay_s": 389.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 230.9,
+      "delay_s": 392.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 232.9,
+      "delay_s": 395.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 234.9,
+      "delay_s": 399.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 236.9,
+      "delay_s": 402.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 238.9,
+      "delay_s": 406.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 241,
+      "delay_s": 409.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 243,
+      "delay_s": 412.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 245,
+      "delay_s": 416.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 247,
+      "delay_s": 419.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 249,
+      "delay_s": 423.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 251,
+      "delay_s": 426.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 253,
+      "delay_s": 429.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 255,
+      "delay_s": 433.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 257,
+      "delay_s": 436.66,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 259,
+      "delay_s": 439.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 261,
+      "delay_s": 443.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 263.1,
+      "delay_s": 446.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 265.1,
+      "delay_s": 450.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 267.1,
+      "delay_s": 453.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 269.1,
+      "delay_s": 456.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 271.1,
+      "delay_s": 460.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 273.1,
+      "delay_s": 463.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 275.1,
+      "delay_s": 467.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 277.1,
+      "delay_s": 470.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 279.1,
+      "delay_s": 473.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 281.1,
+      "delay_s": 477.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 283.1,
+      "delay_s": 480.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 285.1,
+      "delay_s": 484.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 287.1,
+      "delay_s": 487.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 289.1,
+      "delay_s": 490.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 291.1,
+      "delay_s": 493.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 293.2,
+      "delay_s": 497.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 295.2,
+      "delay_s": 501.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 297.2,
+      "delay_s": 504.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 299.2,
+      "delay_s": 507.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 301.2,
+      "delay_s": 510.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 303.2,
+      "delay_s": 514.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 305.2,
+      "delay_s": 517.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 307.2,
+      "delay_s": 521.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 309.2,
+      "delay_s": 524.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 311.2,
+      "delay_s": 527.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 313.2,
+      "delay_s": 531.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 315.2,
+      "delay_s": 534.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 317.3,
+      "delay_s": 538.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 319.3,
+      "delay_s": 541.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 321.3,
+      "delay_s": 544.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 323.3,
+      "delay_s": 550.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 325.3,
+      "delay_s": 554.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 327.3,
+      "delay_s": 557.64,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 329.3,
+      "delay_s": 560.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 331.3,
+      "delay_s": 564.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 333.3,
+      "delay_s": 567.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 335.3,
+      "delay_s": 570.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 337.4,
+      "delay_s": 574.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 339.4,
+      "delay_s": 577.7,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 341.4,
+      "delay_s": 581.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 343.4,
+      "delay_s": 584.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 345.4,
+      "delay_s": 588.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 347.4,
+      "delay_s": 591.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 349.4,
+      "delay_s": 594.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 351.4,
+      "delay_s": 598.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 353.4,
+      "delay_s": 601.49,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 355.4,
+      "delay_s": 605.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 357.4,
+      "delay_s": 608.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 359.4,
+      "delay_s": 611.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 361.4,
+      "delay_s": 614.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 363.4,
+      "delay_s": 618.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 365.4,
+      "delay_s": 621.61,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 367.4,
+      "delay_s": 625.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 369.4,
+      "delay_s": 628.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 371.4,
+      "delay_s": 631.93,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 373.4,
+      "delay_s": 635.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 375.5,
+      "delay_s": 638.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 377.5,
+      "delay_s": 642.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 379.5,
+      "delay_s": 645.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 381.5,
+      "delay_s": 648.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 383.5,
+      "delay_s": 652.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 385.5,
+      "delay_s": 655.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 387.5,
+      "delay_s": 659.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 389.5,
+      "delay_s": 662.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 391.5,
+      "delay_s": 665.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 393.5,
+      "delay_s": 669.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 395.5,
+      "delay_s": 672.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 397.5,
+      "delay_s": 676.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 399.5,
+      "delay_s": 679.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 401.5,
+      "delay_s": 682.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 403.5,
+      "delay_s": 686.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 405.5,
+      "delay_s": 689.66,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 407.6,
+      "delay_s": 693.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 409.6,
+      "delay_s": 696.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 411.6,
+      "delay_s": 700,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 413.6,
+      "delay_s": 703.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 415.6,
+      "delay_s": 706.7,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 417.6,
+      "delay_s": 709.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 419.6,
+      "delay_s": 713.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 421.6,
+      "delay_s": 716.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 423.6,
+      "delay_s": 720.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 425.6,
+      "delay_s": 723.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 427.6,
+      "delay_s": 726.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 429.6,
+      "delay_s": 730.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 431.7,
+      "delay_s": 733.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 433.7,
+      "delay_s": 737.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 435.7,
+      "delay_s": 740.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 437.7,
+      "delay_s": 743.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 439.7,
+      "delay_s": 746.93,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 441.7,
+      "delay_s": 750.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 443.7,
+      "delay_s": 754.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 445.7,
+      "delay_s": 755.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 447.7,
+      "delay_s": 753.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 449.7,
+      "delay_s": 751.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 451.7,
+      "delay_s": 749.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 453.7,
+      "delay_s": 747.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 455.7,
+      "delay_s": 745.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 457.7,
+      "delay_s": 743.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 459.7,
+      "delay_s": 742.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 461.8,
+      "delay_s": 740.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 463.8,
+      "delay_s": 738.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 465.8,
+      "delay_s": 736.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 467.8,
+      "delay_s": 734.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 469.8,
+      "delay_s": 732.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 471.8,
+      "delay_s": 730.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 473.8,
+      "delay_s": 728.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 475.8,
+      "delay_s": 726.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 477.8,
+      "delay_s": 724.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 479.8,
+      "delay_s": 722.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 481.8,
+      "delay_s": 721.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 483.8,
+      "delay_s": 719.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 485.8,
+      "delay_s": 717.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 487.8,
+      "delay_s": 715.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 489.8,
+      "delay_s": 713.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 491.8,
+      "delay_s": 711.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 493.8,
+      "delay_s": 709.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 495.8,
+      "delay_s": 707.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 497.8,
+      "delay_s": 705.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 499.8,
+      "delay_s": 703.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 501.9,
+      "delay_s": 702.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 503.9,
+      "delay_s": 700.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 505.9,
+      "delay_s": 698.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 507.9,
+      "delay_s": 696.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 509.9,
+      "delay_s": 693.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 511.9,
+      "delay_s": 692.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 513.9,
+      "delay_s": 690.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 515.9,
+      "delay_s": 688.49,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 517.9,
+      "delay_s": 686.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 519.9,
+      "delay_s": 684.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 521.9,
+      "delay_s": 682.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 523.9,
+      "delay_s": 680.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 525.9,
+      "delay_s": 678.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 528,
+      "delay_s": 676.95,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 530,
+      "delay_s": 674.94,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 532,
+      "delay_s": 672.94,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 534,
+      "delay_s": 671.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 536,
+      "delay_s": 669.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 538,
+      "delay_s": 667.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 540,
+      "delay_s": 665.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 542,
+      "delay_s": 663.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 544,
+      "delay_s": 661.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 546,
+      "delay_s": 659.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 548,
+      "delay_s": 657.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 550,
+      "delay_s": 655.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 552.1,
+      "delay_s": 653.85,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 554.1,
+      "delay_s": 652.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 556.1,
+      "delay_s": 650.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 558.1,
+      "delay_s": 648.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 560.1,
+      "delay_s": 646.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 562.1,
+      "delay_s": 644.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 564.1,
+      "delay_s": 642.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 566.1,
+      "delay_s": 640.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 568.1,
+      "delay_s": 638.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 570.1,
+      "delay_s": 636.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 572.1,
+      "delay_s": 634.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 574.1,
+      "delay_s": 633.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 576.1,
+      "delay_s": 631.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 578.1,
+      "delay_s": 629.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 580.2,
+      "delay_s": 627.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 582.2,
+      "delay_s": 625.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 584.2,
+      "delay_s": 623.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 586.2,
+      "delay_s": 621.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 588.2,
+      "delay_s": 619.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 590.2,
+      "delay_s": 617.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 592.2,
+      "delay_s": 615.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 594.2,
+      "delay_s": 613.75,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 596.2,
+      "delay_s": 612.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 598.2,
+      "delay_s": 610.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 600.2,
+      "delay_s": 608.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 602.2,
+      "delay_s": 606.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 604.2,
+      "delay_s": 604.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 606.2,
+      "delay_s": 602.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 608.2,
+      "delay_s": 600.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 610.3,
+      "delay_s": 598.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 612.3,
+      "delay_s": 596.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 614.3,
+      "delay_s": 594.71,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 616.3,
+      "delay_s": 593.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 618.3,
+      "delay_s": 591.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 620.3,
+      "delay_s": 589.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 622.3,
+      "delay_s": 587.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 624.3,
+      "delay_s": 585.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 626.3,
+      "delay_s": 583.7,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 628.3,
+      "delay_s": 581.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 630.3,
+      "delay_s": 579.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 632.3,
+      "delay_s": 577.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 634.3,
+      "delay_s": 575.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 636.3,
+      "delay_s": 574.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 638.3,
+      "delay_s": 572.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 640.3,
+      "delay_s": 570.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 642.3,
+      "delay_s": 568.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 644.3,
+      "delay_s": 566.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 646.4,
+      "delay_s": 564.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 648.4,
+      "delay_s": 562.66,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 650.4,
+      "delay_s": 560.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 652.4,
+      "delay_s": 558.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 654.4,
+      "delay_s": 556.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 656.4,
+      "delay_s": 555.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 658.4,
+      "delay_s": 553.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 660.4,
+      "delay_s": 551.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 662.4,
+      "delay_s": 549.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 664.4,
+      "delay_s": 547.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 666.4,
+      "delay_s": 545.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 668.5,
+      "delay_s": 543.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 670.5,
+      "delay_s": 541.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 672.5,
+      "delay_s": 539.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 674.5,
+      "delay_s": 537.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 676.5,
+      "delay_s": 536.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 678.5,
+      "delay_s": 534.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 680.5,
+      "delay_s": 532.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 682.5,
+      "delay_s": 530.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 684.5,
+      "delay_s": 528.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 686.5,
+      "delay_s": 526.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 688.5,
+      "delay_s": 524.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 690.5,
+      "delay_s": 522.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 692.5,
+      "delay_s": 520.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 694.5,
+      "delay_s": 518.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 696.5,
+      "delay_s": 516.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 698.5,
+      "delay_s": 515.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 700.5,
+      "delay_s": 513.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 702.6,
+      "delay_s": 511.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 704.6,
+      "delay_s": 509.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 706.6,
+      "delay_s": 507.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 708.6,
+      "delay_s": 505.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 710.6,
+      "delay_s": 503.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 712.6,
+      "delay_s": 501.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 714.6,
+      "delay_s": 499.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 716.6,
+      "delay_s": 497.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 718.6,
+      "delay_s": 495.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 720.6,
+      "delay_s": 493.98,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 722.6,
+      "delay_s": 491.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 724.6,
+      "delay_s": 489.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 726.6,
+      "delay_s": 487.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 728.6,
+      "delay_s": 486.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 730.7,
+      "delay_s": 484.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 732.7,
+      "delay_s": 482.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 734.7,
+      "delay_s": 480.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 736.7,
+      "delay_s": 478.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 738.7,
+      "delay_s": 476.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 740.7,
+      "delay_s": 474.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 742.7,
+      "delay_s": 472.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 744.7,
+      "delay_s": 470.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 746.7,
+      "delay_s": 468.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 748.7,
+      "delay_s": 466.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 750.7,
+      "delay_s": 465.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 752.7,
+      "delay_s": 463.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 754.7,
+      "delay_s": 461.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 756.7,
+      "delay_s": 459.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 758.7,
+      "delay_s": 457.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 760.8,
+      "delay_s": 455.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 762.8,
+      "delay_s": 453.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 764.8,
+      "delay_s": 451.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 766.8,
+      "delay_s": 449.85,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 768.8,
+      "delay_s": 447.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 770.8,
+      "delay_s": 446.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 772.8,
+      "delay_s": 444.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 774.8,
+      "delay_s": 442.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 776.8,
+      "delay_s": 440.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 778.8,
+      "delay_s": 438.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 780.8,
+      "delay_s": 436.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 782.8,
+      "delay_s": 434.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 784.8,
+      "delay_s": 432.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 786.8,
+      "delay_s": 430.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 788.9,
+      "delay_s": 428.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 790.9,
+      "delay_s": 426.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 792.9,
+      "delay_s": 424.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 794.9,
+      "delay_s": 423.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 796.9,
+      "delay_s": 421.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 798.9,
+      "delay_s": 419.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 800.9,
+      "delay_s": 417.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 802.9,
+      "delay_s": 415.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 804.9,
+      "delay_s": 413.75,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 806.9,
+      "delay_s": 411.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 808.9,
+      "delay_s": 409.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 810.9,
+      "delay_s": 407.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 813,
+      "delay_s": 405.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 815,
+      "delay_s": 404.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 817,
+      "delay_s": 402.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 819,
+      "delay_s": 400.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 821,
+      "delay_s": 398.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 823,
+      "delay_s": 396.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 825,
+      "delay_s": 394.7,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 827,
+      "delay_s": 392.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 829,
+      "delay_s": 390.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 831,
+      "delay_s": 388.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 833,
+      "delay_s": 386.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 835,
+      "delay_s": 385.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 837,
+      "delay_s": 383.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 839,
+      "delay_s": 381.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 841,
+      "delay_s": 379.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 843,
+      "delay_s": 377.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 845.1,
+      "delay_s": 375.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 847.1,
+      "delay_s": 373.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 849.1,
+      "delay_s": 371.64,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 851.1,
+      "delay_s": 369.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 853.1,
+      "delay_s": 367.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 855.1,
+      "delay_s": 365.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 857.1,
+      "delay_s": 364.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 859.1,
+      "delay_s": 362.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 861.1,
+      "delay_s": 360.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 863.1,
+      "delay_s": 358.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 865.1,
+      "delay_s": 356.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 867.1,
+      "delay_s": 354.61,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 869.1,
+      "delay_s": 352.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 871.1,
+      "delay_s": 350.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 873.1,
+      "delay_s": 348.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 875.1,
+      "delay_s": 346.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 877.2,
+      "delay_s": 345.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 879.2,
+      "delay_s": 343.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 881.2,
+      "delay_s": 341.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 883.2,
+      "delay_s": 339.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 885.2,
+      "delay_s": 337.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 887.2,
+      "delay_s": 335.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 889.2,
+      "delay_s": 333.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 891.2,
+      "delay_s": 331.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 893.2,
+      "delay_s": 329.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 895.2,
+      "delay_s": 327.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 897.2,
+      "delay_s": 325.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 899.2,
+      "delay_s": 324.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 901.2,
+      "delay_s": 322.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 903.3,
+      "delay_s": 320.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 905.3,
+      "delay_s": 318.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 907.3,
+      "delay_s": 316,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 909.3,
+      "delay_s": 314.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 911.3,
+      "delay_s": 312.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 913.3,
+      "delay_s": 310.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 915.3,
+      "delay_s": 308.49,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 917.3,
+      "delay_s": 306.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 919.3,
+      "delay_s": 304.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 921.3,
+      "delay_s": 302.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 923.3,
+      "delay_s": 300.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 925.3,
+      "delay_s": 298.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 927.3,
+      "delay_s": 296.95,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 929.3,
+      "delay_s": 294.95,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 931.4,
+      "delay_s": 293.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 933.4,
+      "delay_s": 291.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 935.4,
+      "delay_s": 289.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 937.4,
+      "delay_s": 287.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 939.4,
+      "delay_s": 285.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 941.4,
+      "delay_s": 283.93,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 943.4,
+      "delay_s": 281.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 945.4,
+      "delay_s": 279.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 947.4,
+      "delay_s": 277.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 949.4,
+      "delay_s": 275.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 951.4,
+      "delay_s": 273.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 953.4,
+      "delay_s": 272.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 955.4,
+      "delay_s": 270.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 957.4,
+      "delay_s": 268.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 959.5,
+      "delay_s": 266.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 961.5,
+      "delay_s": 264.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 963.5,
+      "delay_s": 262.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 965.5,
+      "delay_s": 260.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 967.5,
+      "delay_s": 258.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 969.5,
+      "delay_s": 256.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 971.5,
+      "delay_s": 254.85,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 973.5,
+      "delay_s": 253.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 975.5,
+      "delay_s": 251.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 977.5,
+      "delay_s": 249.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 979.5,
+      "delay_s": 247.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 981.5,
+      "delay_s": 245.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 983.5,
+      "delay_s": 243.85,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 985.5,
+      "delay_s": 241.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 987.5,
+      "delay_s": 239.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 989.5,
+      "delay_s": 237.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 991.5,
+      "delay_s": 235.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 993.6,
+      "delay_s": 233.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 995.6,
+      "delay_s": 232.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 997.6,
+      "delay_s": 230.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 999.6,
+      "delay_s": 228.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1001.6,
+      "delay_s": 226.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1003.6,
+      "delay_s": 224.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1005.6,
+      "delay_s": 222.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1007.6,
+      "delay_s": 220.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1009.6,
+      "delay_s": 218.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1011.6,
+      "delay_s": 216.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1013.6,
+      "delay_s": 214.77,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1015.6,
+      "delay_s": 212.77,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1017.6,
+      "delay_s": 211.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1019.6,
+      "delay_s": 209.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1021.7,
+      "delay_s": 207.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1023.7,
+      "delay_s": 205.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1025.7,
+      "delay_s": 203.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1027.7,
+      "delay_s": 201.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1029.7,
+      "delay_s": 199.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1031.7,
+      "delay_s": 197.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1033.7,
+      "delay_s": 195.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1035.7,
+      "delay_s": 193.7,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1037.7,
+      "delay_s": 192.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1039.7,
+      "delay_s": 190.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1041.7,
+      "delay_s": 188.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1043.7,
+      "delay_s": 186.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1045.7,
+      "delay_s": 184.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1047.8,
+      "delay_s": 182.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1049.8,
+      "delay_s": 180.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1051.8,
+      "delay_s": 178.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1053.8,
+      "delay_s": 176.66,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1055.8,
+      "delay_s": 174.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1057.8,
+      "delay_s": 172.64,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1059.8,
+      "delay_s": 171.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1061.8,
+      "delay_s": 169.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1063.8,
+      "delay_s": 167.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1065.8,
+      "delay_s": 165.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1067.8,
+      "delay_s": 163.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1069.8,
+      "delay_s": 161.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1071.9,
+      "delay_s": 159.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1073.9,
+      "delay_s": 157.61,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1075.9,
+      "delay_s": 155.61,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1077.9,
+      "delay_s": 153.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1079.9,
+      "delay_s": 151.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1081.9,
+      "delay_s": 150.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1083.9,
+      "delay_s": 148.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1085.9,
+      "delay_s": 146.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1087.9,
+      "delay_s": 144.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1089.9,
+      "delay_s": 142.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1091.9,
+      "delay_s": 140.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1093.9,
+      "delay_s": 138.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1095.9,
+      "delay_s": 136.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1098,
+      "delay_s": 134.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1100,
+      "delay_s": 132.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1102,
+      "delay_s": 131.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1104,
+      "delay_s": 129.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1106,
+      "delay_s": 127.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1108,
+      "delay_s": 125.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1110,
+      "delay_s": 123.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1112,
+      "delay_s": 121.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1114,
+      "delay_s": 119.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1116,
+      "delay_s": 117.49,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1118,
+      "delay_s": 115.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1120,
+      "delay_s": 113.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1122,
+      "delay_s": 111.98,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1124.1,
+      "delay_s": 109.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1126.1,
+      "delay_s": 107.95,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1128.1,
+      "delay_s": 105.94,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1130.1,
+      "delay_s": 103.94,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1132.1,
+      "delay_s": 102.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1134.1,
+      "delay_s": 100.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1136.1,
+      "delay_s": 98.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1138.1,
+      "delay_s": 96.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1140.1,
+      "delay_s": 94.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1142.1,
+      "delay_s": 92.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1144.1,
+      "delay_s": 90.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1146.1,
+      "delay_s": 88.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1148.1,
+      "delay_s": 86.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1150.2,
+      "delay_s": 84.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1152.2,
+      "delay_s": 82.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1154.2,
+      "delay_s": 81.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1156.2,
+      "delay_s": 79.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1158.2,
+      "delay_s": 77.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1160.2,
+      "delay_s": 75.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1162.2,
+      "delay_s": 73.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1164.2,
+      "delay_s": 71.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1166.2,
+      "delay_s": 69.85,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1168.2,
+      "delay_s": 67.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1170.2,
+      "delay_s": 65.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1172.3,
+      "delay_s": 63.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1174.3,
+      "delay_s": 61.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1176.3,
+      "delay_s": 60.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1178.3,
+      "delay_s": 58.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1180.3,
+      "delay_s": 56.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1182.3,
+      "delay_s": 54.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1184.3,
+      "delay_s": 52.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1186.3,
+      "delay_s": 50.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1188.3,
+      "delay_s": 48.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1190.3,
+      "delay_s": 46.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1192.3,
+      "delay_s": 44.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1194.3,
+      "delay_s": 42.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1196.3,
+      "delay_s": 41.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1198.3,
+      "delay_s": 39.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1200.3,
+      "delay_s": 37.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1200.5,
+      "delay_s": 37.11,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1202.4,
+      "delay_s": 35.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1204.4,
+      "delay_s": 33.25,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1206.4,
+      "delay_s": 31.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1208.4,
+      "delay_s": 29.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1210.4,
+      "delay_s": 27.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1212.4,
+      "delay_s": 25.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1214.4,
+      "delay_s": 23.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1216.4,
+      "delay_s": 21.71,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1218.4,
+      "delay_s": 20.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1220.4,
+      "delay_s": 18.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1222.4,
+      "delay_s": 16.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1224.4,
+      "delay_s": 14.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1226.4,
+      "delay_s": 12.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1228.4,
+      "delay_s": 10.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1230.4,
+      "delay_s": 8.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1232.4,
+      "delay_s": 6.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1234.5,
+      "delay_s": 4.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1236.5,
+      "delay_s": 2.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1238.5,
+      "delay_s": 1.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1240.5,
+      "delay_s": 0.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 1242.5,
+      "delay_s": 0.24,
+      "post_failed": false
+    }
+  ],
+  "timeline": {
+    "series": {
+      "backlog": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          37
+        ],
+        [
+          10,
+          117
+        ],
+        [
+          15,
+          197
+        ],
+        [
+          20,
+          278
+        ],
+        [
+          25,
+          358
+        ],
+        [
+          30,
+          438
+        ],
+        [
+          35,
+          518
+        ],
+        [
+          40,
+          599
+        ],
+        [
+          45,
+          679
+        ],
+        [
+          50,
+          759
+        ],
+        [
+          55,
+          839
+        ],
+        [
+          60,
+          920
+        ],
+        [
+          65,
+          1000
+        ],
+        [
+          70,
+          1081
+        ],
+        [
+          75,
+          1160
+        ],
+        [
+          80,
+          1241
+        ],
+        [
+          85,
+          1321
+        ],
+        [
+          90,
+          1402
+        ],
+        [
+          95,
+          1481
+        ],
+        [
+          100,
+          1562
+        ],
+        [
+          105,
+          1642
+        ],
+        [
+          110,
+          1723
+        ],
+        [
+          115,
+          1802
+        ],
+        [
+          120,
+          1883
+        ],
+        [
+          125,
+          1962
+        ],
+        [
+          130,
+          2043
+        ],
+        [
+          135,
+          2123
+        ],
+        [
+          140,
+          2204
+        ],
+        [
+          145,
+          2284
+        ],
+        [
+          150,
+          2365
+        ],
+        [
+          155,
+          2445
+        ],
+        [
+          160,
+          2526
+        ],
+        [
+          165,
+          2605
+        ],
+        [
+          170,
+          2686
+        ],
+        [
+          175,
+          2766
+        ],
+        [
+          180,
+          2847
+        ],
+        [
+          185,
+          2927
+        ],
+        [
+          190,
+          3007
+        ],
+        [
+          195,
+          3087
+        ],
+        [
+          200,
+          3168
+        ],
+        [
+          205,
+          3247
+        ],
+        [
+          210,
+          3327
+        ],
+        [
+          215,
+          3408
+        ],
+        [
+          220,
+          3488
+        ],
+        [
+          225,
+          3568
+        ],
+        [
+          230,
+          3648
+        ],
+        [
+          235,
+          3729
+        ],
+        [
+          240,
+          3809
+        ],
+        [
+          245,
+          3890
+        ],
+        [
+          250,
+          3970
+        ],
+        [
+          255,
+          4051
+        ],
+        [
+          260,
+          4130
+        ],
+        [
+          265,
+          4211
+        ],
+        [
+          270,
+          4291
+        ],
+        [
+          275,
+          4372
+        ],
+        [
+          280,
+          4452
+        ],
+        [
+          285,
+          4533
+        ],
+        [
+          290,
+          4613
+        ],
+        [
+          295,
+          4693
+        ],
+        [
+          300,
+          4773
+        ],
+        [
+          305,
+          4854
+        ],
+        [
+          310,
+          4934
+        ],
+        [
+          315,
+          5015
+        ],
+        [
+          320,
+          5094
+        ],
+        [
+          325,
+          5175
+        ],
+        [
+          330,
+          5255
+        ],
+        [
+          335,
+          5336
+        ],
+        [
+          340,
+          5415
+        ],
+        [
+          345,
+          5496
+        ],
+        [
+          350,
+          5575
+        ],
+        [
+          355,
+          5656
+        ],
+        [
+          360,
+          5736
+        ],
+        [
+          365,
+          5817
+        ],
+        [
+          370,
+          5897
+        ],
+        [
+          375,
+          5977
+        ],
+        [
+          380,
+          6057
+        ],
+        [
+          385,
+          6138
+        ],
+        [
+          390,
+          6218
+        ],
+        [
+          395,
+          6298
+        ],
+        [
+          400,
+          6378
+        ],
+        [
+          405,
+          6459
+        ],
+        [
+          410,
+          6539
+        ],
+        [
+          415,
+          6619
+        ],
+        [
+          420,
+          6699
+        ],
+        [
+          425,
+          6779
+        ],
+        [
+          430,
+          6860
+        ],
+        [
+          435,
+          6939
+        ],
+        [
+          440,
+          7020
+        ],
+        [
+          445,
+          7100
+        ],
+        [
+          450,
+          7181
+        ],
+        [
+          455,
+          7261
+        ],
+        [
+          460,
+          7342
+        ],
+        [
+          465,
+          7422
+        ],
+        [
+          470,
+          7503
+        ],
+        [
+          475,
+          7583
+        ],
+        [
+          480,
+          7663
+        ],
+        [
+          485,
+          7743
+        ],
+        [
+          490,
+          7824
+        ],
+        [
+          495,
+          7904
+        ],
+        [
+          500,
+          7984
+        ],
+        [
+          505,
+          8064
+        ],
+        [
+          510,
+          8145
+        ],
+        [
+          515,
+          8225
+        ],
+        [
+          520,
+          8305
+        ],
+        [
+          525,
+          8385
+        ],
+        [
+          530,
+          8466
+        ],
+        [
+          535,
+          8546
+        ],
+        [
+          540,
+          8626
+        ],
+        [
+          545,
+          8706
+        ],
+        [
+          550,
+          8787
+        ],
+        [
+          555,
+          8867
+        ],
+        [
+          560,
+          8947
+        ],
+        [
+          565,
+          9027
+        ],
+        [
+          570,
+          9108
+        ],
+        [
+          575,
+          9188
+        ],
+        [
+          580,
+          9268
+        ],
+        [
+          585,
+          9348
+        ],
+        [
+          590,
+          9428
+        ],
+        [
+          595,
+          9508
+        ],
+        [
+          600,
+          9588
+        ],
+        [
+          605,
+          9668
+        ],
+        [
+          610,
+          9749
+        ],
+        [
+          615,
+          9828
+        ],
+        [
+          620,
+          9909
+        ],
+        [
+          625,
+          9988
+        ],
+        [
+          630,
+          10069
+        ],
+        [
+          635,
+          10148
+        ],
+        [
+          640,
+          10229
+        ],
+        [
+          645,
+          10308
+        ],
+        [
+          650,
+          10389
+        ],
+        [
+          655,
+          10469
+        ],
+        [
+          660,
+          10548
+        ],
+        [
+          665,
+          10629
+        ],
+        [
+          670,
+          10708
+        ],
+        [
+          675,
+          10789
+        ],
+        [
+          680,
+          10869
+        ],
+        [
+          685,
+          10950
+        ],
+        [
+          690,
+          11029
+        ],
+        [
+          695,
+          11110
+        ],
+        [
+          700,
+          11190
+        ],
+        [
+          705,
+          11270
+        ],
+        [
+          710,
+          11350
+        ],
+        [
+          715,
+          11431
+        ],
+        [
+          720,
+          11510
+        ],
+        [
+          725,
+          11591
+        ],
+        [
+          730,
+          11671
+        ],
+        [
+          735,
+          11751
+        ],
+        [
+          740,
+          11831
+        ],
+        [
+          745,
+          11912
+        ],
+        [
+          750,
+          11992
+        ],
+        [
+          755,
+          12072
+        ],
+        [
+          760,
+          12152
+        ],
+        [
+          765,
+          12233
+        ],
+        [
+          770,
+          12313
+        ],
+        [
+          775,
+          12394
+        ],
+        [
+          780,
+          12474
+        ],
+        [
+          785,
+          12554
+        ],
+        [
+          790,
+          12634
+        ],
+        [
+          795,
+          12715
+        ],
+        [
+          800,
+          12794
+        ],
+        [
+          805,
+          12875
+        ],
+        [
+          810,
+          12955
+        ],
+        [
+          815,
+          13035
+        ],
+        [
+          820,
+          13115
+        ],
+        [
+          825,
+          13196
+        ],
+        [
+          830,
+          13275
+        ],
+        [
+          835,
+          13356
+        ],
+        [
+          840,
+          13436
+        ],
+        [
+          845,
+          13517
+        ],
+        [
+          850,
+          13596
+        ],
+        [
+          855,
+          13677
+        ],
+        [
+          860,
+          13757
+        ],
+        [
+          865,
+          13837
+        ],
+        [
+          870,
+          13917
+        ],
+        [
+          875,
+          13997
+        ],
+        [
+          880,
+          14077
+        ],
+        [
+          885,
+          14158
+        ],
+        [
+          890,
+          14238
+        ],
+        [
+          895,
+          14318
+        ],
+        [
+          900,
+          14398
+        ],
+        [
+          905,
+          14478
+        ],
+        [
+          910,
+          14559
+        ],
+        [
+          915,
+          14639
+        ],
+        [
+          920,
+          14720
+        ],
+        [
+          925,
+          14799
+        ],
+        [
+          930,
+          14880
+        ],
+        [
+          935,
+          14960
+        ],
+        [
+          940,
+          15041
+        ],
+        [
+          945,
+          15121
+        ],
+        [
+          950,
+          15202
+        ],
+        [
+          955,
+          15282
+        ],
+        [
+          960,
+          15362
+        ],
+        [
+          965,
+          15442
+        ],
+        [
+          970,
+          15522
+        ],
+        [
+          975,
+          15602
+        ],
+        [
+          980,
+          15683
+        ],
+        [
+          985,
+          15763
+        ],
+        [
+          990,
+          15843
+        ],
+        [
+          995,
+          15923
+        ],
+        [
+          1000,
+          16004
+        ],
+        [
+          1005,
+          16084
+        ],
+        [
+          1010,
+          16164
+        ],
+        [
+          1015,
+          16244
+        ],
+        [
+          1020,
+          16325
+        ],
+        [
+          1025,
+          16405
+        ],
+        [
+          1030,
+          16486
+        ],
+        [
+          1035,
+          16566
+        ],
+        [
+          1040,
+          16647
+        ],
+        [
+          1045,
+          16726
+        ],
+        [
+          1050,
+          16807
+        ],
+        [
+          1055,
+          16887
+        ],
+        [
+          1060,
+          16968
+        ],
+        [
+          1065,
+          17047
+        ],
+        [
+          1070,
+          17128
+        ],
+        [
+          1075,
+          17208
+        ],
+        [
+          1080,
+          17289
+        ],
+        [
+          1085,
+          17369
+        ],
+        [
+          1090,
+          17450
+        ],
+        [
+          1095,
+          17529
+        ],
+        [
+          1100,
+          17610
+        ],
+        [
+          1105,
+          17690
+        ],
+        [
+          1110,
+          17770
+        ],
+        [
+          1115,
+          17851
+        ],
+        [
+          1120,
+          17931
+        ],
+        [
+          1125,
+          18011
+        ],
+        [
+          1130,
+          18091
+        ],
+        [
+          1135,
+          18171
+        ],
+        [
+          1140,
+          18251
+        ],
+        [
+          1145,
+          18332
+        ],
+        [
+          1150,
+          18411
+        ],
+        [
+          1155,
+          18492
+        ],
+        [
+          1160,
+          18572
+        ],
+        [
+          1165,
+          18652
+        ],
+        [
+          1170,
+          18732
+        ],
+        [
+          1175,
+          18813
+        ],
+        [
+          1180,
+          18892
+        ],
+        [
+          1185,
+          18973
+        ],
+        [
+          1190,
+          19053
+        ],
+        [
+          1195,
+          19134
+        ],
+        [
+          1200,
+          19214
+        ],
+        [
+          1205,
+          19108
+        ],
+        [
+          1210,
+          16669
+        ],
+        [
+          1215,
+          14228
+        ],
+        [
+          1220,
+          11750
+        ],
+        [
+          1225,
+          9211
+        ],
+        [
+          1230,
+          6723
+        ],
+        [
+          1235,
+          4194
+        ],
+        [
+          1240,
+          1680
+        ]
+      ],
+      "freshness_s": [
+        [
+          -30,
+          0.206
+        ],
+        [
+          -25,
+          0.211
+        ],
+        [
+          -20,
+          0.197
+        ],
+        [
+          -15,
+          0.208
+        ],
+        [
+          -10,
+          0.2
+        ],
+        [
+          -5,
+          0.199
+        ],
+        [
+          0,
+          0.19
+        ],
+        [
+          5,
+          0.069
+        ],
+        [
+          10,
+          0.096
+        ],
+        [
+          15,
+          0.021
+        ],
+        [
+          20,
+          0.055
+        ],
+        [
+          25,
+          0.072
+        ],
+        [
+          30,
+          0.093
+        ],
+        [
+          35,
+          0.105
+        ],
+        [
+          40,
+          0.039
+        ],
+        [
+          45,
+          0.067
+        ],
+        [
+          50,
+          0.104
+        ],
+        [
+          55,
+          0.022
+        ],
+        [
+          60,
+          0.049
+        ],
+        [
+          65,
+          0.067
+        ],
+        [
+          70,
+          0.085
+        ],
+        [
+          75,
+          0.103
+        ],
+        [
+          80,
+          0.019
+        ],
+        [
+          85,
+          0.04
+        ],
+        [
+          90,
+          0.064
+        ],
+        [
+          95,
+          0.106
+        ],
+        [
+          100,
+          0.029
+        ],
+        [
+          105,
+          0.05
+        ],
+        [
+          110,
+          0.076
+        ],
+        [
+          115,
+          0.005
+        ],
+        [
+          120,
+          0.053
+        ],
+        [
+          125,
+          0.098
+        ],
+        [
+          130,
+          0.01
+        ],
+        [
+          135,
+          0.021
+        ],
+        [
+          140,
+          0.005
+        ],
+        [
+          145,
+          0.021
+        ],
+        [
+          150,
+          0.036
+        ],
+        [
+          155,
+          0.043
+        ],
+        [
+          160,
+          0.078
+        ],
+        [
+          165,
+          0.003
+        ],
+        [
+          170,
+          0.013
+        ],
+        [
+          175,
+          0.034
+        ],
+        [
+          180,
+          0.053
+        ],
+        [
+          185,
+          0.068
+        ],
+        [
+          190,
+          0.083
+        ],
+        [
+          195,
+          0.005
+        ],
+        [
+          200,
+          0.068
+        ],
+        [
+          205,
+          0.013
+        ],
+        [
+          210,
+          0.056
+        ],
+        [
+          215,
+          0.067
+        ],
+        [
+          220,
+          0.082
+        ],
+        [
+          225,
+          0.092
+        ],
+        [
+          230,
+          0.088
+        ],
+        [
+          235,
+          0.104
+        ],
+        [
+          240,
+          0.031
+        ],
+        [
+          245,
+          0.059
+        ],
+        [
+          250,
+          0.07
+        ],
+        [
+          255,
+          0.083
+        ],
+        [
+          260,
+          0.068
+        ],
+        [
+          265,
+          0.087
+        ],
+        [
+          270,
+          0.092
+        ],
+        [
+          275,
+          0.008
+        ],
+        [
+          280,
+          0.023
+        ],
+        [
+          285,
+          0.048
+        ],
+        [
+          290,
+          0.061
+        ],
+        [
+          295,
+          0.083
+        ],
+        [
+          300,
+          0.094
+        ],
+        [
+          305,
+          0.021
+        ],
+        [
+          310,
+          0.051
+        ],
+        [
+          315,
+          0.078
+        ],
+        [
+          320,
+          0.099
+        ],
+        [
+          325,
+          0.034
+        ],
+        [
+          330,
+          0.04
+        ],
+        [
+          335,
+          0.075
+        ],
+        [
+          340,
+          0.103
+        ],
+        [
+          345,
+          0.056
+        ],
+        [
+          350,
+          0.098
+        ],
+        [
+          355,
+          0.014
+        ],
+        [
+          360,
+          0.049
+        ],
+        [
+          365,
+          0.066
+        ],
+        [
+          370,
+          0.075
+        ],
+        [
+          375,
+          0.001
+        ],
+        [
+          380,
+          0.015
+        ],
+        [
+          385,
+          0.027
+        ],
+        [
+          390,
+          0.064
+        ],
+        [
+          395,
+          0.096
+        ],
+        [
+          400,
+          0.004
+        ],
+        [
+          405,
+          0.048
+        ],
+        [
+          410,
+          0.069
+        ],
+        [
+          415,
+          0.084
+        ],
+        [
+          420,
+          0.003
+        ],
+        [
+          425,
+          0.032
+        ],
+        [
+          430,
+          0.059
+        ],
+        [
+          435,
+          0.084
+        ],
+        [
+          440,
+          0.086
+        ],
+        [
+          445,
+          0.003
+        ],
+        [
+          450,
+          0.006
+        ],
+        [
+          455,
+          0.019
+        ],
+        [
+          460,
+          0.029
+        ],
+        [
+          465,
+          0.054
+        ],
+        [
+          470,
+          0.07
+        ],
+        [
+          475,
+          0.088
+        ],
+        [
+          480,
+          0.088
+        ],
+        [
+          485,
+          0.015
+        ],
+        [
+          490,
+          0.02
+        ],
+        [
+          495,
+          0.054
+        ],
+        [
+          500,
+          0.083
+        ],
+        [
+          505,
+          0.015
+        ],
+        [
+          510,
+          0.044
+        ],
+        [
+          515,
+          0.077
+        ],
+        [
+          520,
+          0.094
+        ],
+        [
+          525,
+          0.025
+        ],
+        [
+          530,
+          0.039
+        ],
+        [
+          535,
+          0.062
+        ],
+        [
+          540,
+          0.083
+        ],
+        [
+          545,
+          0.102
+        ],
+        [
+          550,
+          0.014
+        ],
+        [
+          555,
+          0.039
+        ],
+        [
+          560,
+          0.08
+        ],
+        [
+          565,
+          0.108
+        ],
+        [
+          570,
+          0.029
+        ],
+        [
+          575,
+          0.06
+        ],
+        [
+          580,
+          0.104
+        ],
+        [
+          585,
+          0.031
+        ],
+        [
+          590,
+          0.107
+        ],
+        [
+          595,
+          0.032
+        ],
+        [
+          600,
+          0.101
+        ],
+        [
+          605,
+          0.038
+        ],
+        [
+          610,
+          0.083
+        ],
+        [
+          615,
+          0.03
+        ],
+        [
+          620,
+          0.077
+        ],
+        [
+          625,
+          0.013
+        ],
+        [
+          630,
+          0.059
+        ],
+        [
+          635,
+          0.103
+        ],
+        [
+          640,
+          0.044
+        ],
+        [
+          645,
+          0.103
+        ],
+        [
+          650,
+          0.022
+        ],
+        [
+          655,
+          0.057
+        ],
+        [
+          660,
+          0.002
+        ],
+        [
+          665,
+          0.063
+        ],
+        [
+          670,
+          0.099
+        ],
+        [
+          675,
+          0.021
+        ],
+        [
+          680,
+          0.05
+        ],
+        [
+          685,
+          0.084
+        ],
+        [
+          690,
+          0.022
+        ],
+        [
+          695,
+          0.062
+        ],
+        [
+          700,
+          0.078
+        ],
+        [
+          705,
+          0.003
+        ],
+        [
+          710,
+          0.023
+        ],
+        [
+          715,
+          0.051
+        ],
+        [
+          720,
+          0.071
+        ],
+        [
+          725,
+          0.007
+        ],
+        [
+          730,
+          0.029
+        ],
+        [
+          735,
+          0.007
+        ],
+        [
+          740,
+          0.042
+        ],
+        [
+          745,
+          0.051
+        ],
+        [
+          750,
+          0.063
+        ],
+        [
+          755,
+          0.077
+        ],
+        [
+          760,
+          0.08
+        ],
+        [
+          765,
+          0.002
+        ],
+        [
+          770,
+          0.011
+        ],
+        [
+          775,
+          0.022
+        ],
+        [
+          780,
+          0.046
+        ],
+        [
+          785,
+          0.082
+        ],
+        [
+          790,
+          0.014
+        ],
+        [
+          795,
+          0.05
+        ],
+        [
+          800,
+          0.093
+        ],
+        [
+          805,
+          0.027
+        ],
+        [
+          810,
+          0.062
+        ],
+        [
+          815,
+          0.096
+        ],
+        [
+          820,
+          0.027
+        ],
+        [
+          825,
+          0.055
+        ],
+        [
+          830,
+          0.081
+        ],
+        [
+          835,
+          0.107
+        ],
+        [
+          840,
+          0.035
+        ],
+        [
+          845,
+          0.073
+        ],
+        [
+          850,
+          0.092
+        ],
+        [
+          855,
+          0.008
+        ],
+        [
+          860,
+          0.046
+        ],
+        [
+          865,
+          0.033
+        ],
+        [
+          870,
+          0.066
+        ],
+        [
+          875,
+          0.092
+        ],
+        [
+          880,
+          0.015
+        ],
+        [
+          885,
+          0.032
+        ],
+        [
+          890,
+          0.055
+        ],
+        [
+          895,
+          0.065
+        ],
+        [
+          900,
+          0.098
+        ],
+        [
+          905,
+          0.1
+        ],
+        [
+          910,
+          0.022
+        ],
+        [
+          915,
+          0.045
+        ],
+        [
+          920,
+          0.055
+        ],
+        [
+          925,
+          0.086
+        ],
+        [
+          930,
+          0.097
+        ],
+        [
+          935,
+          0.003
+        ],
+        [
+          940,
+          0.024
+        ],
+        [
+          945,
+          0.031
+        ],
+        [
+          950,
+          0.061
+        ],
+        [
+          955,
+          0.079
+        ],
+        [
+          960,
+          0.008
+        ],
+        [
+          965,
+          0.039
+        ],
+        [
+          970,
+          0.096
+        ],
+        [
+          975,
+          0.011
+        ],
+        [
+          980,
+          0.146
+        ],
+        [
+          985,
+          0.051
+        ],
+        [
+          990,
+          0.087
+        ],
+        [
+          995,
+          0.099
+        ],
+        [
+          1000,
+          0.039
+        ],
+        [
+          1005,
+          0.066
+        ],
+        [
+          1010,
+          0.074
+        ],
+        [
+          1015,
+          0.086
+        ],
+        [
+          1020,
+          0.003
+        ],
+        [
+          1025,
+          0.019
+        ],
+        [
+          1030,
+          0.036
+        ],
+        [
+          1035,
+          0.059
+        ],
+        [
+          1040,
+          0.067
+        ],
+        [
+          1045,
+          0.095
+        ],
+        [
+          1050,
+          0.011
+        ],
+        [
+          1055,
+          0.05
+        ],
+        [
+          1060,
+          0.088
+        ],
+        [
+          1065,
+          0.08
+        ],
+        [
+          1070,
+          0.096
+        ],
+        [
+          1075,
+          0.104
+        ],
+        [
+          1080,
+          0.011
+        ],
+        [
+          1085,
+          0.034
+        ],
+        [
+          1090,
+          0.069
+        ],
+        [
+          1095,
+          0.091
+        ],
+        [
+          1100,
+          0.107
+        ],
+        [
+          1105,
+          0.117
+        ],
+        [
+          1110,
+          0.02
+        ],
+        [
+          1115,
+          0.041
+        ],
+        [
+          1120,
+          0.067
+        ],
+        [
+          1125,
+          0.011
+        ],
+        [
+          1130,
+          0.062
+        ],
+        [
+          1135,
+          0.086
+        ],
+        [
+          1140,
+          0.019
+        ],
+        [
+          1145,
+          0.065
+        ],
+        [
+          1150,
+          0.008
+        ],
+        [
+          1155,
+          0.05
+        ],
+        [
+          1160,
+          0.067
+        ],
+        [
+          1165,
+          0.105
+        ],
+        [
+          1170,
+          0.027
+        ],
+        [
+          1175,
+          0.061
+        ],
+        [
+          1180,
+          0.08
+        ],
+        [
+          1185,
+          0.105
+        ],
+        [
+          1190,
+          0.025
+        ],
+        [
+          1195,
+          0.032
+        ],
+        [
+          1200,
+          0.063
+        ],
+        [
+          1205,
+          0.001
+        ],
+        [
+          1210,
+          0.002
+        ],
+        [
+          1215,
+          0.002
+        ],
+        [
+          1220,
+          0.001
+        ],
+        [
+          1225,
+          0.002
+        ],
+        [
+          1230,
+          0.001
+        ],
+        [
+          1235,
+          0.001
+        ],
+        [
+          1240,
+          0.002
+        ]
+      ],
+      "oldest_unacked_age_s": [],
+      "processed_per_s": [
+        [
+          -30,
+          415.8
+        ],
+        [
+          -25,
+          310.535
+        ],
+        [
+          -20,
+          211.428
+        ],
+        [
+          -15,
+          117.006
+        ],
+        [
+          -10,
+          25.869
+        ],
+        [
+          -5,
+          25.428
+        ],
+        [
+          0,
+          25.52
+        ],
+        [
+          5,
+          24.024
+        ],
+        [
+          10,
+          20.821
+        ],
+        [
+          15,
+          17.576
+        ],
+        [
+          20,
+          14.373
+        ],
+        [
+          25,
+          11.171
+        ],
+        [
+          30,
+          9.44
+        ],
+        [
+          35,
+          9.446
+        ],
+        [
+          40,
+          9.446
+        ],
+        [
+          45,
+          9.486
+        ],
+        [
+          50,
+          9.446
+        ],
+        [
+          55,
+          9.446
+        ],
+        [
+          60,
+          9.44
+        ],
+        [
+          65,
+          9.491
+        ],
+        [
+          70,
+          9.451
+        ],
+        [
+          75,
+          9.452
+        ],
+        [
+          80,
+          9.451
+        ],
+        [
+          85,
+          9.451
+        ],
+        [
+          90,
+          9.44
+        ],
+        [
+          95,
+          9.45
+        ],
+        [
+          100,
+          9.45
+        ],
+        [
+          105,
+          9.49
+        ],
+        [
+          110,
+          9.49
+        ],
+        [
+          115,
+          9.451
+        ],
+        [
+          120,
+          9.44
+        ],
+        [
+          125,
+          9.489
+        ],
+        [
+          130,
+          9.449
+        ],
+        [
+          135,
+          9.45
+        ],
+        [
+          140,
+          9.449
+        ],
+        [
+          145,
+          9.45
+        ],
+        [
+          150,
+          9.4
+        ],
+        [
+          155,
+          9.45
+        ],
+        [
+          160,
+          9.449
+        ],
+        [
+          165,
+          9.45
+        ],
+        [
+          170,
+          9.449
+        ],
+        [
+          175,
+          9.449
+        ],
+        [
+          180,
+          9.44
+        ],
+        [
+          185,
+          9.451
+        ],
+        [
+          190,
+          9.451
+        ],
+        [
+          195,
+          9.452
+        ],
+        [
+          200,
+          9.452
+        ],
+        [
+          205,
+          9.451
+        ],
+        [
+          210,
+          9.48
+        ],
+        [
+          215,
+          9.49
+        ],
+        [
+          220,
+          9.489
+        ],
+        [
+          225,
+          9.489
+        ],
+        [
+          230,
+          9.45
+        ],
+        [
+          235,
+          9.409
+        ],
+        [
+          240,
+          9.4
+        ],
+        [
+          245,
+          9.451
+        ],
+        [
+          250,
+          9.45
+        ],
+        [
+          255,
+          9.45
+        ],
+        [
+          260,
+          9.45
+        ],
+        [
+          265,
+          9.45
+        ],
+        [
+          270,
+          9.4
+        ],
+        [
+          275,
+          9.41
+        ],
+        [
+          280,
+          9.41
+        ],
+        [
+          285,
+          9.45
+        ],
+        [
+          290,
+          9.45
+        ],
+        [
+          295,
+          9.45
+        ],
+        [
+          300,
+          9.44
+        ],
+        [
+          305,
+          9.45
+        ],
+        [
+          310,
+          9.45
+        ],
+        [
+          315,
+          9.45
+        ],
+        [
+          320,
+          9.45
+        ],
+        [
+          325,
+          9.45
+        ],
+        [
+          330,
+          9.44
+        ],
+        [
+          335,
+          9.451
+        ],
+        [
+          340,
+          9.45
+        ],
+        [
+          345,
+          9.451
+        ],
+        [
+          350,
+          9.491
+        ],
+        [
+          355,
+          9.49
+        ],
+        [
+          360,
+          9.48
+        ],
+        [
+          365,
+          9.49
+        ],
+        [
+          370,
+          9.489
+        ],
+        [
+          375,
+          9.449
+        ],
+        [
+          380,
+          9.45
+        ],
+        [
+          385,
+          9.409
+        ],
+        [
+          390,
+          9.4
+        ],
+        [
+          395,
+          9.45
+        ],
+        [
+          400,
+          9.45
+        ],
+        [
+          405,
+          9.45
+        ],
+        [
+          410,
+          9.49
+        ],
+        [
+          415,
+          9.49
+        ],
+        [
+          420,
+          9.44
+        ],
+        [
+          425,
+          9.451
+        ],
+        [
+          430,
+          9.491
+        ],
+        [
+          435,
+          9.45
+        ],
+        [
+          440,
+          9.451
+        ],
+        [
+          445,
+          9.451
+        ],
+        [
+          450,
+          9.44
+        ],
+        [
+          455,
+          9.41
+        ],
+        [
+          460,
+          9.41
+        ],
+        [
+          465,
+          9.45
+        ],
+        [
+          470,
+          9.45
+        ],
+        [
+          475,
+          9.45
+        ],
+        [
+          480,
+          9.44
+        ],
+        [
+          485,
+          9.451
+        ],
+        [
+          490,
+          9.41
+        ],
+        [
+          495,
+          9.411
+        ],
+        [
+          500,
+          9.45
+        ],
+        [
+          505,
+          9.45
+        ],
+        [
+          510,
+          9.44
+        ],
+        [
+          515,
+          9.48
+        ],
+        [
+          520,
+          9.49
+        ],
+        [
+          525,
+          9.45
+        ],
+        [
+          530,
+          9.49
+        ],
+        [
+          535,
+          9.49
+        ],
+        [
+          540,
+          9.449
+        ],
+        [
+          545,
+          9.44
+        ],
+        [
+          550,
+          9.451
+        ],
+        [
+          555,
+          9.411
+        ],
+        [
+          560,
+          9.451
+        ],
+        [
+          565,
+          9.451
+        ],
+        [
+          570,
+          9.451
+        ],
+        [
+          575,
+          9.48
+        ],
+        [
+          580,
+          9.49
+        ],
+        [
+          585,
+          9.45
+        ],
+        [
+          590,
+          9.49
+        ],
+        [
+          595,
+          9.49
+        ],
+        [
+          600,
+          9.489
+        ],
+        [
+          605,
+          9.48
+        ],
+        [
+          610,
+          9.53
+        ],
+        [
+          615,
+          9.49
+        ],
+        [
+          620,
+          9.53
+        ],
+        [
+          625,
+          9.49
+        ],
+        [
+          630,
+          9.53
+        ],
+        [
+          635,
+          9.48
+        ],
+        [
+          640,
+          9.489
+        ],
+        [
+          645,
+          9.49
+        ],
+        [
+          650,
+          9.49
+        ],
+        [
+          655,
+          9.489
+        ],
+        [
+          660,
+          9.49
+        ],
+        [
+          665,
+          9.52
+        ],
+        [
+          670,
+          9.49
+        ],
+        [
+          675,
+          9.49
+        ],
+        [
+          680,
+          9.451
+        ],
+        [
+          685,
+          9.491
+        ],
+        [
+          690,
+          9.451
+        ],
+        [
+          695,
+          9.48
+        ],
+        [
+          700,
+          9.491
+        ],
+        [
+          705,
+          9.49
+        ],
+        [
+          710,
+          9.451
+        ],
+        [
+          715,
+          9.49
+        ],
+        [
+          720,
+          9.45
+        ],
+        [
+          725,
+          9.44
+        ],
+        [
+          730,
+          9.45
+        ],
+        [
+          735,
+          9.489
+        ],
+        [
+          740,
+          9.45
+        ],
+        [
+          745,
+          9.49
+        ],
+        [
+          750,
+          9.49
+        ],
+        [
+          755,
+          9.48
+        ],
+        [
+          760,
+          9.451
+        ],
+        [
+          765,
+          9.451
+        ],
+        [
+          770,
+          9.411
+        ],
+        [
+          775,
+          9.41
+        ],
+        [
+          780,
+          9.451
+        ],
+        [
+          785,
+          9.44
+        ],
+        [
+          790,
+          9.451
+        ],
+        [
+          795,
+          9.491
+        ],
+        [
+          800,
+          9.491
+        ],
+        [
+          805,
+          9.451
+        ],
+        [
+          810,
+          9.491
+        ],
+        [
+          815,
+          9.48
+        ],
+        [
+          820,
+          9.452
+        ],
+        [
+          825,
+          9.493
+        ],
+        [
+          830,
+          9.493
+        ],
+        [
+          835,
+          9.452
+        ],
+        [
+          840,
+          9.452
+        ],
+        [
+          845,
+          9.48
+        ],
+        [
+          850,
+          9.45
+        ],
+        [
+          855,
+          9.45
+        ],
+        [
+          860,
+          9.49
+        ],
+        [
+          865,
+          9.491
+        ],
+        [
+          870,
+          9.491
+        ],
+        [
+          875,
+          9.48
+        ],
+        [
+          880,
+          9.49
+        ],
+        [
+          885,
+          9.45
+        ],
+        [
+          890,
+          9.489
+        ],
+        [
+          895,
+          9.45
+        ],
+        [
+          900,
+          9.449
+        ],
+        [
+          905,
+          9.44
+        ],
+        [
+          910,
+          9.451
+        ],
+        [
+          915,
+          9.452
+        ],
+        [
+          920,
+          9.451
+        ],
+        [
+          925,
+          9.452
+        ],
+        [
+          930,
+          9.451
+        ],
+        [
+          935,
+          9.44
+        ],
+        [
+          940,
+          9.409
+        ],
+        [
+          945,
+          9.41
+        ],
+        [
+          950,
+          9.45
+        ],
+        [
+          955,
+          9.449
+        ],
+        [
+          960,
+          9.449
+        ],
+        [
+          965,
+          9.44
+        ],
+        [
+          970,
+          9.491
+        ],
+        [
+          975,
+          9.451
+        ],
+        [
+          980,
+          9.492
+        ],
+        [
+          985,
+          9.492
+        ],
+        [
+          990,
+          9.492
+        ],
+        [
+          995,
+          9.44
+        ],
+        [
+          1000,
+          9.452
+        ],
+        [
+          1005,
+          9.452
+        ],
+        [
+          1010,
+          9.452
+        ],
+        [
+          1015,
+          9.452
+        ],
+        [
+          1020,
+          9.452
+        ],
+        [
+          1025,
+          9.44
+        ],
+        [
+          1030,
+          9.411
+        ],
+        [
+          1035,
+          9.452
+        ],
+        [
+          1040,
+          9.451
+        ],
+        [
+          1045,
+          9.452
+        ],
+        [
+          1050,
+          9.451
+        ],
+        [
+          1055,
+          9.48
+        ],
+        [
+          1060,
+          9.45
+        ],
+        [
+          1065,
+          9.45
+        ],
+        [
+          1070,
+          9.449
+        ],
+        [
+          1075,
+          9.45
+        ],
+        [
+          1080,
+          9.41
+        ],
+        [
+          1085,
+          9.4
+        ],
+        [
+          1090,
+          9.45
+        ],
+        [
+          1095,
+          9.45
+        ],
+        [
+          1100,
+          9.449
+        ],
+        [
+          1105,
+          9.449
+        ],
+        [
+          1110,
+          9.45
+        ],
+        [
+          1115,
+          9.4
+        ],
+        [
+          1120,
+          9.45
+        ],
+        [
+          1125,
+          9.45
+        ],
+        [
+          1130,
+          9.45
+        ],
+        [
+          1135,
+          9.49
+        ],
+        [
+          1140,
+          9.49
+        ],
+        [
+          1145,
+          9.48
+        ],
+        [
+          1150,
+          9.49
+        ],
+        [
+          1155,
+          9.531
+        ],
+        [
+          1160,
+          9.49
+        ],
+        [
+          1165,
+          9.49
+        ],
+        [
+          1170,
+          9.45
+        ],
+        [
+          1175,
+          9.48
+        ],
+        [
+          1180,
+          9.45
+        ],
+        [
+          1185,
+          9.451
+        ],
+        [
+          1190,
+          9.451
+        ],
+        [
+          1195,
+          9.451
+        ],
+        [
+          1200,
+          9.45
+        ],
+        [
+          1205,
+          15.44
+        ],
+        [
+          1210,
+          116.401
+        ],
+        [
+          1215,
+          217.306
+        ],
+        [
+          1220,
+          319.8
+        ],
+        [
+          1225,
+          424.625
+        ],
+        [
+          1230,
+          521.562
+        ],
+        [
+          1235,
+          524.499
+        ],
+        [
+          1240,
+          527.848
+        ]
+      ],
+      "failed_per_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          45,
+          0
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          55,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          70,
+          0
+        ],
+        [
+          75,
+          0
+        ],
+        [
+          80,
+          0
+        ],
+        [
+          85,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          95,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          105,
+          0
+        ],
+        [
+          110,
+          0
+        ],
+        [
+          115,
+          0
+        ],
+        [
+          120,
+          0
+        ],
+        [
+          125,
+          0
+        ],
+        [
+          130,
+          0
+        ],
+        [
+          135,
+          0
+        ],
+        [
+          140,
+          0
+        ],
+        [
+          145,
+          0
+        ],
+        [
+          150,
+          0
+        ],
+        [
+          155,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          190,
+          0
+        ],
+        [
+          195,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          205,
+          0
+        ],
+        [
+          210,
+          0
+        ],
+        [
+          215,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          225,
+          0
+        ],
+        [
+          230,
+          0
+        ],
+        [
+          235,
+          0
+        ],
+        [
+          240,
+          0
+        ],
+        [
+          245,
+          0
+        ],
+        [
+          250,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          260,
+          0
+        ],
+        [
+          265,
+          0
+        ],
+        [
+          270,
+          0
+        ],
+        [
+          275,
+          0
+        ],
+        [
+          280,
+          0
+        ],
+        [
+          285,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          295,
+          0
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          305,
+          0
+        ],
+        [
+          310,
+          0
+        ],
+        [
+          315,
+          0
+        ],
+        [
+          320,
+          0
+        ],
+        [
+          325,
+          0
+        ],
+        [
+          330,
+          0
+        ],
+        [
+          335,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          345,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          355,
+          0
+        ],
+        [
+          360,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          370,
+          0
+        ],
+        [
+          375,
+          0
+        ],
+        [
+          380,
+          0
+        ],
+        [
+          385,
+          0
+        ],
+        [
+          390,
+          0
+        ],
+        [
+          395,
+          0
+        ],
+        [
+          400,
+          0
+        ],
+        [
+          405,
+          0
+        ],
+        [
+          410,
+          0
+        ],
+        [
+          415,
+          0
+        ],
+        [
+          420,
+          0
+        ],
+        [
+          425,
+          0
+        ],
+        [
+          430,
+          0
+        ],
+        [
+          435,
+          0
+        ],
+        [
+          440,
+          0
+        ],
+        [
+          445,
+          0
+        ],
+        [
+          450,
+          0
+        ],
+        [
+          455,
+          0
+        ],
+        [
+          460,
+          0
+        ],
+        [
+          465,
+          0
+        ],
+        [
+          470,
+          0
+        ],
+        [
+          475,
+          0
+        ],
+        [
+          480,
+          0
+        ],
+        [
+          485,
+          0
+        ],
+        [
+          490,
+          0
+        ],
+        [
+          495,
+          0
+        ],
+        [
+          500,
+          0
+        ],
+        [
+          505,
+          0
+        ],
+        [
+          510,
+          0
+        ],
+        [
+          515,
+          0
+        ],
+        [
+          520,
+          0
+        ],
+        [
+          525,
+          0
+        ],
+        [
+          530,
+          0
+        ],
+        [
+          535,
+          0
+        ],
+        [
+          540,
+          0
+        ],
+        [
+          545,
+          0
+        ],
+        [
+          550,
+          0
+        ],
+        [
+          555,
+          0
+        ],
+        [
+          560,
+          0
+        ],
+        [
+          565,
+          0
+        ],
+        [
+          570,
+          0
+        ],
+        [
+          575,
+          0
+        ],
+        [
+          580,
+          0
+        ],
+        [
+          585,
+          0
+        ],
+        [
+          590,
+          0
+        ],
+        [
+          595,
+          0
+        ],
+        [
+          600,
+          0
+        ],
+        [
+          605,
+          0
+        ],
+        [
+          610,
+          0
+        ],
+        [
+          615,
+          0
+        ],
+        [
+          620,
+          0
+        ],
+        [
+          625,
+          0
+        ],
+        [
+          630,
+          0
+        ],
+        [
+          635,
+          0
+        ],
+        [
+          640,
+          0
+        ],
+        [
+          645,
+          0
+        ],
+        [
+          650,
+          0
+        ],
+        [
+          655,
+          0
+        ],
+        [
+          660,
+          0
+        ],
+        [
+          665,
+          0
+        ],
+        [
+          670,
+          0
+        ],
+        [
+          675,
+          0
+        ],
+        [
+          680,
+          0
+        ],
+        [
+          685,
+          0
+        ],
+        [
+          690,
+          0
+        ],
+        [
+          695,
+          0
+        ],
+        [
+          700,
+          0
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          710,
+          0
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          735,
+          0
+        ],
+        [
+          740,
+          0
+        ],
+        [
+          745,
+          0
+        ],
+        [
+          750,
+          0
+        ],
+        [
+          755,
+          0
+        ],
+        [
+          760,
+          0
+        ],
+        [
+          765,
+          0
+        ],
+        [
+          770,
+          0
+        ],
+        [
+          775,
+          0
+        ],
+        [
+          780,
+          0
+        ],
+        [
+          785,
+          0
+        ],
+        [
+          790,
+          0
+        ],
+        [
+          795,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          805,
+          0
+        ],
+        [
+          810,
+          0
+        ],
+        [
+          815,
+          0
+        ],
+        [
+          820,
+          0
+        ],
+        [
+          825,
+          0
+        ],
+        [
+          830,
+          0
+        ],
+        [
+          835,
+          0
+        ],
+        [
+          840,
+          0
+        ],
+        [
+          845,
+          0
+        ],
+        [
+          850,
+          0
+        ],
+        [
+          855,
+          0
+        ],
+        [
+          860,
+          0
+        ],
+        [
+          865,
+          0
+        ],
+        [
+          870,
+          0
+        ],
+        [
+          875,
+          0
+        ],
+        [
+          880,
+          0
+        ],
+        [
+          885,
+          0
+        ],
+        [
+          890,
+          0
+        ],
+        [
+          895,
+          0
+        ],
+        [
+          900,
+          0
+        ],
+        [
+          905,
+          0
+        ],
+        [
+          910,
+          0
+        ],
+        [
+          915,
+          0
+        ],
+        [
+          920,
+          0
+        ],
+        [
+          925,
+          0
+        ],
+        [
+          930,
+          0
+        ],
+        [
+          935,
+          0
+        ],
+        [
+          940,
+          0
+        ],
+        [
+          945,
+          0
+        ],
+        [
+          950,
+          0
+        ],
+        [
+          955,
+          0
+        ],
+        [
+          960,
+          0
+        ],
+        [
+          965,
+          0
+        ],
+        [
+          970,
+          0
+        ],
+        [
+          975,
+          0
+        ],
+        [
+          980,
+          0
+        ],
+        [
+          985,
+          0
+        ],
+        [
+          990,
+          0
+        ],
+        [
+          995,
+          0
+        ],
+        [
+          1000,
+          0
+        ],
+        [
+          1005,
+          0
+        ],
+        [
+          1010,
+          0
+        ],
+        [
+          1015,
+          0
+        ],
+        [
+          1020,
+          0
+        ],
+        [
+          1025,
+          0
+        ],
+        [
+          1030,
+          0
+        ],
+        [
+          1035,
+          0
+        ],
+        [
+          1040,
+          0
+        ],
+        [
+          1045,
+          0
+        ],
+        [
+          1050,
+          0
+        ],
+        [
+          1055,
+          0
+        ],
+        [
+          1060,
+          0
+        ],
+        [
+          1065,
+          0
+        ],
+        [
+          1070,
+          0
+        ],
+        [
+          1075,
+          0
+        ],
+        [
+          1080,
+          0
+        ],
+        [
+          1085,
+          0
+        ],
+        [
+          1090,
+          0
+        ],
+        [
+          1095,
+          0
+        ],
+        [
+          1100,
+          0
+        ],
+        [
+          1105,
+          0
+        ],
+        [
+          1110,
+          0
+        ],
+        [
+          1115,
+          0
+        ],
+        [
+          1120,
+          0
+        ],
+        [
+          1125,
+          0
+        ],
+        [
+          1130,
+          0
+        ],
+        [
+          1135,
+          0
+        ],
+        [
+          1140,
+          0
+        ],
+        [
+          1145,
+          0
+        ],
+        [
+          1150,
+          0
+        ],
+        [
+          1155,
+          0
+        ],
+        [
+          1160,
+          0
+        ],
+        [
+          1165,
+          0
+        ],
+        [
+          1170,
+          0
+        ],
+        [
+          1175,
+          0
+        ],
+        [
+          1180,
+          0
+        ],
+        [
+          1185,
+          0
+        ],
+        [
+          1190,
+          0
+        ],
+        [
+          1195,
+          0
+        ],
+        [
+          1200,
+          0
+        ],
+        [
+          1205,
+          0
+        ],
+        [
+          1210,
+          0
+        ],
+        [
+          1215,
+          0
+        ],
+        [
+          1220,
+          0
+        ],
+        [
+          1225,
+          0
+        ],
+        [
+          1230,
+          0
+        ],
+        [
+          1235,
+          0
+        ],
+        [
+          1240,
+          0
+        ]
+      ],
+      "tracker_up": [
+        [
+          -30,
+          1
+        ],
+        [
+          -25,
+          1
+        ],
+        [
+          -20,
+          1
+        ],
+        [
+          -15,
+          1
+        ],
+        [
+          -10,
+          1
+        ],
+        [
+          -5,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          30,
+          1
+        ],
+        [
+          35,
+          1
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          45,
+          1
+        ],
+        [
+          50,
+          1
+        ],
+        [
+          55,
+          1
+        ],
+        [
+          60,
+          1
+        ],
+        [
+          65,
+          1
+        ],
+        [
+          70,
+          1
+        ],
+        [
+          75,
+          1
+        ],
+        [
+          80,
+          1
+        ],
+        [
+          85,
+          1
+        ],
+        [
+          90,
+          1
+        ],
+        [
+          95,
+          1
+        ],
+        [
+          100,
+          1
+        ],
+        [
+          105,
+          1
+        ],
+        [
+          110,
+          1
+        ],
+        [
+          115,
+          1
+        ],
+        [
+          120,
+          1
+        ],
+        [
+          125,
+          1
+        ],
+        [
+          130,
+          1
+        ],
+        [
+          135,
+          1
+        ],
+        [
+          140,
+          1
+        ],
+        [
+          145,
+          1
+        ],
+        [
+          150,
+          1
+        ],
+        [
+          155,
+          1
+        ],
+        [
+          160,
+          1
+        ],
+        [
+          165,
+          1
+        ],
+        [
+          170,
+          1
+        ],
+        [
+          175,
+          1
+        ],
+        [
+          180,
+          1
+        ],
+        [
+          185,
+          1
+        ],
+        [
+          190,
+          1
+        ],
+        [
+          195,
+          1
+        ],
+        [
+          200,
+          1
+        ],
+        [
+          205,
+          1
+        ],
+        [
+          210,
+          1
+        ],
+        [
+          215,
+          1
+        ],
+        [
+          220,
+          1
+        ],
+        [
+          225,
+          1
+        ],
+        [
+          230,
+          1
+        ],
+        [
+          235,
+          1
+        ],
+        [
+          240,
+          1
+        ],
+        [
+          245,
+          1
+        ],
+        [
+          250,
+          1
+        ],
+        [
+          255,
+          1
+        ],
+        [
+          260,
+          1
+        ],
+        [
+          265,
+          1
+        ],
+        [
+          270,
+          1
+        ],
+        [
+          275,
+          1
+        ],
+        [
+          280,
+          1
+        ],
+        [
+          285,
+          1
+        ],
+        [
+          290,
+          1
+        ],
+        [
+          295,
+          1
+        ],
+        [
+          300,
+          1
+        ],
+        [
+          305,
+          1
+        ],
+        [
+          310,
+          1
+        ],
+        [
+          315,
+          1
+        ],
+        [
+          320,
+          1
+        ],
+        [
+          325,
+          1
+        ],
+        [
+          330,
+          1
+        ],
+        [
+          335,
+          1
+        ],
+        [
+          340,
+          1
+        ],
+        [
+          345,
+          1
+        ],
+        [
+          350,
+          1
+        ],
+        [
+          355,
+          1
+        ],
+        [
+          360,
+          1
+        ],
+        [
+          365,
+          1
+        ],
+        [
+          370,
+          1
+        ],
+        [
+          375,
+          1
+        ],
+        [
+          380,
+          1
+        ],
+        [
+          385,
+          1
+        ],
+        [
+          390,
+          1
+        ],
+        [
+          395,
+          1
+        ],
+        [
+          400,
+          1
+        ],
+        [
+          405,
+          1
+        ],
+        [
+          410,
+          1
+        ],
+        [
+          415,
+          1
+        ],
+        [
+          420,
+          1
+        ],
+        [
+          425,
+          1
+        ],
+        [
+          430,
+          1
+        ],
+        [
+          435,
+          1
+        ],
+        [
+          440,
+          1
+        ],
+        [
+          445,
+          1
+        ],
+        [
+          450,
+          1
+        ],
+        [
+          455,
+          1
+        ],
+        [
+          460,
+          1
+        ],
+        [
+          465,
+          1
+        ],
+        [
+          470,
+          1
+        ],
+        [
+          475,
+          1
+        ],
+        [
+          480,
+          1
+        ],
+        [
+          485,
+          1
+        ],
+        [
+          490,
+          1
+        ],
+        [
+          495,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          505,
+          1
+        ],
+        [
+          510,
+          1
+        ],
+        [
+          515,
+          1
+        ],
+        [
+          520,
+          1
+        ],
+        [
+          525,
+          1
+        ],
+        [
+          530,
+          1
+        ],
+        [
+          535,
+          1
+        ],
+        [
+          540,
+          1
+        ],
+        [
+          545,
+          1
+        ],
+        [
+          550,
+          1
+        ],
+        [
+          555,
+          1
+        ],
+        [
+          560,
+          1
+        ],
+        [
+          565,
+          1
+        ],
+        [
+          570,
+          1
+        ],
+        [
+          575,
+          1
+        ],
+        [
+          580,
+          1
+        ],
+        [
+          585,
+          1
+        ],
+        [
+          590,
+          1
+        ],
+        [
+          595,
+          1
+        ],
+        [
+          600,
+          1
+        ],
+        [
+          605,
+          1
+        ],
+        [
+          610,
+          1
+        ],
+        [
+          615,
+          1
+        ],
+        [
+          620,
+          1
+        ],
+        [
+          625,
+          1
+        ],
+        [
+          630,
+          1
+        ],
+        [
+          635,
+          1
+        ],
+        [
+          640,
+          1
+        ],
+        [
+          645,
+          1
+        ],
+        [
+          650,
+          1
+        ],
+        [
+          655,
+          1
+        ],
+        [
+          660,
+          1
+        ],
+        [
+          665,
+          1
+        ],
+        [
+          670,
+          1
+        ],
+        [
+          675,
+          1
+        ],
+        [
+          680,
+          1
+        ],
+        [
+          685,
+          1
+        ],
+        [
+          690,
+          1
+        ],
+        [
+          695,
+          1
+        ],
+        [
+          700,
+          1
+        ],
+        [
+          705,
+          1
+        ],
+        [
+          710,
+          1
+        ],
+        [
+          715,
+          1
+        ],
+        [
+          720,
+          1
+        ],
+        [
+          725,
+          1
+        ],
+        [
+          730,
+          1
+        ],
+        [
+          735,
+          1
+        ],
+        [
+          740,
+          1
+        ],
+        [
+          745,
+          1
+        ],
+        [
+          750,
+          1
+        ],
+        [
+          755,
+          1
+        ],
+        [
+          760,
+          1
+        ],
+        [
+          765,
+          1
+        ],
+        [
+          770,
+          1
+        ],
+        [
+          775,
+          1
+        ],
+        [
+          780,
+          1
+        ],
+        [
+          785,
+          1
+        ],
+        [
+          790,
+          1
+        ],
+        [
+          795,
+          1
+        ],
+        [
+          800,
+          1
+        ],
+        [
+          805,
+          1
+        ],
+        [
+          810,
+          1
+        ],
+        [
+          815,
+          1
+        ],
+        [
+          820,
+          1
+        ],
+        [
+          825,
+          1
+        ],
+        [
+          830,
+          1
+        ],
+        [
+          835,
+          1
+        ],
+        [
+          840,
+          1
+        ],
+        [
+          845,
+          1
+        ],
+        [
+          850,
+          1
+        ],
+        [
+          855,
+          1
+        ],
+        [
+          860,
+          1
+        ],
+        [
+          865,
+          1
+        ],
+        [
+          870,
+          1
+        ],
+        [
+          875,
+          1
+        ],
+        [
+          880,
+          1
+        ],
+        [
+          885,
+          1
+        ],
+        [
+          890,
+          1
+        ],
+        [
+          895,
+          1
+        ],
+        [
+          900,
+          1
+        ],
+        [
+          905,
+          1
+        ],
+        [
+          910,
+          1
+        ],
+        [
+          915,
+          1
+        ],
+        [
+          920,
+          1
+        ],
+        [
+          925,
+          1
+        ],
+        [
+          930,
+          1
+        ],
+        [
+          935,
+          1
+        ],
+        [
+          940,
+          1
+        ],
+        [
+          945,
+          1
+        ],
+        [
+          950,
+          1
+        ],
+        [
+          955,
+          1
+        ],
+        [
+          960,
+          1
+        ],
+        [
+          965,
+          1
+        ],
+        [
+          970,
+          1
+        ],
+        [
+          975,
+          1
+        ],
+        [
+          980,
+          1
+        ],
+        [
+          985,
+          1
+        ],
+        [
+          990,
+          1
+        ],
+        [
+          995,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          1005,
+          1
+        ],
+        [
+          1010,
+          1
+        ],
+        [
+          1015,
+          1
+        ],
+        [
+          1020,
+          1
+        ],
+        [
+          1025,
+          1
+        ],
+        [
+          1030,
+          1
+        ],
+        [
+          1035,
+          1
+        ],
+        [
+          1040,
+          1
+        ],
+        [
+          1045,
+          1
+        ],
+        [
+          1050,
+          1
+        ],
+        [
+          1055,
+          1
+        ],
+        [
+          1060,
+          1
+        ],
+        [
+          1065,
+          1
+        ],
+        [
+          1070,
+          1
+        ],
+        [
+          1075,
+          1
+        ],
+        [
+          1080,
+          1
+        ],
+        [
+          1085,
+          1
+        ],
+        [
+          1090,
+          1
+        ],
+        [
+          1095,
+          1
+        ],
+        [
+          1100,
+          1
+        ],
+        [
+          1105,
+          1
+        ],
+        [
+          1110,
+          1
+        ],
+        [
+          1115,
+          1
+        ],
+        [
+          1120,
+          1
+        ],
+        [
+          1125,
+          1
+        ],
+        [
+          1130,
+          1
+        ],
+        [
+          1135,
+          1
+        ],
+        [
+          1140,
+          1
+        ],
+        [
+          1145,
+          1
+        ],
+        [
+          1150,
+          1
+        ],
+        [
+          1155,
+          1
+        ],
+        [
+          1160,
+          1
+        ],
+        [
+          1165,
+          1
+        ],
+        [
+          1170,
+          1
+        ],
+        [
+          1175,
+          1
+        ],
+        [
+          1180,
+          1
+        ],
+        [
+          1185,
+          1
+        ],
+        [
+          1190,
+          1
+        ],
+        [
+          1195,
+          1
+        ],
+        [
+          1200,
+          1
+        ],
+        [
+          1205,
+          1
+        ],
+        [
+          1210,
+          1
+        ],
+        [
+          1215,
+          1
+        ],
+        [
+          1220,
+          1
+        ],
+        [
+          1225,
+          1
+        ],
+        [
+          1230,
+          1
+        ],
+        [
+          1235,
+          1
+        ],
+        [
+          1240,
+          1
+        ]
+      ],
+      "query_5xx_per_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          45,
+          0
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          55,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          70,
+          0
+        ],
+        [
+          75,
+          0
+        ],
+        [
+          80,
+          0
+        ],
+        [
+          85,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          95,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          105,
+          0
+        ],
+        [
+          110,
+          0
+        ],
+        [
+          115,
+          0
+        ],
+        [
+          120,
+          0
+        ],
+        [
+          125,
+          0
+        ],
+        [
+          130,
+          0
+        ],
+        [
+          135,
+          0
+        ],
+        [
+          140,
+          0
+        ],
+        [
+          145,
+          0
+        ],
+        [
+          150,
+          0
+        ],
+        [
+          155,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          190,
+          0
+        ],
+        [
+          195,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          205,
+          0
+        ],
+        [
+          210,
+          0
+        ],
+        [
+          215,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          225,
+          0
+        ],
+        [
+          230,
+          0
+        ],
+        [
+          235,
+          0
+        ],
+        [
+          240,
+          0
+        ],
+        [
+          245,
+          0
+        ],
+        [
+          250,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          260,
+          0
+        ],
+        [
+          265,
+          0
+        ],
+        [
+          270,
+          0
+        ],
+        [
+          275,
+          0
+        ],
+        [
+          280,
+          0
+        ],
+        [
+          285,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          295,
+          0
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          305,
+          0
+        ],
+        [
+          310,
+          0
+        ],
+        [
+          315,
+          0
+        ],
+        [
+          320,
+          0
+        ],
+        [
+          325,
+          0
+        ],
+        [
+          330,
+          0
+        ],
+        [
+          335,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          345,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          355,
+          0
+        ],
+        [
+          360,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          370,
+          0
+        ],
+        [
+          375,
+          0
+        ],
+        [
+          380,
+          0
+        ],
+        [
+          385,
+          0
+        ],
+        [
+          390,
+          0
+        ],
+        [
+          395,
+          0
+        ],
+        [
+          400,
+          0
+        ],
+        [
+          405,
+          0
+        ],
+        [
+          410,
+          0
+        ],
+        [
+          415,
+          0
+        ],
+        [
+          420,
+          0
+        ],
+        [
+          425,
+          0
+        ],
+        [
+          430,
+          0
+        ],
+        [
+          435,
+          0
+        ],
+        [
+          440,
+          0
+        ],
+        [
+          445,
+          0
+        ],
+        [
+          450,
+          0
+        ],
+        [
+          455,
+          0
+        ],
+        [
+          460,
+          0
+        ],
+        [
+          465,
+          0
+        ],
+        [
+          470,
+          0
+        ],
+        [
+          475,
+          0
+        ],
+        [
+          480,
+          0
+        ],
+        [
+          485,
+          0
+        ],
+        [
+          490,
+          0
+        ],
+        [
+          495,
+          0
+        ],
+        [
+          500,
+          0
+        ],
+        [
+          505,
+          0
+        ],
+        [
+          510,
+          0
+        ],
+        [
+          515,
+          0
+        ],
+        [
+          520,
+          0
+        ],
+        [
+          525,
+          0
+        ],
+        [
+          530,
+          0
+        ],
+        [
+          535,
+          0
+        ],
+        [
+          540,
+          0
+        ],
+        [
+          545,
+          0
+        ],
+        [
+          550,
+          0
+        ],
+        [
+          555,
+          0
+        ],
+        [
+          560,
+          0
+        ],
+        [
+          565,
+          0
+        ],
+        [
+          570,
+          0
+        ],
+        [
+          575,
+          0
+        ],
+        [
+          580,
+          0
+        ],
+        [
+          585,
+          0
+        ],
+        [
+          590,
+          0
+        ],
+        [
+          595,
+          0
+        ],
+        [
+          600,
+          0
+        ],
+        [
+          605,
+          0
+        ],
+        [
+          610,
+          0
+        ],
+        [
+          615,
+          0
+        ],
+        [
+          620,
+          0
+        ],
+        [
+          625,
+          0
+        ],
+        [
+          630,
+          0
+        ],
+        [
+          635,
+          0
+        ],
+        [
+          640,
+          0
+        ],
+        [
+          645,
+          0
+        ],
+        [
+          650,
+          0
+        ],
+        [
+          655,
+          0
+        ],
+        [
+          660,
+          0
+        ],
+        [
+          665,
+          0
+        ],
+        [
+          670,
+          0
+        ],
+        [
+          675,
+          0
+        ],
+        [
+          680,
+          0
+        ],
+        [
+          685,
+          0
+        ],
+        [
+          690,
+          0
+        ],
+        [
+          695,
+          0
+        ],
+        [
+          700,
+          0
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          710,
+          0
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          735,
+          0
+        ],
+        [
+          740,
+          0
+        ],
+        [
+          745,
+          0
+        ],
+        [
+          750,
+          0
+        ],
+        [
+          755,
+          0
+        ],
+        [
+          760,
+          0
+        ],
+        [
+          765,
+          0
+        ],
+        [
+          770,
+          0
+        ],
+        [
+          775,
+          0
+        ],
+        [
+          780,
+          0
+        ],
+        [
+          785,
+          0
+        ],
+        [
+          790,
+          0
+        ],
+        [
+          795,
+          0
+        ],
+        [
+          800,
+          0
+        ],
+        [
+          805,
+          0
+        ],
+        [
+          810,
+          0
+        ],
+        [
+          815,
+          0
+        ],
+        [
+          820,
+          0
+        ],
+        [
+          825,
+          0
+        ],
+        [
+          830,
+          0
+        ],
+        [
+          835,
+          0
+        ],
+        [
+          840,
+          0
+        ],
+        [
+          845,
+          0
+        ],
+        [
+          850,
+          0
+        ],
+        [
+          855,
+          0
+        ],
+        [
+          860,
+          0
+        ],
+        [
+          865,
+          0
+        ],
+        [
+          870,
+          0
+        ],
+        [
+          875,
+          0
+        ],
+        [
+          880,
+          0
+        ],
+        [
+          885,
+          0
+        ],
+        [
+          890,
+          0
+        ],
+        [
+          895,
+          0
+        ],
+        [
+          900,
+          0
+        ],
+        [
+          905,
+          0
+        ],
+        [
+          910,
+          0
+        ],
+        [
+          915,
+          0
+        ],
+        [
+          920,
+          0
+        ],
+        [
+          925,
+          0
+        ],
+        [
+          930,
+          0
+        ],
+        [
+          935,
+          0
+        ],
+        [
+          940,
+          0
+        ],
+        [
+          945,
+          0
+        ],
+        [
+          950,
+          0
+        ],
+        [
+          955,
+          0
+        ],
+        [
+          960,
+          0
+        ],
+        [
+          965,
+          0
+        ],
+        [
+          970,
+          0
+        ],
+        [
+          975,
+          0
+        ],
+        [
+          980,
+          0
+        ],
+        [
+          985,
+          0
+        ],
+        [
+          990,
+          0
+        ],
+        [
+          995,
+          0
+        ],
+        [
+          1000,
+          0
+        ],
+        [
+          1005,
+          0
+        ],
+        [
+          1010,
+          0
+        ],
+        [
+          1015,
+          0
+        ],
+        [
+          1020,
+          0
+        ],
+        [
+          1025,
+          0
+        ],
+        [
+          1030,
+          0
+        ],
+        [
+          1035,
+          0
+        ],
+        [
+          1040,
+          0
+        ],
+        [
+          1045,
+          0
+        ],
+        [
+          1050,
+          0
+        ],
+        [
+          1055,
+          0
+        ],
+        [
+          1060,
+          0
+        ],
+        [
+          1065,
+          0
+        ],
+        [
+          1070,
+          0
+        ],
+        [
+          1075,
+          0
+        ],
+        [
+          1080,
+          0
+        ],
+        [
+          1085,
+          0
+        ],
+        [
+          1090,
+          0
+        ],
+        [
+          1095,
+          0
+        ],
+        [
+          1100,
+          0
+        ],
+        [
+          1105,
+          0
+        ],
+        [
+          1110,
+          0
+        ],
+        [
+          1115,
+          0
+        ],
+        [
+          1120,
+          0
+        ],
+        [
+          1125,
+          0
+        ],
+        [
+          1130,
+          0
+        ],
+        [
+          1135,
+          0
+        ],
+        [
+          1140,
+          0
+        ],
+        [
+          1145,
+          0
+        ],
+        [
+          1150,
+          0
+        ],
+        [
+          1155,
+          0
+        ],
+        [
+          1160,
+          0
+        ],
+        [
+          1165,
+          0
+        ],
+        [
+          1170,
+          0
+        ],
+        [
+          1175,
+          0
+        ],
+        [
+          1180,
+          0
+        ],
+        [
+          1185,
+          0
+        ],
+        [
+          1190,
+          0
+        ],
+        [
+          1195,
+          0
+        ],
+        [
+          1200,
+          0
+        ],
+        [
+          1205,
+          0
+        ],
+        [
+          1210,
+          0
+        ],
+        [
+          1215,
+          0
+        ],
+        [
+          1220,
+          0
+        ],
+        [
+          1225,
+          0
+        ],
+        [
+          1230,
+          0
+        ],
+        [
+          1235,
+          0
+        ],
+        [
+          1240,
+          0
+        ]
+      ]
+    },
+    "alert_states": {
+      "StreamBacklogHigh/firing": {
+        "from_s": 915,
+        "to_s": 1230
+      },
+      "StreamBacklogHigh/pending": {
+        "from_s": 315,
+        "to_s": 910
+      }
+    }
+  },
+  "environment": {
+    "git_commit": "9035e5d020fb6bdd50641ce12535859cbb1b70c6",
+    "config_sha256": {
+      "observability/prometheus/rules/railcar.rules.yml": "dda18195c8acf03871c94bbcd938b2af4ea0fe1a03a0dae044a4ecc83b5aaf2b",
+      "observability/prometheus/prometheus.yml": "39d8b698493346036ebd4a39391a87fbf418178929e976a485c5bae72950791e",
+      "observability/alertmanager/alertmanager.yml": "9ee4a1f4392ed3bc8f1ae86aebfa3dd514adcf62f445b71a33368add4a1e4ab1",
+      "src/tracker/tracker.ts": "76c5bda80c1f2cd3de2e1086867042b6b29e16a49fb4ee3bf3fb189a9a545f51",
+      "src/ingest/stream-stats.ts": "3c04c6096672fd7ae986edda3cee12fed0e46320774469c278ae1ffc57d603a0"
+    },
+    "tracker_image": "sha256:24a285e8c94f2443378928d78ec6402698a8e4b8ff7b9fd23c1fb11f04be6f0c",
+    "ingest_image": "sha256:a35663770fa54413c76115649cdd9515a47720354822306a375a584f56b96f02",
+    "loaded_alert_rules": [
+      {
+        "name": "IngestErrorRateHigh",
+        "for_seconds": 300,
+        "query": "sum(rate(http_server_requests_total{job=\"ingest\",route=\"/v1/events\",status_code=~\"5..\"}[5m])) / sum(rate(http_server_requests_total{job=\"ingest\",route=\"/v1/events\"}[5m])) > 0.05"
+      },
+      {
+        "name": "QueryErrorRateHigh",
+        "for_seconds": 300,
+        "query": "sum(rate(http_server_requests_total{job=\"query\",route=~\"/v1/.*\",status_code=~\"5..\"}[5m])) / sum(rate(http_server_requests_total{job=\"query\",route=~\"/v1/.*\"}[5m])) > 0.05"
+      },
+      {
+        "name": "QueryLatencyHigh",
+        "for_seconds": 600,
+        "query": "histogram_quantile(0.95, sum by (le) (rate(http_server_request_duration_seconds_bucket{job=\"query\",route=~\"/v1/.*\"}[5m]))) > 0.5"
+      },
+      {
+        "name": "ServiceDown",
+        "for_seconds": 300,
+        "query": "up{job=~\"ingest|tracker|query\"} == 0"
+      },
+      {
+        "name": "RailcarPositionsStale",
+        "for_seconds": 300,
+        "query": "max(railcar_positions_freshness_seconds) > 300"
+      },
+      {
+        "name": "StreamBacklogHigh",
+        "for_seconds": 600,
+        "query": "sum(railcar_stream_group_lag{group=\"tracker\"}) + sum(railcar_stream_group_pending{group=\"tracker\"}) > 5000"
+      },
+      {
+        "name": "TrackerProcessingErrors",
+        "for_seconds": 300,
+        "query": "sum(rate(tracker_events_failed_total[5m])) > 0"
+      },
+      {
+        "name": "DeadLetteredEvents",
+        "for_seconds": 0,
+        "query": "sum(increase(tracker_events_dead_lettered_total[15m])) > 0"
+      }
+    ],
+    "toxics_after": []
+  }
+}

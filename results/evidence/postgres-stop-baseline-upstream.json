@@ -1,0 +1,45 @@
+{
+  "note": "toxiproxy logs times to the second",
+  "runs": [
+    {
+      "file": "runs/postgres-stop/baseline-01.json",
+      "failed_upstream_dials": 18,
+      "dials_to_address_outside_compose_network": 18,
+      "postgres_ready_after_mitigation_start_s": 0.6,
+      "last_outside_dial_after_postgres_ready_s": 17,
+      "recovered_after_postgres_ready_s": 40.1
+    },
+    {
+      "file": "runs/postgres-stop/baseline-02.json",
+      "failed_upstream_dials": 16,
+      "dials_to_address_outside_compose_network": 15,
+      "postgres_ready_after_mitigation_start_s": 0.6,
+      "last_outside_dial_after_postgres_ready_s": 11,
+      "recovered_after_postgres_ready_s": 35.1
+    },
+    {
+      "file": "runs/postgres-stop/baseline-03.json",
+      "failed_upstream_dials": 18,
+      "dials_to_address_outside_compose_network": 18,
+      "postgres_ready_after_mitigation_start_s": 0.6,
+      "last_outside_dial_after_postgres_ready_s": 1,
+      "recovered_after_postgres_ready_s": 24.9
+    },
+    {
+      "file": "runs/postgres-stop/baseline-04.json",
+      "failed_upstream_dials": 19,
+      "dials_to_address_outside_compose_network": 19,
+      "postgres_ready_after_mitigation_start_s": 0.6,
+      "last_outside_dial_after_postgres_ready_s": 18,
+      "recovered_after_postgres_ready_s": 41.1
+    },
+    {
+      "file": "runs/postgres-stop/baseline-05.json",
+      "failed_upstream_dials": 18,
+      "dials_to_address_outside_compose_network": 18,
+      "postgres_ready_after_mitigation_start_s": 0.6,
+      "last_outside_dial_after_postgres_ready_s": 2,
+      "recovered_after_postgres_ready_s": 25.5
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+[
+  {
+    "drill": "poison-event",
+    "label": "baseline",
+    "runs": 5,
+    "first_injected_at": "2026-10-21T20:19:19.048Z",
+    "last_injected_at": "2026-10-21T21:23:07.367Z",
+    "observation_window_s": 1200,
+    "paged_runs": 5,
+    "first_page_alerts": {
+      "RailcarPositionsStale": 5
+    },
+    "ttd_page_s": {
+      "n": 5,
+      "median": 617.9,
+      "min": 615.2,
+      "max": 620.4
+    },
+    "first_ticket_alerts": {
+      "TrackerProcessingErrors": 5
+    },
+    "ttd_ticket_s": {
+      "n": 5,
+      "median": 318.2,
+      "min": 315.5,
+      "max": 320.6
+    },
+    "ttr_s": {
+      "n": 5,
+      "median": 35.3,
+      "min": 32.7,
+      "max": 37.9
+    },
+    "impact_s": {
+      "n": 5,
+      "median": 655.4,
+      "min": 650.1,
+      "max": 656.3
+    },
+    "max_canary_delay_s": {
+      "n": 5,
+      "median": 623.1,
+      "min": 617.9,
+      "max": 623.2
+    },
+    "peak_backlog": {
+      "n": 5,
+      "median": 15811,
+      "min": 15759,
+      "max": 15886
+    },
+    "peak_freshness_s": {
+      "n": 5,
+      "median": 622,
+      "min": 615.7,
+      "max": 624.5
+    },
+    "failed_attempts": {
+      "n": 5,
+      "median": 125.2,
+      "min": 124.4,
+      "max": 127.3
+    },
+    "files": [
+      "runs/poison-event/baseline-01.json",
+      "runs/poison-event/baseline-02.json",
+      "runs/poison-event/baseline-03.json",
+      "runs/poison-event/baseline-04.json",
+      "runs/poison-event/baseline-05.json"
+    ]
+  },
+  {
+    "drill": "postgres-latency",
+    "label": "baseline",
+    "runs": 5,
+    "first_injected_at": "2026-10-21T21:39:12.421Z",
+    "last_injected_at": "2026-10-21T23:04:22.136Z",
+    "observation_window_s": 1200,
+    "paged_runs": 0,
+    "first_page_alerts": {
+      "none": 5
+    },
+    "ttd_page_s": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+    },
+    "first_ticket_alerts": {
+      "StreamBacklogHigh": 5
+    },
+    "ttd_ticket_s": {
+      "n": 5,
+      "median": 928.7,
+      "min": 924.4,
+      "max": 932.2
+    },
+    "ttr_s": {
+      "n": 5,
+      "median": 37.4,
+      "min": 36.5,
+      "max": 38.8
+    },
+    "impact_s": {
+      "n": 5,
+      "median": 1237.6,
+      "min": 1236.7,
+      "max": 1239
+    },
+    "max_canary_delay_s": {
+      "n": 5,
+      "median": 754.9,
+      "min": 754.3,
+      "max": 755.1
+    },
+    "peak_backlog": {
+      "n": 5,
+      "median": 19230,
+      "min": 19201,
+      "max": 19263
+    },
+    "peak_freshness_s": {
+      "n": 5,
+      "median": 0.2,
+      "min": 0.1,
+      "max": 0.6
+    },
+    "failed_attempts": {
+      "n": 5,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "files": [
+      "runs/postgres-latency/baseline-01.json",
+      "runs/postgres-latency/baseline-02.json",
+      "runs/postgres-latency/baseline-03.json",
+      "runs/postgres-latency/baseline-04.json",
+      "runs/postgres-latency/baseline-05.json"
+    ]
+  },
+  {
+    "drill": "postgres-stop",
+    "label": "baseline",
+    "runs": 5,
+    "first_injected_at": "2026-10-21T19:19:02.693Z",
+    "last_injected_at": "2026-10-21T20:07:21.790Z",
+    "observation_window_s": 1200,
+    "paged_runs": 5,
+    "first_page_alerts": {
+      "QueryErrorRateHigh": 5
+    },
+    "ttd_page_s": {
+      "n": 5,
+      "median": 376,
+      "min": 361,
+      "max": 381.3
+    },
+    "first_ticket_alerts": {
+      "TrackerProcessingErrors": 5
+    },
+    "ttd_ticket_s": {
+      "n": 5,
+      "median": 320.5,
+      "min": 319.7,
+      "max": 325.2
+    },
+    "ttr_s": {
+      "n": 5,
+      "median": 35.7,
+      "min": 25.4,
+      "max": 41.6
+    },
+    "impact_s": {
+      "n": 5,
+      "median": 402.5,
+      "min": 401.9,
+      "max": 423.9
+    },
+    "max_canary_delay_s": {
+      "n": 5,
+      "median": 382.1,
+      "min": 381.3,
+      "max": 401.9
+    },
+    "peak_backlog": {
+      "n": 5,
+      "median": 9741,
+      "min": 9741,
+      "max": 10251
+    },
+    "peak_freshness_s": {
+      "n": 5,
+      "median": 380.6,
+      "min": 380.5,
+      "max": 401.4
+    },
+    "failed_attempts": {
+      "n": 5,
+      "median": 40.8,
+      "min": 40.3,
+      "max": 42.5
+    },
+    "files": [
+      "runs/postgres-stop/baseline-01.json",
+      "runs/postgres-stop/baseline-02.json",
+      "runs/postgres-stop/baseline-03.json",
+      "runs/postgres-stop/baseline-04.json",
+      "runs/postgres-stop/baseline-05.json"
+    ]
+  },
+  {
+    "drill": "tracker-stop",
+    "label": "baseline",
+    "runs": 5,
+    "first_injected_at": "2026-10-21T18:28:48.947Z",
+    "last_injected_at": "2026-10-21T18:54:15.799Z",
+    "observation_window_s": 1200,
+    "paged_runs": 5,
+    "first_page_alerts": {
+      "ServiceDown": 5
+    },
+    "ttd_page_s": {
+      "n": 5,
+      "median": 319.4,
+      "min": 316.1,
+      "max": 324.7
+    },
+    "first_ticket_alerts": {
+      "none": 5
+    },
+    "ttd_ticket_s": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+    },
+    "ttr_s": {
+      "n": 5,
+      "median": 19.9,
+      "min": 19,
+      "max": 23.1
+    },
+    "impact_s": {
+      "n": 5,
+      "median": 339.9,
+      "min": 337.2,
+      "max": 348.6
+    },
+    "max_canary_delay_s": {
+      "n": 5,
+      "median": 321.4,
+      "min": 317.7,
+      "max": 326.6
+    },
+    "peak_backlog": {
+      "n": 5,
+      "median": 8184,
+      "min": 8058,
+      "max": 8312
+    },
+    "peak_freshness_s": {
+      "n": 5,
+      "median": 321.8,
+      "min": 318.6,
+      "max": 326.7
+    },
+    "failed_attempts": {
+      "n": 5,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "files": [
+      "runs/tracker-stop/baseline-01.json",
+      "runs/tracker-stop/baseline-02.json",
+      "runs/tracker-stop/baseline-03.json",
+      "runs/tracker-stop/baseline-04.json",
+      "runs/tracker-stop/baseline-05.json"
+    ]
+  }
+]

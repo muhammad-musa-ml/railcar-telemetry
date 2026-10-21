@@ -1,0 +1,15 @@
+{
+  "note": "First tracker log line after the poison event of run poison-event/baseline-01 (stream id 1792613959395-0), reduced to the fields that identify the error. Copied from `docker compose logs tracker`.",
+  "time": "2026-10-21T20:19:19.399Z",
+  "level": 50,
+  "msg": "processing event failed, will retry",
+  "stream_id": "1792613959395-0",
+  "car_id": "RCTX 100001",
+  "err": {
+    "type": "DatabaseError",
+    "code": "22021",
+    "message": "invalid byte sequence for encoding \"UTF8\": 0x00",
+    "severity": "ERROR",
+    "routine": "report_invalid_encoding_int"
+  }
+}
