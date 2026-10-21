@@ -6,6 +6,14 @@ global:
   scrape_timeout: 4s
   evaluation_interval: 5s
 
+rule_files:
+  - rules/*.yml
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
 scrape_configs:
   - job_name: ingest
     static_configs:
@@ -25,6 +33,9 @@ scrape_configs:
   - job_name: prometheus
     static_configs:
       - targets: ["localhost:9090"]
+  - job_name: alertmanager
+    static_configs:
+      - targets: ["alertmanager:9093"]
   - job_name: otel-collector
     static_configs:
       - targets: ["otel-collector:8888"]

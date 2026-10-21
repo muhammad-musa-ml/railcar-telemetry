@@ -152,6 +152,23 @@ services:
       timeout: 3s
       retries: 10
 
+  alertmanager:
+    image: prom/alertmanager:v0.28.1
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+      - --storage.path=/alertmanager
+    volumes:
+      - ./observability/alertmanager:/etc/alertmanager:ro
+    ports:
+      - "9093:9093"
+    depends_on:
+      - pager
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9093/-/ready"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
   # Dashboards and data sources come from files in the repo. Anonymous users
   # can view; nothing here is meant to be exposed beyond localhost.
   grafana:

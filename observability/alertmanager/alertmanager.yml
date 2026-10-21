@@ -1,0 +1,24 @@
+# Critical alerts page the on-call person; everything else becomes a ticket.
+# Both receivers are the local pager service, which records each
+# notification with the time it arrived.
+route:
+  receiver: ticket
+  group_by: [alertname, job]
+  # Wait briefly for related alerts to arrive before the first notification.
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 4h
+  routes:
+    - matchers:
+        - severity="critical"
+      receiver: page
+
+receivers:
+  - name: page
+    webhook_configs:
+      - url: http://pager:8080/v1/alertmanager/page
+        send_resolved: true
+  - name: ticket
+    webhook_configs:
+      - url: http://pager:8080/v1/alertmanager/ticket
+        send_resolved: true
