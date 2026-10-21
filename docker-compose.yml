@@ -35,6 +35,10 @@ services:
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
       - postgres-data:/var/lib/postgresql/data
+    # Only toxiproxy talks to Postgres, by fixed address (see networks below).
+    networks:
+      db:
+        ipv4_address: 10.203.17.2
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "railcar", "-d", "railcar"]
       interval: 5s
@@ -48,6 +52,9 @@ services:
     command: ["-host=0.0.0.0", "-config=/config/toxiproxy.json"]
     volumes:
       - ./docker/toxiproxy.json:/config/toxiproxy.json:ro
+    networks:
+      - default
+      - db
     ports:
       - "8474:8474"
     depends_on:
@@ -190,6 +197,18 @@ services:
       interval: 5s
       timeout: 3s
       retries: 20
+
+networks:
+  default: {}
+  # Postgres has its own internal network and a fixed address, and toxiproxy
+  # dials that address. With the service name instead, a stopped Postgres
+  # made the name fall through to the host's DNS, which answered with a
+  # machine outside this stack (docs/incidents/003-postgres-stopped.md).
+  db:
+    internal: true
+    ipam:
+      config:
+        - subnet: 10.203.17.0/29
 
 volumes:
   redis-data:
