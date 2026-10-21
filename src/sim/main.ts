@@ -31,10 +31,10 @@ const lookups = new Counter({
 });
 const ticksSkipped = new Counter({
   name: "sim_ticks_skipped_total",
-  help: "Seconds skipped because the previous second's requests had not finished",
+  help: "Seconds skipped because the previous second's requests of the same kind had not finished",
+  labelNames: ["kind"],
   registers: [registry],
 });
-let busy = false;
 
 async function sendEvents(now: Date): Promise<void> {
   const events = fleet.nextReads(eventsPerSecond, now);
@@ -69,19 +69,22 @@ async function sendLookups(): Promise<void> {
   );
 }
 
-async function tick(): Promise<void> {
-  // If the last second's requests have not finished, skip this one rather
-  // than piling up requests against a slow service.
-  if (busy) {
-    ticksSkipped.inc();
-    return;
-  }
-  busy = true;
-  try {
-    await Promise.all([sendEvents(new Date()), sendLookups()]);
-  } finally {
-    busy = false;
-  }
+// Runs `work` once a second. If the previous second's work has not finished,
+// that second is skipped rather than piling up requests against a slow
+// service. Reads and lookups each get their own loop: readers in the field
+// keep reporting whether or not anyone can look positions up.
+function everySecond(kind: string, work: () => Promise<void>): NodeJS.Timeout {
+  let busy = false;
+  return setInterval(() => {
+    if (busy) {
+      ticksSkipped.inc({ kind });
+      return;
+    }
+    busy = true;
+    work().finally(() => {
+      busy = false;
+    });
+  }, 1000);
 }
 
 async function main() {
@@ -90,11 +93,11 @@ async function main() {
   http.get("/healthz", async () => ({ status: "ok" }));
   await http.listen({ host: "0.0.0.0", port: envInt("PORT", 8080) });
 
-  const timer = setInterval(() => void tick(), 1000);
+  const timers = [everySecond("events", () => sendEvents(new Date())), everySecond("lookups", sendLookups)];
   logger.info({ eventsPerSecond, queriesPerSecond, ingestUrl, queryUrl }, "reader simulator started");
 
   const stop = async () => {
-    clearInterval(timer);
+    timers.forEach(clearInterval);
     await http.close();
   };
   process.once("SIGTERM", stop);
