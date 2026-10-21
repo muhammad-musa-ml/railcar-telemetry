@@ -1,5 +1,5 @@
 import type { Redis } from "ioredis";
-import { DEAD_LETTER_KEY, STREAM_KEY, toStreamMessage, type StreamMessage } from "../shared/stream";
+import { DEAD_LETTER_KEY, entriesFromXread, STREAM_KEY, type StreamMessage } from "../shared/stream";
 
 export interface StreamClient {
   ensureGroup(): Promise<void>;
@@ -35,12 +35,7 @@ export class RedisStreamClient implements StreamClient {
       args.push("BLOCK", blockMs);
     }
     args.push("STREAMS", STREAM_KEY, from);
-    const reply = (await this.redis.call("XREADGROUP", args)) as [string, [string, string[]][]][] | null;
-    if (!reply || reply.length === 0) {
-      return [];
-    }
-    const entries = reply[0]?.[1] ?? [];
-    return entries.map(toStreamMessage);
+    return entriesFromXread(await this.redis.call("XREADGROUP", args), STREAM_KEY);
   }
 
   async ack(id: string): Promise<void> {

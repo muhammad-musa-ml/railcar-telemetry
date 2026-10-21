@@ -1,11 +1,23 @@
 import { describe, expect, it } from "vitest";
 import { parseXinfoGroups } from "../../src/ingest/stream-stats";
-import { streamIdMillis, toStreamMessage } from "../../src/shared/stream";
+import { entriesFromXread, streamIdMillis, toStreamMessage } from "../../src/shared/stream";
 
 describe("stream helpers", () => {
   it("turns a raw stream entry into a field map", () => {
     const msg = toStreamMessage(["1729519331250-3", ["event", "{}", "traceparent", "00-abc-def-01"]]);
     expect(msg).toEqual({ id: "1729519331250-3", fields: { event: "{}", traceparent: "00-abc-def-01" } });
+  });
+
+  it("reads XREADGROUP replies in both the RESP2 and the flattened RESP3 shape", () => {
+    const entries = [["1-0", ["event", "a"]], ["2-0", ["event", "b"]]];
+    const expected = [
+      { id: "1-0", fields: { event: "a" } },
+      { id: "2-0", fields: { event: "b" } },
+    ];
+    expect(entriesFromXread([["railcar:events", entries]], "railcar:events")).toEqual(expected);
+    expect(entriesFromXread(["railcar:events", entries], "railcar:events")).toEqual(expected);
+    expect(entriesFromXread(["other", entries], "railcar:events")).toEqual([]);
+    expect(entriesFromXread(null, "railcar:events")).toEqual([]);
   });
 
   it("reads the millisecond part of a stream id", () => {

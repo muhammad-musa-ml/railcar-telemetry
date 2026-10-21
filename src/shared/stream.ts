@@ -23,6 +23,30 @@ export function toStreamMessage(raw: [string, string[]]): StreamMessage {
   return { id, fields };
 }
 
+// Entries for one stream from an XREADGROUP reply. Over RESP2 the reply is
+// [[key, entries], ...]; over RESP3 it is a map, which ioredis hands back
+// flattened as [key, entries, key, entries, ...]. Both shapes are accepted.
+export function entriesFromXread(reply: unknown, key: string): StreamMessage[] {
+  if (!Array.isArray(reply) || reply.length === 0) {
+    return [];
+  }
+  const pairs: [unknown, unknown][] = [];
+  if (typeof reply[0] === "string") {
+    for (let i = 0; i + 1 < reply.length; i += 2) {
+      pairs.push([reply[i], reply[i + 1]]);
+    }
+  } else {
+    for (const pair of reply as unknown[][]) {
+      pairs.push([pair[0], pair[1]]);
+    }
+  }
+  const match = pairs.find(([name]) => name === key);
+  if (!match || !Array.isArray(match[1])) {
+    return [];
+  }
+  return (match[1] as [string, string[]][]).map(toStreamMessage);
+}
+
 // Stream IDs are "<milliseconds>-<sequence>", where the milliseconds are the
 // Redis server time when the entry was added.
 export function streamIdMillis(id: string): number {
