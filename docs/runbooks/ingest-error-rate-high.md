@@ -1,8 +1,8 @@
 # IngestErrorRateHigh
 
 **Severity:** critical (pages)
-**Fires when:** more than 5% of `POST /v1/events` requests return 5xx for 5
-minutes.
+**Fires when:** more than 5% of `POST /v1/events` requests in the last
+minute returned 5xx, for 2 minutes.
 
 ## What it means
 

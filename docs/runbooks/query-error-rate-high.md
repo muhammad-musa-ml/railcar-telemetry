@@ -1,8 +1,8 @@
 # QueryErrorRateHigh
 
 **Severity:** critical (pages)
-**Fires when:** more than 5% of `/v1/...` requests to the query API return
-5xx for 5 minutes.
+**Fires when:** more than 5% of `/v1/...` requests to the query API in the
+last minute returned 5xx, for 2 minutes.
 
 ## What it means
 

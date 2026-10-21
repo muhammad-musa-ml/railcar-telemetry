@@ -16,6 +16,19 @@ groups:
 
   - name: railcar-pipeline
     rules:
+      # Added after the first game days (docs/incidents/001-004): a stopped,
+      # stuck or slow tracker all make the oldest waiting event older, while
+      # the other signals here stay quiet for 5 to 20 minutes.
+      - alert: RailcarEventsDelayed
+        expr: max(railcar_stream_oldest_unacked_age_seconds{group="tracker"}) > 60
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "The oldest unprocessed railcar event is {{ $value | humanizeDuration }} old"
+          description: "An event that entered the stream over a minute ago has still not been written by the tracker, so positions in the query API are at least that far behind."
+          runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/railcar-events-delayed.md
+
       - alert: RailcarPositionsStale
         expr: max(railcar_positions_freshness_seconds) > 300
         for: 5m
@@ -36,13 +49,15 @@ groups:
           description: "The tracker group's backlog (undelivered plus unacknowledged entries) has been over 5000 for 10 minutes."
           runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/stream-backlog-high.md
 
+      # A 1-minute window: with 5 minutes the alert kept firing for 5 minutes
+      # after the failures stopped (docs/incidents/003-postgres-stopped.md).
       - alert: TrackerProcessingErrors
-        expr: sum(rate(tracker_events_failed_total[5m])) > 0
-        for: 5m
+        expr: sum(rate(tracker_events_failed_total[1m])) > 0
+        for: 2m
         labels:
           severity: warning
         annotations:
-          summary: "The tracker has been failing to write events for 5 minutes"
+          summary: "The tracker has been failing to write events for 2 minutes"
           description: "Writes to Postgres or acknowledgements to Redis are failing; failed events are retried."
           runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/tracker-processing-errors.md
 
@@ -55,13 +70,17 @@ groups:
           description: "The tracker could not decode these events. They are in the Redis stream railcar:events:dead."
           runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/dead-lettered-events.md
 
+  # The error ratios use a 1-minute window. Over 5 minutes, the successes
+  # from before an outage diluted the ratio for about a minute and kept it
+  # above 5% for about 4.5 minutes after recovery
+  # (docs/incidents/003-postgres-stopped.md).
   - name: railcar-api
     rules:
       - alert: IngestErrorRateHigh
         expr: |
-          sum(rate(http_server_requests_total{job="ingest",route="/v1/events",status_code=~"5.."}[5m]))
-            / sum(rate(http_server_requests_total{job="ingest",route="/v1/events"}[5m])) > 0.05
-        for: 5m
+          sum(rate(http_server_requests_total{job="ingest",route="/v1/events",status_code=~"5.."}[1m]))
+            / sum(rate(http_server_requests_total{job="ingest",route="/v1/events"}[1m])) > 0.05
+        for: 2m
         labels:
           severity: critical
         annotations:
@@ -71,9 +90,9 @@ groups:
 
       - alert: QueryErrorRateHigh
         expr: |
-          sum(rate(http_server_requests_total{job="query",route=~"/v1/.*",status_code=~"5.."}[5m]))
-            / sum(rate(http_server_requests_total{job="query",route=~"/v1/.*"}[5m])) > 0.05
-        for: 5m
+          sum(rate(http_server_requests_total{job="query",route=~"/v1/.*",status_code=~"5.."}[1m]))
+            / sum(rate(http_server_requests_total{job="query",route=~"/v1/.*"}[1m])) > 0.05
+        for: 2m
         labels:
           severity: critical
         annotations:

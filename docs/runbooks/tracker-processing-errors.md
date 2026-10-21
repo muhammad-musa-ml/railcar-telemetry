@@ -1,7 +1,8 @@
 # TrackerProcessingErrors
 
 **Severity:** warning (ticket)
-**Fires when:** `tracker_events_failed_total` has been increasing for 5 minutes.
+**Fires when:** `tracker_events_failed_total` has increased within every
+1-minute window for 2 minutes.
 
 ## What it means
 
