@@ -1,0 +1,116 @@
+name: railcar
+
+x-app: &app
+  build: .
+  restart: unless-stopped
+  healthcheck:
+    test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+    interval: 5s
+    timeout: 3s
+    retries: 10
+
+services:
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: railcar
+      POSTGRES_PASSWORD: railcar
+      POSTGRES_DB: railcar
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "railcar", "-d", "railcar"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Every Postgres client goes through toxiproxy, so a game day can add
+  # latency or cut the connection without touching Postgres itself.
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.12.0
+    command: ["-host=0.0.0.0", "-config=/config/toxiproxy.json"]
+    volumes:
+      - ./docker/toxiproxy.json:/config/toxiproxy.json:ro
+    ports:
+      - "8474:8474"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  ingest:
+    <<: *app
+    command: ["node", "dist/ingest/main.js"]
+    environment:
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "8081:8080"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  tracker:
+    <<: *app
+    command: ["node", "dist/tracker/main.js"]
+    environment:
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgres://railcar:railcar@toxiproxy:15432/railcar
+      TRACKER_CONSUMER: tracker-1
+    ports:
+      - "8082:8080"
+    depends_on:
+      redis:
+        condition: service_healthy
+      toxiproxy:
+        condition: service_started
+
+  query:
+    <<: *app
+    command: ["node", "dist/query/main.js"]
+    environment:
+      DATABASE_URL: postgres://railcar:railcar@toxiproxy:15432/railcar
+    ports:
+      - "8083:8080"
+    depends_on:
+      toxiproxy:
+        condition: service_started
+
+  pager:
+    <<: *app
+    command: ["node", "dist/pager/main.js"]
+    environment:
+      PAGER_DATA_DIR: /data
+    volumes:
+      - pager-data:/data
+    ports:
+      - "8084:8080"
+
+  reader-sim:
+    <<: *app
+    command: ["node", "dist/sim/main.js"]
+    environment:
+      INGEST_URL: http://ingest:8080
+      QUERY_URL: http://query:8080
+      EVENTS_PER_SECOND: "25"
+      QUERIES_PER_SECOND: "5"
+    depends_on:
+      ingest:
+        condition: service_healthy
+      query:
+        condition: service_healthy
+
+volumes:
+  redis-data:
+  postgres-data:
+  pager-data:
