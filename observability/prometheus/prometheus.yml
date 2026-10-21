@@ -1,0 +1,27 @@
+# Short intervals so that game-day measurements are not dominated by the
+# scrape and evaluation cadence. Detection time is mostly set by each alert's
+# own threshold and `for:` window.
+global:
+  scrape_interval: 5s
+  scrape_timeout: 4s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: ingest
+    static_configs:
+      - targets: ["ingest:8080"]
+  - job_name: tracker
+    static_configs:
+      - targets: ["tracker:8080"]
+  - job_name: query
+    static_configs:
+      - targets: ["query:8080"]
+  - job_name: pager
+    static_configs:
+      - targets: ["pager:8080"]
+  - job_name: reader-sim
+    static_configs:
+      - targets: ["reader-sim:8080"]
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
