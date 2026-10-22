@@ -26,6 +26,26 @@ interface Run {
   peak_backlog: number | null;
   peak_freshness_s: number | null;
   failed_attempts: number | null;
+  peak_oldest_unacked_age_s: number | null;
+  baseline_canary_delay_s: number | null;
+  markers: { label: string; after_inject_s: number }[];
+  timeline: { series: Record<string, [number, number][]> };
+}
+
+// Seconds from the pipeline catching up to the last alert clearing (no
+// alert pending or firing in Prometheus, none active in Alertmanager).
+function clearAfterRecovery(run: Run): number | null {
+  const at = (label: string) => run.markers.find((m) => m.label === label)?.after_inject_s;
+  const recovered = at("recovered");
+  const clear = at("all-clear");
+  return recovered === undefined || clear === undefined ? null : clear - recovered;
+}
+
+// Highest oldest-unacknowledged age in the 30 s before injection, when the
+// stack was running normally. Null for runs before the metric existed.
+function normalOldestAge(run: Run): number | null {
+  const points = (run.timeline.series.oldest_unacked_age_s ?? []).filter(([t]) => t >= -30 && t < 0);
+  return points.length === 0 ? null : Math.max(...points.map(([, v]) => v));
 }
 
 const runsDir = join(repoRoot, "results", "runs");
@@ -85,6 +105,10 @@ function main() {
         peak_backlog: spread(group.map((r) => r.peak_backlog)),
         peak_freshness_s: spread(group.map((r) => r.peak_freshness_s)),
         failed_attempts: spread(group.map((r) => r.failed_attempts)),
+        peak_oldest_unacked_age_s: spread(group.map((r) => r.peak_oldest_unacked_age_s)),
+        alerts_clear_after_recovery_s: spread(group.map(clearAfterRecovery)),
+        oldest_unacked_age_before_injection_s: spread(group.map(normalOldestAge)),
+        canary_delay_before_injection_s: spread(group.map((r) => r.baseline_canary_delay_s)),
         files: group.map((r) => `runs/${r.drill}/${r.label}-${String(r.run).padStart(2, "0")}.json`),
       };
     });
