@@ -1,0 +1,718 @@
+{
+  "summary": [
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "alertname": "RailcarPositionsStale",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": -5.4,
+        "min": -8.5,
+        "max": -3.6
+      }
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "alertname": "TrackerProcessingErrors",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 293.1,
+        "min": 266.1,
+        "max": 294.5
+      }
+    },
+    {
+      "drill": "poison-event",
+      "label": "dead-letter",
+      "alertname": "DeadLetteredEvents",
+      "runs_fired": 4,
+      "resolved_after_recovery_s": {
+        "n": 4,
+        "median": 617.05,
+        "min": 614.4,
+        "max": 618.7
+      }
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "alertname": "RailcarEventsDelayed",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 16.2,
+        "min": 16,
+        "max": 17.5
+      }
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "alertname": "TrackerProcessingErrors",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 76,
+        "min": 45.9,
+        "max": 77.4
+      }
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "baseline",
+      "alertname": "StreamBacklogHigh",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 20.8,
+        "min": 17.2,
+        "max": 24.2
+      }
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "new-alerts",
+      "alertname": "RailcarEventsDelayed",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 23.4,
+        "min": 23,
+        "max": 23.9
+      }
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "alertname": "QueryErrorRateHigh",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 234.1,
+        "min": 227.2,
+        "max": 243.4
+      }
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "alertname": "TrackerProcessingErrors",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 282.9,
+        "min": 277.1,
+        "max": 303.2
+      }
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "alertname": "QueryErrorRateHigh",
+      "runs_fired": 4,
+      "resolved_after_recovery_s": {
+        "n": 4,
+        "median": 58.7,
+        "min": 56.7,
+        "max": 59.8
+      }
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "alertname": "RailcarEventsDelayed",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 18.6,
+        "min": 15.9,
+        "max": 19.6
+      }
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "alertname": "TrackerProcessingErrors",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 53.5,
+        "min": 50.9,
+        "max": 54.6
+      }
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "baseline",
+      "alertname": "ServiceDown",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 9.3,
+        "min": 5.9,
+        "max": 10.2
+      }
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "new-alerts",
+      "alertname": "RailcarEventsDelayed",
+      "runs_fired": 5,
+      "resolved_after_recovery_s": {
+        "n": 5,
+        "median": 18.6,
+        "min": 18.4,
+        "max": 18.9
+      }
+    }
+  ],
+  "runs": [
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 1,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 266.1
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 1,
+      "alertname": "RailcarPositionsStale",
+      "receiver": "page",
+      "resolved_after_recovery_s": -3.6
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 2,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 293.1
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 2,
+      "alertname": "RailcarPositionsStale",
+      "receiver": "page",
+      "resolved_after_recovery_s": -6.7
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 3,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 294.5
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 3,
+      "alertname": "RailcarPositionsStale",
+      "receiver": "page",
+      "resolved_after_recovery_s": -5.3
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 4,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 291.3
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 4,
+      "alertname": "RailcarPositionsStale",
+      "receiver": "page",
+      "resolved_after_recovery_s": -8.5
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 5,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 294.4
+    },
+    {
+      "drill": "poison-event",
+      "label": "baseline",
+      "run": 5,
+      "alertname": "RailcarPositionsStale",
+      "receiver": "page",
+      "resolved_after_recovery_s": -5.4
+    },
+    {
+      "drill": "poison-event",
+      "label": "dead-letter",
+      "run": 2,
+      "alertname": "DeadLetteredEvents",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 617.8
+    },
+    {
+      "drill": "poison-event",
+      "label": "dead-letter",
+      "run": 3,
+      "alertname": "DeadLetteredEvents",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 616.3
+    },
+    {
+      "drill": "poison-event",
+      "label": "dead-letter",
+      "run": 4,
+      "alertname": "DeadLetteredEvents",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 614.4
+    },
+    {
+      "drill": "poison-event",
+      "label": "dead-letter",
+      "run": 5,
+      "alertname": "DeadLetteredEvents",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 618.7
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 77.4
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 17.5
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 17
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 76.9
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 16.2
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 46.1
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 45.9
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 16
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 5,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 16.1
+    },
+    {
+      "drill": "poison-event",
+      "label": "new-alerts",
+      "run": 5,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 76
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "baseline",
+      "run": 1,
+      "alertname": "StreamBacklogHigh",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 17.2
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "baseline",
+      "run": 2,
+      "alertname": "StreamBacklogHigh",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 17.5
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "baseline",
+      "run": 3,
+      "alertname": "StreamBacklogHigh",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 24.2
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "baseline",
+      "run": 4,
+      "alertname": "StreamBacklogHigh",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 20.8
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "baseline",
+      "run": 5,
+      "alertname": "StreamBacklogHigh",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 21.9
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 23.4
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 23.3
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 23.9
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 23.7
+    },
+    {
+      "drill": "postgres-latency",
+      "label": "new-alerts",
+      "run": 5,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 23
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 1,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 282.9
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 1,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 228.8
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 2,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 303.2
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 2,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 234.1
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 3,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 277.5
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 3,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 243.4
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 4,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 286.3
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 4,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 227.2
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 5,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 277.1
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "baseline",
+      "run": 5,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 243
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 15.9
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 50.9
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 56.7
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 17.1
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 52.1
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 58
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.6
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 53.5
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 59.4
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.9
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 53.9
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "QueryErrorRateHigh",
+      "receiver": "page",
+      "resolved_after_recovery_s": 59.8
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 5,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 19.6
+    },
+    {
+      "drill": "postgres-stop",
+      "label": "new-alerts",
+      "run": 5,
+      "alertname": "TrackerProcessingErrors",
+      "receiver": "ticket",
+      "resolved_after_recovery_s": 54.6
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "baseline",
+      "run": 1,
+      "alertname": "ServiceDown",
+      "receiver": "page",
+      "resolved_after_recovery_s": 9.3
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "baseline",
+      "run": 2,
+      "alertname": "ServiceDown",
+      "receiver": "page",
+      "resolved_after_recovery_s": 9.3
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "baseline",
+      "run": 3,
+      "alertname": "ServiceDown",
+      "receiver": "page",
+      "resolved_after_recovery_s": 5.9
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "baseline",
+      "run": 4,
+      "alertname": "ServiceDown",
+      "receiver": "page",
+      "resolved_after_recovery_s": 8.7
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "baseline",
+      "run": 5,
+      "alertname": "ServiceDown",
+      "receiver": "page",
+      "resolved_after_recovery_s": 10.2
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "new-alerts",
+      "run": 1,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.6
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "new-alerts",
+      "run": 2,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.6
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "new-alerts",
+      "run": 3,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.8
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "new-alerts",
+      "run": 4,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.4
+    },
+    {
+      "drill": "tracker-stop",
+      "label": "new-alerts",
+      "run": 5,
+      "alertname": "RailcarEventsDelayed",
+      "receiver": "page",
+      "resolved_after_recovery_s": 18.9
+    }
+  ]
+}

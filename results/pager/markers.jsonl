@@ -1,0 +1,335 @@
+{"received_at":"2026-10-21T18:24:12.121Z","label":"write-check","details":{}}
+{"received_at":"2026-10-21T18:25:21.527Z","label":"start","details":{"drill":"tracker-stop","label":"smoke","canary_car":"CNRY 452130"}}
+{"received_at":"2026-10-21T18:25:51.536Z","label":"inject-start","details":{"drill":"tracker-stop","label":"smoke"}}
+{"received_at":"2026-10-21T18:25:53.042Z","label":"inject-done","details":{"drill":"tracker-stop","label":"smoke"}}
+{"received_at":"2026-10-21T18:26:53.664Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"smoke","reason":"window ended"}}
+{"received_at":"2026-10-21T18:26:55.589Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"smoke"}}
+{"received_at":"2026-10-21T18:26:59.977Z","label":"recovered","details":{"drill":"tracker-stop","label":"smoke"}}
+{"received_at":"2026-10-21T18:27:11.677Z","label":"all-clear","details":{"drill":"tracker-stop","label":"smoke"}}
+{"received_at":"2026-10-21T18:28:18.944Z","label":"start","details":{"drill":"tracker-stop","label":"baseline","canary_car":"CNRY 563273"}}
+{"received_at":"2026-10-21T18:28:48.947Z","label":"inject-start","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:28:50.010Z","label":"inject-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:34:11.318Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T18:34:13.136Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:34:31.269Z","label":"recovered","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:34:37.466Z","label":"all-clear","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:34:40.988Z","label":"start","details":{"drill":"tracker-stop","label":"baseline","canary_car":"CNRY 325435"}}
+{"received_at":"2026-10-21T18:35:11.001Z","label":"inject-start","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:35:11.957Z","label":"inject-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:40:31.321Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T18:40:33.282Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:40:51.030Z","label":"recovered","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:40:57.118Z","label":"all-clear","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:41:00.553Z","label":"start","details":{"drill":"tracker-stop","label":"baseline","canary_car":"CNRY 671707"}}
+{"received_at":"2026-10-21T18:41:30.566Z","label":"inject-start","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:41:31.889Z","label":"inject-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:46:56.025Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T18:46:57.975Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:47:19.285Z","label":"recovered","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:47:25.445Z","label":"all-clear","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:47:28.919Z","label":"start","details":{"drill":"tracker-stop","label":"baseline","canary_car":"CNRY 657511"}}
+{"received_at":"2026-10-21T18:47:58.923Z","label":"inject-start","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:47:59.804Z","label":"inject-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:53:15.874Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T18:53:17.764Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:53:36.292Z","label":"recovered","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:53:42.399Z","label":"all-clear","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:53:45.792Z","label":"start","details":{"drill":"tracker-stop","label":"baseline","canary_car":"CNRY 328769"}}
+{"received_at":"2026-10-21T18:54:15.799Z","label":"inject-start","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:54:16.701Z","label":"inject-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:59:35.694Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T18:59:37.510Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T18:59:54.677Z","label":"recovered","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:00:00.748Z","label":"all-clear","details":{"drill":"tracker-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:00:08.840Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 566155"}}
+{"received_at":"2026-10-21T19:00:38.851Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:00:39.621Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:06:54.302Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T19:06:55.069Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:07:08.368Z","label":"recovered","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:12:08.893Z","label":"all-clear","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:12:12.330Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 381644"}}
+{"received_at":"2026-10-21T19:12:42.347Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:12:43.069Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:18:32.680Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 117511"}}
+{"received_at":"2026-10-21T19:19:02.693Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:19:03.433Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:25:04.036Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T19:25:04.797Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:25:44.733Z","label":"recovered","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:30:28.863Z","label":"all-clear","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:30:32.324Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 334039"}}
+{"received_at":"2026-10-21T19:31:02.326Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:31:03.096Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:37:18.482Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T19:37:19.218Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:37:54.146Z","label":"recovered","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:42:38.262Z","label":"all-clear","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:42:41.778Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 722029"}}
+{"received_at":"2026-10-21T19:43:11.788Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:43:12.499Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:49:28.952Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T19:49:29.722Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:49:54.460Z","label":"recovered","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:54:32.886Z","label":"all-clear","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:54:36.297Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 244474"}}
+{"received_at":"2026-10-21T19:55:06.316Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T19:55:07.070Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:01:28.645Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T20:01:29.385Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:02:10.335Z","label":"recovered","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:06:48.359Z","label":"all-clear","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:06:51.776Z","label":"start","details":{"drill":"postgres-stop","label":"baseline","canary_car":"CNRY 617252"}}
+{"received_at":"2026-10-21T20:07:21.790Z","label":"inject-start","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:07:22.489Z","label":"inject-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:13:38.050Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T20:13:38.804Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:14:04.140Z","label":"recovered","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:18:42.377Z","label":"all-clear","details":{"drill":"postgres-stop","label":"baseline"}}
+{"received_at":"2026-10-21T20:18:49.068Z","label":"start","details":{"drill":"poison-event","label":"baseline","canary_car":"CNRY 416869"}}
+{"received_at":"2026-10-21T20:19:19.048Z","label":"inject-start","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:19:19.632Z","label":"inject-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792613959395-0"}}
+{"received_at":"2026-10-21T20:29:36.557Z","label":"mitigate-start","details":{"drill":"poison-event","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T20:29:38.887Z","label":"mitigate-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792613959395-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-21T20:30:09.296Z","label":"recovered","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:34:36.124Z","label":"all-clear","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:34:39.643Z","label":"start","details":{"drill":"poison-event","label":"baseline","canary_car":"CNRY 846092"}}
+{"received_at":"2026-10-21T20:35:09.654Z","label":"inject-start","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:35:10.209Z","label":"inject-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792614909979-0"}}
+{"received_at":"2026-10-21T20:45:25.837Z","label":"mitigate-start","details":{"drill":"poison-event","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T20:45:28.045Z","label":"mitigate-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792614909979-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-21T20:46:01.612Z","label":"recovered","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:50:35.376Z","label":"all-clear","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:50:38.862Z","label":"start","details":{"drill":"poison-event","label":"baseline","canary_car":"CNRY 285994"}}
+{"received_at":"2026-10-21T20:51:08.876Z","label":"inject-start","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T20:51:09.450Z","label":"inject-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792615869224-0"}}
+{"received_at":"2026-10-21T21:01:29.373Z","label":"mitigate-start","details":{"drill":"poison-event","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T21:01:31.671Z","label":"mitigate-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792615869224-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-21T21:02:04.483Z","label":"recovered","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:06:37.099Z","label":"all-clear","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:06:40.506Z","label":"start","details":{"drill":"poison-event","label":"baseline","canary_car":"CNRY 419510"}}
+{"received_at":"2026-10-21T21:07:10.518Z","label":"inject-start","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:07:11.071Z","label":"inject-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792616830845-0"}}
+{"received_at":"2026-10-21T21:17:28.948Z","label":"mitigate-start","details":{"drill":"poison-event","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T21:17:31.115Z","label":"mitigate-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792616830845-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-21T21:18:06.947Z","label":"recovered","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:22:34.021Z","label":"all-clear","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:22:37.360Z","label":"start","details":{"drill":"poison-event","label":"baseline","canary_car":"CNRY 341817"}}
+{"received_at":"2026-10-21T21:23:07.367Z","label":"inject-start","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:23:07.881Z","label":"inject-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792617787660-0"}}
+{"received_at":"2026-10-21T21:33:27.832Z","label":"mitigate-start","details":{"drill":"poison-event","label":"baseline","reason":"paged"}}
+{"received_at":"2026-10-21T21:33:30.123Z","label":"mitigate-done","details":{"drill":"poison-event","label":"baseline","poison_id":"1792617787660-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-21T21:34:03.174Z","label":"recovered","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:38:35.790Z","label":"all-clear","details":{"drill":"poison-event","label":"baseline"}}
+{"received_at":"2026-10-21T21:38:42.400Z","label":"start","details":{"drill":"postgres-latency","label":"baseline","canary_car":"CNRY 126087"}}
+{"received_at":"2026-10-21T21:39:12.421Z","label":"inject-start","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T21:39:12.456Z","label":"inject-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T21:59:12.637Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"baseline","reason":"window ended"}}
+{"received_at":"2026-10-21T21:59:12.669Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T21:59:49.354Z","label":"recovered","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T21:59:55.523Z","label":"all-clear","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T21:59:59.014Z","label":"start","details":{"drill":"postgres-latency","label":"baseline","canary_car":"CNRY 362220"}}
+{"received_at":"2026-10-21T22:00:29.019Z","label":"inject-start","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:00:29.035Z","label":"inject-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:20:29.204Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"baseline","reason":"window ended"}}
+{"received_at":"2026-10-21T22:20:29.239Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:21:08.037Z","label":"recovered","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:21:14.082Z","label":"all-clear","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:21:17.539Z","label":"start","details":{"drill":"postgres-latency","label":"baseline","canary_car":"CNRY 385427"}}
+{"received_at":"2026-10-21T22:21:47.545Z","label":"inject-start","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:21:47.555Z","label":"inject-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:41:47.752Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"baseline","reason":"window ended"}}
+{"received_at":"2026-10-21T22:41:47.775Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:42:25.251Z","label":"recovered","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:42:31.358Z","label":"all-clear","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:42:34.916Z","label":"start","details":{"drill":"postgres-latency","label":"baseline","canary_car":"CNRY 286516"}}
+{"received_at":"2026-10-21T22:43:04.926Z","label":"inject-start","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T22:43:04.938Z","label":"inject-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:03:05.423Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"baseline","reason":"window ended"}}
+{"received_at":"2026-10-21T23:03:05.445Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:03:42.587Z","label":"recovered","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:03:48.657Z","label":"all-clear","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:03:52.129Z","label":"start","details":{"drill":"postgres-latency","label":"baseline","canary_car":"CNRY 503187"}}
+{"received_at":"2026-10-21T23:04:22.136Z","label":"inject-start","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:04:22.148Z","label":"inject-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:24:22.348Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"baseline","reason":"window ended"}}
+{"received_at":"2026-10-21T23:24:22.373Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:25:00.164Z","label":"recovered","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:25:06.270Z","label":"all-clear","details":{"drill":"postgres-latency","label":"baseline"}}
+{"received_at":"2026-10-21T23:33:48.162Z","label":"start","details":{"drill":"tracker-stop","label":"new-alerts","canary_car":"CNRY 759364"}}
+{"received_at":"2026-10-21T23:34:18.187Z","label":"inject-start","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:34:19.597Z","label":"inject-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:36:40.056Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:36:41.959Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:36:50.804Z","label":"recovered","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:36:56.872Z","label":"all-clear","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:37:00.444Z","label":"start","details":{"drill":"tracker-stop","label":"new-alerts","canary_car":"CNRY 720307"}}
+{"received_at":"2026-10-21T23:37:30.473Z","label":"inject-start","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:37:31.502Z","label":"inject-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:39:49.848Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:39:51.699Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:40:00.560Z","label":"recovered","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:40:06.589Z","label":"all-clear","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:40:10.007Z","label":"start","details":{"drill":"tracker-stop","label":"new-alerts","canary_car":"CNRY 247857"}}
+{"received_at":"2026-10-21T23:40:40.030Z","label":"inject-start","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:40:41.246Z","label":"inject-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:42:59.649Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:43:01.492Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:43:10.251Z","label":"recovered","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:43:16.352Z","label":"all-clear","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:43:19.888Z","label":"start","details":{"drill":"tracker-stop","label":"new-alerts","canary_car":"CNRY 821627"}}
+{"received_at":"2026-10-21T23:43:49.898Z","label":"inject-start","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:43:51.208Z","label":"inject-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:46:09.547Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:46:11.342Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:46:20.437Z","label":"recovered","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:46:26.519Z","label":"all-clear","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:46:30.026Z","label":"start","details":{"drill":"tracker-stop","label":"new-alerts","canary_car":"CNRY 977612"}}
+{"received_at":"2026-10-21T23:47:00.039Z","label":"inject-start","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:47:01.008Z","label":"inject-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:49:19.258Z","label":"mitigate-start","details":{"drill":"tracker-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:49:21.135Z","label":"mitigate-done","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:49:29.683Z","label":"recovered","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:49:35.693Z","label":"all-clear","details":{"drill":"tracker-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:49:41.785Z","label":"start","details":{"drill":"postgres-stop","label":"new-alerts","canary_car":"CNRY 655054"}}
+{"received_at":"2026-10-21T23:50:11.808Z","label":"inject-start","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:50:12.486Z","label":"inject-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:52:28.769Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:52:29.487Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:52:42.557Z","label":"recovered","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:56:41.730Z","label":"all-clear","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:56:45.135Z","label":"start","details":{"drill":"postgres-stop","label":"new-alerts","canary_car":"CNRY 346440"}}
+{"received_at":"2026-10-21T23:57:15.147Z","label":"inject-start","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:57:15.848Z","label":"inject-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:59:33.182Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-21T23:59:33.916Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-21T23:59:45.874Z","label":"recovered","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:03:39.296Z","label":"all-clear","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:03:42.660Z","label":"start","details":{"drill":"postgres-stop","label":"new-alerts","canary_car":"CNRY 189240"}}
+{"received_at":"2026-10-22T00:04:12.662Z","label":"inject-start","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:04:13.459Z","label":"inject-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:06:32.872Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:06:33.584Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:06:43.986Z","label":"recovered","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:10:44.028Z","label":"all-clear","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:10:47.552Z","label":"start","details":{"drill":"postgres-stop","label":"new-alerts","canary_car":"CNRY 705280"}}
+{"received_at":"2026-10-22T00:11:17.568Z","label":"inject-start","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:11:18.286Z","label":"inject-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:13:37.601Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:13:38.319Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:13:48.156Z","label":"recovered","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:17:47.706Z","label":"all-clear","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:17:51.240Z","label":"start","details":{"drill":"postgres-stop","label":"new-alerts","canary_car":"CNRY 138252"}}
+{"received_at":"2026-10-22T00:18:21.254Z","label":"inject-start","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:18:22.024Z","label":"inject-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:20:42.352Z","label":"mitigate-start","details":{"drill":"postgres-stop","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:20:43.087Z","label":"mitigate-done","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:20:51.971Z","label":"recovered","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:24:56.900Z","label":"all-clear","details":{"drill":"postgres-stop","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:25:03.141Z","label":"start","details":{"drill":"poison-event","label":"new-alerts","canary_car":"CNRY 777420"}}
+{"received_at":"2026-10-22T00:25:33.151Z","label":"inject-start","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:25:33.678Z","label":"inject-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792628733451-0"}}
+{"received_at":"2026-10-22T00:27:51.137Z","label":"mitigate-start","details":{"drill":"poison-event","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:27:53.429Z","label":"mitigate-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792628733451-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-22T00:28:03.447Z","label":"recovered","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:28:59.470Z","label":"all-clear","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:29:02.909Z","label":"start","details":{"drill":"poison-event","label":"new-alerts","canary_car":"CNRY 606836"}}
+{"received_at":"2026-10-22T00:29:32.927Z","label":"inject-start","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:29:33.475Z","label":"inject-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792628973250-0"}}
+{"received_at":"2026-10-22T00:31:50.809Z","label":"mitigate-start","details":{"drill":"poison-event","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:31:52.965Z","label":"mitigate-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792628973250-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-22T00:32:03.647Z","label":"recovered","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:32:59.693Z","label":"all-clear","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:33:03.082Z","label":"start","details":{"drill":"poison-event","label":"new-alerts","canary_car":"CNRY 534743"}}
+{"received_at":"2026-10-22T00:33:33.094Z","label":"inject-start","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:33:33.693Z","label":"inject-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792629213469-0"}}
+{"received_at":"2026-10-22T00:35:51.037Z","label":"mitigate-start","details":{"drill":"poison-event","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:35:53.288Z","label":"mitigate-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792629213469-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-22T00:36:04.157Z","label":"recovered","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:36:54.685Z","label":"all-clear","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:36:58.130Z","label":"start","details":{"drill":"poison-event","label":"new-alerts","canary_car":"CNRY 413312"}}
+{"received_at":"2026-10-22T00:37:28.138Z","label":"inject-start","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:37:28.747Z","label":"inject-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792629448524-0"}}
+{"received_at":"2026-10-22T00:39:40.974Z","label":"mitigate-start","details":{"drill":"poison-event","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:39:43.293Z","label":"mitigate-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792629448524-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-22T00:39:54.020Z","label":"recovered","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:40:44.528Z","label":"all-clear","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:40:47.984Z","label":"start","details":{"drill":"poison-event","label":"new-alerts","canary_car":"CNRY 726283"}}
+{"received_at":"2026-10-22T00:41:17.993Z","label":"inject-start","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:41:18.564Z","label":"inject-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792629678341-0"}}
+{"received_at":"2026-10-22T00:43:34.832Z","label":"mitigate-start","details":{"drill":"poison-event","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:43:37.063Z","label":"mitigate-done","details":{"drill":"poison-event","label":"new-alerts","poison_id":"1792629678341-0","mitigation":"parked the stuck entry by hand"}}
+{"received_at":"2026-10-22T00:43:48.623Z","label":"recovered","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:44:44.660Z","label":"all-clear","details":{"drill":"poison-event","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:44:50.751Z","label":"start","details":{"drill":"postgres-latency","label":"new-alerts","canary_car":"CNRY 627827"}}
+{"received_at":"2026-10-22T00:45:20.749Z","label":"inject-start","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:45:20.759Z","label":"inject-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:48:15.489Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:48:15.531Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:48:21.024Z","label":"recovered","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:48:27.099Z","label":"all-clear","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:48:30.558Z","label":"start","details":{"drill":"postgres-latency","label":"new-alerts","canary_car":"CNRY 345181"}}
+{"received_at":"2026-10-22T00:49:00.569Z","label":"inject-start","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:49:00.583Z","label":"inject-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:51:55.196Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:51:55.212Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:52:00.913Z","label":"recovered","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:52:07.004Z","label":"all-clear","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:52:10.419Z","label":"start","details":{"drill":"postgres-latency","label":"new-alerts","canary_car":"CNRY 875914"}}
+{"received_at":"2026-10-22T00:52:40.433Z","label":"inject-start","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:52:40.443Z","label":"inject-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:55:34.179Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:55:34.195Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:55:40.164Z","label":"recovered","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:55:46.335Z","label":"all-clear","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:55:49.780Z","label":"start","details":{"drill":"postgres-latency","label":"new-alerts","canary_car":"CNRY 261357"}}
+{"received_at":"2026-10-22T00:56:19.795Z","label":"inject-start","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:56:19.808Z","label":"inject-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:59:14.425Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T00:59:14.444Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:59:20.157Z","label":"recovered","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:59:26.241Z","label":"all-clear","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:59:29.726Z","label":"start","details":{"drill":"postgres-latency","label":"new-alerts","canary_car":"CNRY 870552"}}
+{"received_at":"2026-10-22T00:59:59.740Z","label":"inject-start","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T00:59:59.747Z","label":"inject-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T01:02:54.397Z","label":"mitigate-start","details":{"drill":"postgres-latency","label":"new-alerts","reason":"paged"}}
+{"received_at":"2026-10-22T01:02:54.409Z","label":"mitigate-done","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T01:03:00.689Z","label":"recovered","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T01:03:06.811Z","label":"all-clear","details":{"drill":"postgres-latency","label":"new-alerts"}}
+{"received_at":"2026-10-22T01:06:31.807Z","label":"start","details":{"drill":"poison-event","label":"dead-letter","canary_car":"CNRY 750755"}}
+{"received_at":"2026-10-22T01:07:01.822Z","label":"inject-start","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:07:02.389Z","label":"inject-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792631222171-0"}}
+{"received_at":"2026-10-22T01:12:03.330Z","label":"mitigate-start","details":{"drill":"poison-event","label":"dead-letter","reason":"window ended"}}
+{"received_at":"2026-10-22T01:12:03.927Z","label":"mitigate-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792631222171-0","mitigation":"nothing stuck"}}
+{"received_at":"2026-10-22T01:12:03.938Z","label":"recovered","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:12:04.466Z","label":"all-clear","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:12:07.876Z","label":"start","details":{"drill":"poison-event","label":"dead-letter","canary_car":"CNRY 895254"}}
+{"received_at":"2026-10-22T01:12:37.887Z","label":"inject-start","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:12:38.492Z","label":"inject-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792631558263-0"}}
+{"received_at":"2026-10-22T01:17:39.376Z","label":"mitigate-start","details":{"drill":"poison-event","label":"dead-letter","reason":"window ended"}}
+{"received_at":"2026-10-22T01:17:39.914Z","label":"mitigate-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792631558263-0","mitigation":"nothing stuck"}}
+{"received_at":"2026-10-22T01:17:39.922Z","label":"recovered","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:27:45.434Z","label":"all-clear","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:27:48.837Z","label":"start","details":{"drill":"poison-event","label":"dead-letter","canary_car":"CNRY 649219"}}
+{"received_at":"2026-10-22T01:28:18.844Z","label":"inject-start","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:28:19.437Z","label":"inject-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792632499198-0"}}
+{"received_at":"2026-10-22T01:33:20.313Z","label":"mitigate-start","details":{"drill":"poison-event","label":"dead-letter","reason":"window ended"}}
+{"received_at":"2026-10-22T01:33:20.860Z","label":"mitigate-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792632499198-0","mitigation":"nothing stuck"}}
+{"received_at":"2026-10-22T01:33:20.867Z","label":"recovered","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:43:26.810Z","label":"all-clear","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:43:30.300Z","label":"start","details":{"drill":"poison-event","label":"dead-letter","canary_car":"CNRY 747681"}}
+{"received_at":"2026-10-22T01:44:00.314Z","label":"inject-start","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:44:00.889Z","label":"inject-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792633440653-0"}}
+{"received_at":"2026-10-22T01:49:01.807Z","label":"mitigate-start","details":{"drill":"poison-event","label":"dead-letter","reason":"window ended"}}
+{"received_at":"2026-10-22T01:49:02.410Z","label":"mitigate-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792633440653-0","mitigation":"nothing stuck"}}
+{"received_at":"2026-10-22T01:49:02.419Z","label":"recovered","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:59:02.548Z","label":"all-clear","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:59:06.028Z","label":"start","details":{"drill":"poison-event","label":"dead-letter","canary_car":"CNRY 146485"}}
+{"received_at":"2026-10-22T01:59:36.040Z","label":"inject-start","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T01:59:36.616Z","label":"inject-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792634376392-0"}}
+{"received_at":"2026-10-22T02:04:37.435Z","label":"mitigate-start","details":{"drill":"poison-event","label":"dead-letter","reason":"window ended"}}
+{"received_at":"2026-10-22T02:04:38.027Z","label":"mitigate-done","details":{"drill":"poison-event","label":"dead-letter","poison_id":"1792634376392-0","mitigation":"nothing stuck"}}
+{"received_at":"2026-10-22T02:04:38.032Z","label":"recovered","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T02:14:44.327Z","label":"all-clear","details":{"drill":"poison-event","label":"dead-letter"}}
+{"received_at":"2026-10-22T02:24:25.994Z","label":"check-tracker-restarted","details":{}}
+{"received_at":"2026-10-22T02:24:56.012Z","label":"check-inject","details":{}}
