@@ -180,9 +180,12 @@ export class Tracker {
           this.metrics.lastProcessed.set(Date.now() / 1000);
           return true;
         } catch (err) {
-          this.metrics.failed.inc();
           span.recordException(err as Error);
           span.setStatus({ code: SpanStatusCode.ERROR });
+          if (isPermanentWriteError(err)) {
+            return this.deadLetterRejected(message, err);
+          }
+          this.metrics.failed.inc();
           this.logger.error({ err, stream_id: message.id, car_id: event.car_id }, "processing event failed, will retry");
           return false;
         } finally {
@@ -191,4 +194,31 @@ export class Tracker {
       },
     );
   }
+
+  // Postgres will never accept this event, so retrying it would only block
+  // the events behind it (docs/incidents/004-poison-event.md).
+  private async deadLetterRejected(message: StreamMessage, err: PostgresError): Promise<boolean> {
+    try {
+      await this.stream.deadLetter(message, `rejected by Postgres: ${err.code} ${err.message}`);
+    } catch (dlqErr) {
+      this.metrics.failed.inc();
+      this.logger.error({ err: dlqErr, stream_id: message.id }, "could not move a rejected event to the dead-letter stream, will retry");
+      return false;
+    }
+    this.metrics.deadLettered.inc({ reason: "rejected" });
+    this.logger.warn({ stream_id: message.id, code: err.code, reason: err.message }, "Postgres rejected the event; moved to dead-letter stream");
+    return true;
+  }
+}
+
+type PostgresError = Error & { code: string };
+
+// Postgres says why a statement failed with an SQLSTATE code. Class 22
+// (data exception, such as a NUL character in text) and class 23 (integrity
+// constraint violation) are about the event itself: retrying it fails the
+// same way every time. Anything else, such as a refused connection, a
+// timeout or a server shutting down, is treated as temporary and retried.
+export function isPermanentWriteError(err: unknown): err is PostgresError {
+  const code = (err as { code?: unknown } | null)?.code;
+  return err instanceof Error && typeof code === "string" && /^(22|23)[0-9A-Z]{3}$/.test(code);
 }

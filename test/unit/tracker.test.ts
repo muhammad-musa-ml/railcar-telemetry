@@ -6,7 +6,7 @@ import { createRegistry } from "../../src/shared/metrics";
 import type { StreamMessage } from "../../src/shared/stream";
 import type { ApplyOutcome, PositionStore } from "../../src/tracker/positions";
 import type { StreamClient } from "../../src/tracker/stream-client";
-import { decodeMessage, Tracker } from "../../src/tracker/tracker";
+import { decodeMessage, isPermanentWriteError, Tracker } from "../../src/tracker/tracker";
 
 // In-memory stand-in for a consumer group with one consumer.
 class FakeStream implements StreamClient {
@@ -47,13 +47,28 @@ class FakeStream implements StreamClient {
   }
 }
 
+// node-postgres errors carry the SQLSTATE (or a system error code) in `code`.
+class CodedError extends Error {
+  constructor(
+    message: string,
+    readonly code: string,
+  ) {
+    super(message);
+  }
+}
+
 class FakeStore implements PositionStore {
   applied: LocationEvent[] = [];
   failures = 0;
+  failureCode = "ECONNREFUSED";
+  rejectCar: string | null = null;
   async apply(event: LocationEvent): Promise<ApplyOutcome> {
+    if (event.car_id === this.rejectCar) {
+      throw new CodedError('invalid byte sequence for encoding "UTF8": 0x00', "22021");
+    }
     if (this.failures > 0) {
       this.failures -= 1;
-      throw new Error("connection refused");
+      throw new CodedError("connection refused", this.failureCode);
     }
     this.applied.push(event);
     return "applied";
@@ -118,6 +133,46 @@ describe("Tracker", () => {
     expect(store.applied.map((e) => e.car_id)).toEqual(["RCTX 3", "RCTX 4"]);
     expect(stream.pending).toHaveLength(0);
     expect(await registry.metrics()).toContain("tracker_events_failed_total{service=\"tracker\"} 1");
+  });
+});
+
+describe("Tracker and events Postgres rejects", () => {
+  it("moves an event Postgres rejects to the dead-letter stream and keeps going", async () => {
+    const { stream, store, tracker, registry } = setup();
+    store.rejectCar = "RCTX 7";
+    stream.add({ event: JSON.stringify(event("RCTX 7")) });
+    stream.add({ event: JSON.stringify(event("RCTX 8")) });
+    await tracker.runOnce(); // empty backlog
+    await tracker.runOnce(); // reads both
+    expect(stream.dead).toHaveLength(1);
+    expect(stream.dead[0]?.reason).toMatch(/^rejected by Postgres: 22021 /);
+    expect(store.applied.map((e) => e.car_id)).toEqual(["RCTX 8"]);
+    expect(stream.pending).toHaveLength(0);
+    const text = await registry.metrics();
+    expect(text).toContain('tracker_events_dead_lettered_total{reason="rejected",service="tracker"} 1');
+    expect(text).toContain('tracker_events_failed_total{service="tracker"} 0');
+  });
+
+  it("still retries an error that is not about the data", async () => {
+    const { stream, store, tracker } = setup();
+    store.failures = 1;
+    store.failureCode = "57P01"; // admin_shutdown: Postgres is going away
+    stream.add({ event: JSON.stringify(event("RCTX 9")) });
+    await tracker.runOnce();
+    await tracker.runOnce();
+    expect(stream.dead).toHaveLength(0);
+    expect(stream.pending).toHaveLength(1);
+    await tracker.runOnce();
+    expect(store.applied.map((e) => e.car_id)).toEqual(["RCTX 9"]);
+  });
+
+  it("classifies SQLSTATE classes 22 and 23 as permanent", () => {
+    expect(isPermanentWriteError(new CodedError("x", "22021"))).toBe(true);
+    expect(isPermanentWriteError(new CodedError("x", "23505"))).toBe(true);
+    expect(isPermanentWriteError(new CodedError("x", "08006"))).toBe(false);
+    expect(isPermanentWriteError(new CodedError("x", "ECONNREFUSED"))).toBe(false);
+    expect(isPermanentWriteError({ code: "22021" })).toBe(false);
+    expect(isPermanentWriteError(new Error("no code"))).toBe(false);
   });
 });
 
