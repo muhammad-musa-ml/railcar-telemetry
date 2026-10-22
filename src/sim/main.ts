@@ -70,7 +70,7 @@ async function sendLookups(): Promise<void> {
 }
 
 // Runs `work` once a second. If the previous second's work has not finished,
-// that second is skipped rather than piling up requests against a slow
+// that second is skipped instead of piling up requests against a slow
 // service. Reads and lookups each get their own loop: readers in the field
 // keep reporting whether or not anyone can look positions up.
 function everySecond(kind: string, work: () => Promise<void>): NodeJS.Timeout {

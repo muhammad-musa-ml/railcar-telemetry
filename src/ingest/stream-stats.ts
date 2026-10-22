@@ -58,7 +58,7 @@ export function registerStreamGauges(registry: Registry, redis: Redis): void {
   new Gauge({
     name: "railcar_stream_length",
     help: "Entries currently held in the event stream",
-    // Labelled so that reset() removes the sample rather than reporting 0.
+    // Labelled so that reset() removes the sample instead of reporting 0.
     labelNames: ["stream"],
     registers: [registry],
     async collect() {

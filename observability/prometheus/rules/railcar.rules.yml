@@ -72,7 +72,7 @@ groups:
 
   # The error ratios use a 1-minute window. Over 5 minutes, the successes
   # from before an outage diluted the ratio for about a minute and kept it
-  # above 5% for about 4.5 minutes after recovery
+  # above 5% for about 4 minutes after recovery
   # (docs/incidents/003-postgres-stopped.md).
   - name: railcar-api
     rules:
