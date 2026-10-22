@@ -13,9 +13,8 @@ is returning a location that is at least that old.
 If the query service cannot reach Postgres the metric disappears instead of
 growing, and this alert cannot fire; `QueryErrorRateHigh` covers that case.
 
-Freshness measures how recently the tracker wrote, not how old the data it
-wrote was. A tracker that is merely slow keeps freshness under a second while
-falling minutes behind ([incident 002](../incidents/002-postgres-slow.md));
+Freshness only says how recently the tracker wrote. A tracker that is merely
+slow keeps it under a second while falling minutes behind ([incident 002](../incidents/002-postgres-slow.md));
 [RailcarEventsDelayed](railcar-events-delayed.md) is the alert for that.
 
 ## Check
