@@ -1,0 +1,7 @@
+Output of `sh gamedays/dns-check.sh` on 2026-10-22, on the machine the drills ran on:
+
+normal network:   address outside the private ranges
+internal network: address outside the private ranges
+
+The name `postgres` matched no container on either fresh network, and the
+lookup still returned an address. The address itself is not recorded here.
