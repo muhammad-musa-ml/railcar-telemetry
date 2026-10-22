@@ -19,9 +19,13 @@ lost, but nothing after the failing entry is processed while it keeps failing.
    ```
    - `ECONNREFUSED`, `Connection terminated`, timeouts: Postgres is down or
      unreachable. Go to step 2.
-   - A Postgres error about the data itself (for example
-     `invalid byte sequence for encoding "UTF8"`): one event that Postgres
-     rejects is being retried forever. Go to "Stuck event" below.
+   - An error about the data itself: the tracker moves events with Postgres
+     errors in SQLSTATE classes 22 and 23 (for example
+     `invalid byte sequence for encoding "UTF8"`, code 22021) to the
+     dead-letter stream by itself and does not count them here
+     ([incident 004](../incidents/004-poison-event.md)). If some other error
+     keeps failing on the same `stream_id`, one event is stuck. Go to "Stuck
+     event" below.
 2. Is Postgres up? `docker compose ps postgres` and
    `docker compose exec postgres pg_isready -U railcar`.
 

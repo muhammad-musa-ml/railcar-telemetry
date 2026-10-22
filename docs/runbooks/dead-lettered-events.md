@@ -22,9 +22,17 @@ docker compose exec redis redis-cli XLEN railcar:events:dead
 docker compose exec redis redis-cli XREVRANGE railcar:events:dead + - COUNT 10
 ```
 
-Look at the `reason` field and the `event` payload. Ingest validates every
-batch, so a malformed event in the stream either came from something that
-wrote to Redis directly, or passed validation but was rejected by Postgres.
+Look at the `reason` field and the `event` payload, and at the metric's
+`reason` label:
+
+- `undecodable`: the entry is not JSON or fails the event schema. Ingest
+  validates every batch, so it came from something that wrote to Redis
+  directly.
+- `rejected`: Postgres refused it with a data error; the reason field starts
+  with `rejected by Postgres:` and the SQLSTATE code. It passed the schema,
+  so the schema is missing a check.
+
+Entries parked by hand (reason `manual`) do not count in the metric.
 
 ## Fix
 
