@@ -97,7 +97,7 @@ tests:
               severity: warning
             exp_annotations:
               summary: "Events were moved to the dead-letter stream in the last 15 minutes"
-              description: "The tracker could not decode these events. They are in the Redis stream railcar:events:dead."
+              description: "The tracker could not decode these events, or Postgres rejected them. They are in the Redis stream railcar:events:dead."
               runbook_url: https://github.com/muhammad-musa-ml/railcar-telemetry/blob/main/docs/runbooks/dead-lettered-events.md
       # 15 minutes after the last increase the window no longer covers it.
       - eval_time: 25m
