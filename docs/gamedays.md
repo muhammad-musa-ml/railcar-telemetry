@@ -14,7 +14,12 @@ everything took. The harness is `gamedays/run.ts`; every run is written to
 | `tracker-stop` | `docker compose stop tracker` | `docker compose start tracker` |
 | `postgres-latency` | toxiproxy adds 100 ms to every Postgres response | remove the toxic |
 | `postgres-stop` | `docker compose stop postgres` | `docker compose start postgres` |
-| `poison-event` | one event whose `location` contains a NUL character is written straight into the stream (valid JSON, passes the schema, rejected by Postgres) | the runbook's stuck-event steps: copy the oldest pending entry to `railcar:events:dead` and acknowledge it, if it is the poison event |
+| `poison-event` | one event whose `location` contains a NUL character is written straight into the stream (valid JSON that passed the event schema during all three rounds, and that Postgres rejects) | the runbook's stuck-event steps: copy the oldest pending entry to `railcar:events:dead` and acknowledge it, if it is the poison event |
+
+Since the schema change that followed [incident 004](incidents/004-poison-event.md),
+the tracker's decode step rejects the poison event before it reaches
+Postgres, so running `poison-event` now exercises that path instead of the
+SQLSTATE rule.
 
 ## Running them
 
@@ -64,6 +69,50 @@ page time come from the same clock.
 The harness applies the fix the moment it sees the page. Real response time
 (someone waking up, reading the page, opening the runbook) is not included,
 so time to recover here is the system's part only.
+
+## Rounds
+
+Each round ran every drill 5 times in a row with one configuration, named
+by its `--label`:
+
+| label | configuration | runs |
+|---|---|---|
+| `baseline` | the first alert rules and tracker, as built before any drill | 20 (5 per drill) |
+| `new-alerts` | `RailcarEventsDelayed` added; 1-minute windows for the error-ratio alerts and `TrackerProcessingErrors`; Postgres on a fixed address | 20 (5 per drill) |
+| `dead-letter` | as `new-alerts`, plus the tracker dead-letters events that Postgres rejects | 5 (poison-event only), 5-minute observation window |
+
+One extra `postgres-stop` run, made before the baseline was complete, is kept
+in `results/discarded/` with the reason it was set aside.
+
+## Evidence beyond the run files
+
+Some retrospective findings come from container logs or from Prometheus
+rather than from the harness. Scripts in `gamedays/` copy what is needed into
+`results/` while the logs still exist:
+
+- `upstream-evidence.ts`: from the toxiproxy and Postgres logs, where
+  toxiproxy tried to connect while Postgres was stopped
+  (`results/evidence/postgres-stop-*-upstream.json`). It refuses to write if
+  the logs no longer reach back to the runs.
+- `lookup-latency-evidence.ts`: the query API's p95 before and during the
+  latency drill (`results/evidence/postgres-latency-*-lookup-p95.json`).
+- `export-pager-log.ts`: the pager's full log of notifications and markers
+  (`results/pager/`).
+- `resolve-times.ts`: from that log, how long each alert kept firing after
+  the pipeline had recovered (`results/evidence/alerts-resolved-after-recovery.json`).
+- `first-dead-letter-check.ts`: a one-off check (no drill round) that the first
+  dead letter after a tracker restart opens a ticket
+  (`results/evidence/first-dead-letter-after-restart.json`).
+
+`results/evidence/dead-letter-entries.json` was read from the dead-letter
+stream with `redis-cli XRANGE railcar:events:dead - +`, and
+`results/evidence/poison-event-tracker-error.json` is the first tracker log
+line of the first poison run.
+
+In the `dead-letter` round nothing was stuck, so the harness applied its
+(empty) fix at the end of the 5-minute window. The "impact" column of
+`results/summary.md` for that round is therefore just the window length; the
+canary delay is the meaningful number there.
 
 ## What the numbers depend on
 
