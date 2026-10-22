@@ -1,0 +1,1944 @@
+{
+  "run": 2,
+  "drill": "postgres-latency",
+  "description": "Add 100 ms to every response from Postgres (toxiproxy latency toxic). Postgres stays up, but each tracker write takes over 100 ms.",
+  "label": "new-alerts",
+  "observation_window_s": 1200,
+  "canary_car": "CNRY 345181",
+  "injected_at": "2026-10-22T00:49:00.569Z",
+  "paged": true,
+  "ttd_page_s": 173.7,
+  "first_page_alert": "RailcarEventsDelayed",
+  "ttd_ticket_s": null,
+  "first_ticket_alert": null,
+  "mitigated_after_s": 174.6,
+  "ttr_s": 5.6,
+  "impact_s": 180.2,
+  "all_clear_after_s": 186.4,
+  "baseline_canary_delay_s": 0.39,
+  "max_canary_delay_s": 108.7,
+  "peak_backlog": 2779,
+  "peak_freshness_s": 0.5,
+  "peak_oldest_unacked_age_s": 108.7,
+  "failed_attempts": 0,
+  "sim_failed_events": 0,
+  "sim_failed_lookups": 0,
+  "mitigation": {},
+  "markers": [
+    {
+      "label": "start",
+      "at": "2026-10-22T00:48:30.558Z",
+      "after_inject_s": -30
+    },
+    {
+      "label": "inject-start",
+      "at": "2026-10-22T00:49:00.569Z",
+      "after_inject_s": 0
+    },
+    {
+      "label": "inject-done",
+      "at": "2026-10-22T00:49:00.583Z",
+      "after_inject_s": 0
+    },
+    {
+      "label": "mitigate-start",
+      "at": "2026-10-22T00:51:55.196Z",
+      "after_inject_s": 174.6
+    },
+    {
+      "label": "mitigate-done",
+      "at": "2026-10-22T00:51:55.212Z",
+      "after_inject_s": 174.6
+    },
+    {
+      "label": "recovered",
+      "at": "2026-10-22T00:52:00.913Z",
+      "after_inject_s": 180.3
+    },
+    {
+      "label": "all-clear",
+      "at": "2026-10-22T00:52:07.004Z",
+      "after_inject_s": 186.4
+    }
+  ],
+  "notifications": [
+    {
+      "at": "2026-10-22T00:48:44.440Z",
+      "after_inject_s": -16.1,
+      "receiver": "page",
+      "status": "resolved",
+      "alertname": "RailcarEventsDelayed",
+      "severity": "critical"
+    },
+    {
+      "at": "2026-10-22T00:51:54.276Z",
+      "after_inject_s": 173.7,
+      "receiver": "page",
+      "status": "firing",
+      "alertname": "RailcarEventsDelayed",
+      "severity": "critical"
+    }
+  ],
+  "canary_reads": [
+    {
+      "posted_after_inject_s": -28,
+      "delay_s": 0.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -26,
+      "delay_s": 0.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -24,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -22,
+      "delay_s": 0.11,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -20,
+      "delay_s": 0.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -18,
+      "delay_s": 0.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -16,
+      "delay_s": 0.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -14,
+      "delay_s": 0.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -11.9,
+      "delay_s": 0.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -9.9,
+      "delay_s": 0.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -7.9,
+      "delay_s": 0.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -5.9,
+      "delay_s": 0.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -3.9,
+      "delay_s": 0.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -1.9,
+      "delay_s": 0.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 0.1,
+      "delay_s": 0.88,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 2.1,
+      "delay_s": 4.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 4.1,
+      "delay_s": 7.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 6.1,
+      "delay_s": 10.82,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 8.1,
+      "delay_s": 14.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 10.2,
+      "delay_s": 17.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 12.2,
+      "delay_s": 21.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 14.2,
+      "delay_s": 24.23,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 16.2,
+      "delay_s": 27.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 18.2,
+      "delay_s": 30.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 20.2,
+      "delay_s": 34.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 22.2,
+      "delay_s": 38.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 24.2,
+      "delay_s": 41.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 26.2,
+      "delay_s": 44.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 28.3,
+      "delay_s": 47.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 30.3,
+      "delay_s": 51.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 32.3,
+      "delay_s": 54.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 34.3,
+      "delay_s": 58.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 36.3,
+      "delay_s": 61.71,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 38.3,
+      "delay_s": 64.8,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 40.3,
+      "delay_s": 68.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 42.3,
+      "delay_s": 71.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 44.3,
+      "delay_s": 75.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 46.3,
+      "delay_s": 78.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 48.4,
+      "delay_s": 81.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 50.4,
+      "delay_s": 85.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 52.4,
+      "delay_s": 88.59,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 54.4,
+      "delay_s": 92.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 56.4,
+      "delay_s": 95.29,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 58.4,
+      "delay_s": 98.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 60.4,
+      "delay_s": 101.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 62.4,
+      "delay_s": 105.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 64.4,
+      "delay_s": 108.69,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 66.4,
+      "delay_s": 108.63,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 68.4,
+      "delay_s": 106.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 70.5,
+      "delay_s": 104.61,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 72.5,
+      "delay_s": 102.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 74.5,
+      "delay_s": 101.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 76.5,
+      "delay_s": 99.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 78.5,
+      "delay_s": 97.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 80.5,
+      "delay_s": 95.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 82.5,
+      "delay_s": 93.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 84.5,
+      "delay_s": 91.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 86.5,
+      "delay_s": 89.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 88.5,
+      "delay_s": 87.56,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 90.5,
+      "delay_s": 85.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 92.6,
+      "delay_s": 83.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 94.6,
+      "delay_s": 81.53,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 96.6,
+      "delay_s": 80.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 98.6,
+      "delay_s": 78.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 100.6,
+      "delay_s": 76.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 102.6,
+      "delay_s": 74.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 104.6,
+      "delay_s": 72.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 106.6,
+      "delay_s": 70.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 108.6,
+      "delay_s": 68.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 110.6,
+      "delay_s": 66.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 112.6,
+      "delay_s": 64.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 114.6,
+      "delay_s": 62.49,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 116.6,
+      "delay_s": 60.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 118.6,
+      "delay_s": 58.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 120.6,
+      "delay_s": 56.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 122.6,
+      "delay_s": 54.98,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 124.7,
+      "delay_s": 52.97,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 126.7,
+      "delay_s": 50.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 128.7,
+      "delay_s": 49.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 130.7,
+      "delay_s": 47.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 132.7,
+      "delay_s": 45.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 134.7,
+      "delay_s": 43.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 136.7,
+      "delay_s": 41.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 138.7,
+      "delay_s": 39.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 140.7,
+      "delay_s": 37.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 142.7,
+      "delay_s": 35.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 144.7,
+      "delay_s": 33.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 146.8,
+      "delay_s": 31.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 148.8,
+      "delay_s": 30.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 150.8,
+      "delay_s": 28.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 152.8,
+      "delay_s": 26.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 154.8,
+      "delay_s": 24.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 156.8,
+      "delay_s": 22.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 158.8,
+      "delay_s": 20.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 160.8,
+      "delay_s": 18.85,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 162.8,
+      "delay_s": 16.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 164.8,
+      "delay_s": 14.84,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 166.8,
+      "delay_s": 12.83,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 168.8,
+      "delay_s": 11.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 170.9,
+      "delay_s": 9.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 172.9,
+      "delay_s": 7.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 174.6,
+      "delay_s": 5.58,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 174.9,
+      "delay_s": 5.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 176.9,
+      "delay_s": 3.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 178.9,
+      "delay_s": 1.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 180.9,
+      "delay_s": 0.31,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 182.9,
+      "delay_s": 0.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 184.9,
+      "delay_s": 0.38,
+      "post_failed": false
+    }
+  ],
+  "timeline": {
+    "series": {
+      "backlog": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          50
+        ],
+        [
+          10,
+          131
+        ],
+        [
+          15,
+          211
+        ],
+        [
+          20,
+          291
+        ],
+        [
+          25,
+          371
+        ],
+        [
+          30,
+          451
+        ],
+        [
+          35,
+          532
+        ],
+        [
+          40,
+          611
+        ],
+        [
+          45,
+          692
+        ],
+        [
+          50,
+          772
+        ],
+        [
+          55,
+          853
+        ],
+        [
+          60,
+          933
+        ],
+        [
+          65,
+          1013
+        ],
+        [
+          70,
+          1093
+        ],
+        [
+          75,
+          1174
+        ],
+        [
+          80,
+          1254
+        ],
+        [
+          85,
+          1335
+        ],
+        [
+          90,
+          1414
+        ],
+        [
+          95,
+          1495
+        ],
+        [
+          100,
+          1575
+        ],
+        [
+          105,
+          1656
+        ],
+        [
+          110,
+          1736
+        ],
+        [
+          115,
+          1816
+        ],
+        [
+          120,
+          1896
+        ],
+        [
+          125,
+          1977
+        ],
+        [
+          130,
+          2057
+        ],
+        [
+          135,
+          2138
+        ],
+        [
+          140,
+          2217
+        ],
+        [
+          145,
+          2298
+        ],
+        [
+          150,
+          2378
+        ],
+        [
+          155,
+          2458
+        ],
+        [
+          160,
+          2538
+        ],
+        [
+          165,
+          2619
+        ],
+        [
+          170,
+          2699
+        ],
+        [
+          175,
+          2779
+        ],
+        [
+          180,
+          1008
+        ],
+        [
+          185,
+          0
+        ]
+      ],
+      "freshness_s": [
+        [
+          -30,
+          0.218
+        ],
+        [
+          -25,
+          0.501
+        ],
+        [
+          -20,
+          0.501
+        ],
+        [
+          -15,
+          0.047
+        ],
+        [
+          -10,
+          0.466
+        ],
+        [
+          -5,
+          0.457
+        ],
+        [
+          0,
+          0.462
+        ],
+        [
+          5,
+          0.467
+        ],
+        [
+          10,
+          0.104
+        ],
+        [
+          15,
+          0.043
+        ],
+        [
+          20,
+          0.067
+        ],
+        [
+          25,
+          0.089
+        ],
+        [
+          30,
+          0.016
+        ],
+        [
+          35,
+          0.039
+        ],
+        [
+          40,
+          0.053
+        ],
+        [
+          45,
+          0.084
+        ],
+        [
+          50,
+          0.084
+        ],
+        [
+          55,
+          0.012
+        ],
+        [
+          60,
+          0.068
+        ],
+        [
+          65,
+          0.102
+        ],
+        [
+          70,
+          0.015
+        ],
+        [
+          75,
+          0.033
+        ],
+        [
+          80,
+          0.07
+        ],
+        [
+          85,
+          0.077
+        ],
+        [
+          90,
+          0.103
+        ],
+        [
+          95,
+          0.005
+        ],
+        [
+          100,
+          0.031
+        ],
+        [
+          105,
+          0.041
+        ],
+        [
+          110,
+          0.075
+        ],
+        [
+          115,
+          0.077
+        ],
+        [
+          120,
+          0.103
+        ],
+        [
+          125,
+          0.019
+        ],
+        [
+          130,
+          0.066
+        ],
+        [
+          135,
+          0.082
+        ],
+        [
+          140,
+          0.002
+        ],
+        [
+          145,
+          0.036
+        ],
+        [
+          150,
+          0.063
+        ],
+        [
+          155,
+          0.091
+        ],
+        [
+          160,
+          0.031
+        ],
+        [
+          165,
+          0.055
+        ],
+        [
+          170,
+          0.083
+        ],
+        [
+          175,
+          0.002
+        ],
+        [
+          180,
+          0.002
+        ],
+        [
+          185,
+          0.445
+        ]
+      ],
+      "oldest_unacked_age_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          1.766
+        ],
+        [
+          10,
+          5.764
+        ],
+        [
+          15,
+          8.763
+        ],
+        [
+          20,
+          11.765
+        ],
+        [
+          25,
+          14.764
+        ],
+        [
+          30,
+          17.763
+        ],
+        [
+          35,
+          20.737
+        ],
+        [
+          40,
+          23.737
+        ],
+        [
+          45,
+          27.741
+        ],
+        [
+          50,
+          30.736
+        ],
+        [
+          55,
+          33.738
+        ],
+        [
+          60,
+          36.737
+        ],
+        [
+          65,
+          39.708
+        ],
+        [
+          70,
+          42.707
+        ],
+        [
+          75,
+          46.703
+        ],
+        [
+          80,
+          49.707
+        ],
+        [
+          85,
+          52.732
+        ],
+        [
+          90,
+          55.731
+        ],
+        [
+          95,
+          58.702
+        ],
+        [
+          100,
+          61.701
+        ],
+        [
+          105,
+          64.7
+        ],
+        [
+          110,
+          68.698
+        ],
+        [
+          115,
+          71.698
+        ],
+        [
+          120,
+          74.699
+        ],
+        [
+          125,
+          77.67
+        ],
+        [
+          130,
+          80.663
+        ],
+        [
+          135,
+          83.67
+        ],
+        [
+          140,
+          86.666
+        ],
+        [
+          145,
+          90.668
+        ],
+        [
+          150,
+          93.664
+        ],
+        [
+          155,
+          96.642
+        ],
+        [
+          160,
+          99.643
+        ],
+        [
+          165,
+          102.674
+        ],
+        [
+          170,
+          105.672
+        ],
+        [
+          175,
+          108.672
+        ],
+        [
+          180,
+          39.708
+        ],
+        [
+          185,
+          0
+        ]
+      ],
+      "processed_per_s": [
+        [
+          -30,
+          130.24
+        ],
+        [
+          -25,
+          133.566
+        ],
+        [
+          -20,
+          136.77
+        ],
+        [
+          -15,
+          69.526
+        ],
+        [
+          -10,
+          25.432
+        ],
+        [
+          -5,
+          25.472
+        ],
+        [
+          0,
+          25.521
+        ],
+        [
+          5,
+          23.468
+        ],
+        [
+          10,
+          20.264
+        ],
+        [
+          15,
+          17.061
+        ],
+        [
+          20,
+          13.857
+        ],
+        [
+          25,
+          10.612
+        ],
+        [
+          30,
+          9.44
+        ],
+        [
+          35,
+          9.49
+        ],
+        [
+          40,
+          9.449
+        ],
+        [
+          45,
+          9.45
+        ],
+        [
+          50,
+          9.45
+        ],
+        [
+          55,
+          9.449
+        ],
+        [
+          60,
+          9.44
+        ],
+        [
+          65,
+          9.452
+        ],
+        [
+          70,
+          9.451
+        ],
+        [
+          75,
+          9.451
+        ],
+        [
+          80,
+          9.492
+        ],
+        [
+          85,
+          9.452
+        ],
+        [
+          90,
+          9.44
+        ],
+        [
+          95,
+          9.451
+        ],
+        [
+          100,
+          9.451
+        ],
+        [
+          105,
+          9.451
+        ],
+        [
+          110,
+          9.451
+        ],
+        [
+          115,
+          9.451
+        ],
+        [
+          120,
+          9.44
+        ],
+        [
+          125,
+          9.451
+        ],
+        [
+          130,
+          9.451
+        ],
+        [
+          135,
+          9.451
+        ],
+        [
+          140,
+          9.451
+        ],
+        [
+          145,
+          9.451
+        ],
+        [
+          150,
+          9.48
+        ],
+        [
+          155,
+          9.448
+        ],
+        [
+          160,
+          9.448
+        ],
+        [
+          165,
+          9.488
+        ],
+        [
+          170,
+          9.489
+        ],
+        [
+          175,
+          9.448
+        ],
+        [
+          180,
+          82
+        ],
+        [
+          185,
+          127.257
+        ]
+      ],
+      "failed_per_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          45,
+          0
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          55,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          70,
+          0
+        ],
+        [
+          75,
+          0
+        ],
+        [
+          80,
+          0
+        ],
+        [
+          85,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          95,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          105,
+          0
+        ],
+        [
+          110,
+          0
+        ],
+        [
+          115,
+          0
+        ],
+        [
+          120,
+          0
+        ],
+        [
+          125,
+          0
+        ],
+        [
+          130,
+          0
+        ],
+        [
+          135,
+          0
+        ],
+        [
+          140,
+          0
+        ],
+        [
+          145,
+          0
+        ],
+        [
+          150,
+          0
+        ],
+        [
+          155,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ]
+      ],
+      "tracker_up": [
+        [
+          -30,
+          1
+        ],
+        [
+          -25,
+          1
+        ],
+        [
+          -20,
+          1
+        ],
+        [
+          -15,
+          1
+        ],
+        [
+          -10,
+          1
+        ],
+        [
+          -5,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          30,
+          1
+        ],
+        [
+          35,
+          1
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          45,
+          1
+        ],
+        [
+          50,
+          1
+        ],
+        [
+          55,
+          1
+        ],
+        [
+          60,
+          1
+        ],
+        [
+          65,
+          1
+        ],
+        [
+          70,
+          1
+        ],
+        [
+          75,
+          1
+        ],
+        [
+          80,
+          1
+        ],
+        [
+          85,
+          1
+        ],
+        [
+          90,
+          1
+        ],
+        [
+          95,
+          1
+        ],
+        [
+          100,
+          1
+        ],
+        [
+          105,
+          1
+        ],
+        [
+          110,
+          1
+        ],
+        [
+          115,
+          1
+        ],
+        [
+          120,
+          1
+        ],
+        [
+          125,
+          1
+        ],
+        [
+          130,
+          1
+        ],
+        [
+          135,
+          1
+        ],
+        [
+          140,
+          1
+        ],
+        [
+          145,
+          1
+        ],
+        [
+          150,
+          1
+        ],
+        [
+          155,
+          1
+        ],
+        [
+          160,
+          1
+        ],
+        [
+          165,
+          1
+        ],
+        [
+          170,
+          1
+        ],
+        [
+          175,
+          1
+        ],
+        [
+          180,
+          1
+        ],
+        [
+          185,
+          1
+        ]
+      ],
+      "query_5xx_per_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          45,
+          0
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          55,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          70,
+          0
+        ],
+        [
+          75,
+          0
+        ],
+        [
+          80,
+          0
+        ],
+        [
+          85,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          95,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          105,
+          0
+        ],
+        [
+          110,
+          0
+        ],
+        [
+          115,
+          0
+        ],
+        [
+          120,
+          0
+        ],
+        [
+          125,
+          0
+        ],
+        [
+          130,
+          0
+        ],
+        [
+          135,
+          0
+        ],
+        [
+          140,
+          0
+        ],
+        [
+          145,
+          0
+        ],
+        [
+          150,
+          0
+        ],
+        [
+          155,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ]
+      ]
+    },
+    "alert_states": {
+      "RailcarEventsDelayed/firing": {
+        "from_s": 160,
+        "to_s": 175
+      },
+      "RailcarEventsDelayed/pending": {
+        "from_s": 100,
+        "to_s": 155
+      }
+    }
+  },
+  "environment": {
+    "git_commit": "28b22fcda965b852ca5daf7f509e4c261f8fcf2b",
+    "config_sha256": {
+      "observability/prometheus/rules/railcar.rules.yml": "e1d1f235e12e141218af4d1244c8f7cc5ec1e19fd004bd9a3bec56ecc7f25503",
+      "observability/prometheus/prometheus.yml": "39d8b698493346036ebd4a39391a87fbf418178929e976a485c5bae72950791e",
+      "observability/alertmanager/alertmanager.yml": "9ee4a1f4392ed3bc8f1ae86aebfa3dd514adcf62f445b71a33368add4a1e4ab1",
+      "src/tracker/tracker.ts": "76c5bda80c1f2cd3de2e1086867042b6b29e16a49fb4ee3bf3fb189a9a545f51",
+      "src/ingest/stream-stats.ts": "34fd318ef887a697649e330f302fcf37d9edc9858389d40eef27f456a956fbc0"
+    },
+    "tracker_image": "sha256:401b6a0cb7f4614c312d80f7b5bb2390501bb650b4d4808140abda4658aacf44",
+    "ingest_image": "sha256:2d5c93bc1ef01c49ff479243489d56476b4318a03ec17dbf8e995190fa98992d",
+    "loaded_alert_rules": [
+      {
+        "name": "IngestErrorRateHigh",
+        "for_seconds": 120,
+        "query": "sum(rate(http_server_requests_total{job=\"ingest\",route=\"/v1/events\",status_code=~\"5..\"}[1m])) / sum(rate(http_server_requests_total{job=\"ingest\",route=\"/v1/events\"}[1m])) > 0.05"
+      },
+      {
+        "name": "QueryErrorRateHigh",
+        "for_seconds": 120,
+        "query": "sum(rate(http_server_requests_total{job=\"query\",route=~\"/v1/.*\",status_code=~\"5..\"}[1m])) / sum(rate(http_server_requests_total{job=\"query\",route=~\"/v1/.*\"}[1m])) > 0.05"
+      },
+      {
+        "name": "QueryLatencyHigh",
+        "for_seconds": 600,
+        "query": "histogram_quantile(0.95, sum by (le) (rate(http_server_request_duration_seconds_bucket{job=\"query\",route=~\"/v1/.*\"}[5m]))) > 0.5"
+      },
+      {
+        "name": "ServiceDown",
+        "for_seconds": 300,
+        "query": "up{job=~\"ingest|tracker|query\"} == 0"
+      },
+      {
+        "name": "RailcarEventsDelayed",
+        "for_seconds": 60,
+        "query": "max(railcar_stream_oldest_unacked_age_seconds{group=\"tracker\"}) > 60"
+      },
+      {
+        "name": "RailcarPositionsStale",
+        "for_seconds": 300,
+        "query": "max(railcar_positions_freshness_seconds) > 300"
+      },
+      {
+        "name": "StreamBacklogHigh",
+        "for_seconds": 600,
+        "query": "sum(railcar_stream_group_lag{group=\"tracker\"}) + sum(railcar_stream_group_pending{group=\"tracker\"}) > 5000"
+      },
+      {
+        "name": "TrackerProcessingErrors",
+        "for_seconds": 120,
+        "query": "sum(rate(tracker_events_failed_total[1m])) > 0"
+      },
+      {
+        "name": "DeadLetteredEvents",
+        "for_seconds": 0,
+        "query": "sum(increase(tracker_events_dead_lettered_total[15m])) > 0"
+      }
+    ],
+    "toxics_after": []
+  }
+}

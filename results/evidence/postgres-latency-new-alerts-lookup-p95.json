@@ -1,0 +1,30 @@
+{
+  "query": "histogram_quantile(0.95, sum by (le) (rate(http_server_request_duration_seconds_bucket{job=\"query\",route=~\"/v1/.*\"}[5m])))",
+  "runs": [
+    {
+      "file": "runs/postgres-latency/new-alerts-01.json",
+      "p95_1m_window_before_fault_ms": 5,
+      "p95_5m_window_peak_during_fault_ms": 238
+    },
+    {
+      "file": "runs/postgres-latency/new-alerts-02.json",
+      "p95_1m_window_before_fault_ms": 223,
+      "p95_5m_window_peak_during_fault_ms": 242
+    },
+    {
+      "file": "runs/postgres-latency/new-alerts-03.json",
+      "p95_1m_window_before_fault_ms": 221,
+      "p95_5m_window_peak_during_fault_ms": 242
+    },
+    {
+      "file": "runs/postgres-latency/new-alerts-04.json",
+      "p95_1m_window_before_fault_ms": 222,
+      "p95_5m_window_peak_during_fault_ms": 242
+    },
+    {
+      "file": "runs/postgres-latency/new-alerts-05.json",
+      "p95_1m_window_before_fault_ms": 223,
+      "p95_5m_window_peak_during_fault_ms": 242
+    }
+  ]
+}

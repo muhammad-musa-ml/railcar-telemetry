@@ -1,0 +1,3475 @@
+{
+  "run": 2,
+  "drill": "postgres-stop",
+  "description": "Stop the Postgres container. The tracker cannot write and the query API cannot read.",
+  "label": "new-alerts",
+  "observation_window_s": 1200,
+  "canary_car": "CNRY 346440",
+  "injected_at": "2026-10-21T23:57:15.147Z",
+  "paged": true,
+  "ttd_page_s": 137.9,
+  "first_page_alert": "RailcarEventsDelayed",
+  "ttd_ticket_s": 142.9,
+  "first_ticket_alert": "TrackerProcessingErrors",
+  "mitigated_after_s": 138,
+  "ttr_s": 12.5,
+  "impact_s": 150.6,
+  "all_clear_after_s": 384.1,
+  "baseline_canary_delay_s": 0.46,
+  "max_canary_delay_s": 141.9,
+  "peak_backlog": 3621,
+  "peak_freshness_s": 139,
+  "peak_oldest_unacked_age_s": 141.4,
+  "failed_attempts": 16.7,
+  "sim_failed_events": 0,
+  "sim_failed_lookups": 177.2,
+  "mitigation": {},
+  "markers": [
+    {
+      "label": "start",
+      "at": "2026-10-21T23:56:45.135Z",
+      "after_inject_s": -30
+    },
+    {
+      "label": "inject-start",
+      "at": "2026-10-21T23:57:15.147Z",
+      "after_inject_s": 0
+    },
+    {
+      "label": "inject-done",
+      "at": "2026-10-21T23:57:15.848Z",
+      "after_inject_s": 0.7
+    },
+    {
+      "label": "mitigate-start",
+      "at": "2026-10-21T23:59:33.182Z",
+      "after_inject_s": 138
+    },
+    {
+      "label": "mitigate-done",
+      "at": "2026-10-21T23:59:33.916Z",
+      "after_inject_s": 138.8
+    },
+    {
+      "label": "recovered",
+      "at": "2026-10-21T23:59:45.874Z",
+      "after_inject_s": 150.7
+    },
+    {
+      "label": "all-clear",
+      "at": "2026-10-22T00:03:39.296Z",
+      "after_inject_s": 384.1
+    }
+  ],
+  "notifications": [
+    {
+      "at": "2026-10-21T23:59:33.046Z",
+      "after_inject_s": 137.9,
+      "receiver": "page",
+      "status": "firing",
+      "alertname": "RailcarEventsDelayed",
+      "severity": "critical"
+    },
+    {
+      "at": "2026-10-21T23:59:38.015Z",
+      "after_inject_s": 142.9,
+      "receiver": "ticket",
+      "status": "firing",
+      "alertname": "TrackerProcessingErrors",
+      "severity": "warning"
+    },
+    {
+      "at": "2026-10-21T23:59:43.890Z",
+      "after_inject_s": 148.7,
+      "receiver": "page",
+      "status": "firing",
+      "alertname": "QueryErrorRateHigh",
+      "severity": "critical"
+    },
+    {
+      "at": "2026-10-22T00:00:03.013Z",
+      "after_inject_s": 167.9,
+      "receiver": "page",
+      "status": "resolved",
+      "alertname": "RailcarEventsDelayed",
+      "severity": "critical"
+    },
+    {
+      "at": "2026-10-22T00:00:37.952Z",
+      "after_inject_s": 202.8,
+      "receiver": "ticket",
+      "status": "resolved",
+      "alertname": "TrackerProcessingErrors",
+      "severity": "warning"
+    },
+    {
+      "at": "2026-10-22T00:00:43.831Z",
+      "after_inject_s": 208.7,
+      "receiver": "page",
+      "status": "resolved",
+      "alertname": "QueryErrorRateHigh",
+      "severity": "critical"
+    }
+  ],
+  "canary_reads": [
+    {
+      "posted_after_inject_s": -28,
+      "delay_s": 0.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -26,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -24,
+      "delay_s": 0.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -22,
+      "delay_s": 0.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -20,
+      "delay_s": 0.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -18,
+      "delay_s": 0.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -16,
+      "delay_s": 0.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -14,
+      "delay_s": 0.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -12,
+      "delay_s": 0.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -10,
+      "delay_s": 0.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -8,
+      "delay_s": 0.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -5.9,
+      "delay_s": 0.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -3.9,
+      "delay_s": 0.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": -1.9,
+      "delay_s": 0.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 0.1,
+      "delay_s": 0.02,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 2.1,
+      "delay_s": 141.87,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 4.1,
+      "delay_s": 139.86,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 6.1,
+      "delay_s": 138.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 8.1,
+      "delay_s": 136.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 10.1,
+      "delay_s": 134.34,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 12.1,
+      "delay_s": 132.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 14.2,
+      "delay_s": 130.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 16.2,
+      "delay_s": 128.81,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 18.2,
+      "delay_s": 126.79,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 20.2,
+      "delay_s": 124.78,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 22.2,
+      "delay_s": 122.77,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 24.2,
+      "delay_s": 120.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 26.2,
+      "delay_s": 118.76,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 28.2,
+      "delay_s": 117.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 30.2,
+      "delay_s": 115.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 32.2,
+      "delay_s": 113.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 34.2,
+      "delay_s": 111.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 36.2,
+      "delay_s": 109.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 38.2,
+      "delay_s": 107.74,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 40.3,
+      "delay_s": 105.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 42.3,
+      "delay_s": 103.73,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 44.3,
+      "delay_s": 101.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 46.3,
+      "delay_s": 99.72,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 48.3,
+      "delay_s": 98.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 50.3,
+      "delay_s": 96.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 52.3,
+      "delay_s": 94.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 54.3,
+      "delay_s": 92.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 56.3,
+      "delay_s": 90.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 58.3,
+      "delay_s": 88.68,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 60.3,
+      "delay_s": 86.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 62.3,
+      "delay_s": 84.67,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 64.3,
+      "delay_s": 82.66,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 66.3,
+      "delay_s": 80.66,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 68.3,
+      "delay_s": 78.65,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 70.3,
+      "delay_s": 77.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 72.4,
+      "delay_s": 75.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 74.4,
+      "delay_s": 73.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 76.4,
+      "delay_s": 71.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 78.4,
+      "delay_s": 69.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 80.4,
+      "delay_s": 67.64,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 82.4,
+      "delay_s": 65.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 84.4,
+      "delay_s": 63.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 86.4,
+      "delay_s": 61.62,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 88.4,
+      "delay_s": 59.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 90.4,
+      "delay_s": 57.6,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 92.4,
+      "delay_s": 56.11,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 94.4,
+      "delay_s": 54.09,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 96.5,
+      "delay_s": 52.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 98.5,
+      "delay_s": 50.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 100.5,
+      "delay_s": 48.06,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 102.5,
+      "delay_s": 46.57,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 104.5,
+      "delay_s": 44.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 106.5,
+      "delay_s": 42.55,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 108.5,
+      "delay_s": 40.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 110.5,
+      "delay_s": 38.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 112.5,
+      "delay_s": 36.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 114.6,
+      "delay_s": 35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 116.6,
+      "delay_s": 32.99,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 118.6,
+      "delay_s": 30.98,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 120.6,
+      "delay_s": 28.98,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 122.6,
+      "delay_s": 26.96,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 124.6,
+      "delay_s": 25.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 126.6,
+      "delay_s": 23.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 128.6,
+      "delay_s": 21.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 130.6,
+      "delay_s": 19.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 132.6,
+      "delay_s": 17.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 134.6,
+      "delay_s": 15.92,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 136.6,
+      "delay_s": 13.91,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 138,
+      "delay_s": 12.54,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 138.7,
+      "delay_s": 11.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 140.7,
+      "delay_s": 9.9,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 142.7,
+      "delay_s": 7.89,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 144.7,
+      "delay_s": 6.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 146.7,
+      "delay_s": 4.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 148.7,
+      "delay_s": 2.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 150.7,
+      "delay_s": 0.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 152.7,
+      "delay_s": 0.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 154.7,
+      "delay_s": 0.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 156.7,
+      "delay_s": 0.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 158.7,
+      "delay_s": 0.49,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 160.7,
+      "delay_s": 0.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 162.7,
+      "delay_s": 0.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 164.7,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 166.7,
+      "delay_s": 0.11,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 168.7,
+      "delay_s": 0.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 170.8,
+      "delay_s": 0.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 172.8,
+      "delay_s": 0.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 174.8,
+      "delay_s": 0.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 176.8,
+      "delay_s": 0.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 178.8,
+      "delay_s": 0.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 180.8,
+      "delay_s": 0.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 182.8,
+      "delay_s": 0.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 184.8,
+      "delay_s": 0.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 186.8,
+      "delay_s": 0.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 188.8,
+      "delay_s": 0.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 190.8,
+      "delay_s": 0.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 192.8,
+      "delay_s": 0.01,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 194.8,
+      "delay_s": 0.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 196.8,
+      "delay_s": 0.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 198.9,
+      "delay_s": 0.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 200.9,
+      "delay_s": 0.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 202.9,
+      "delay_s": 0.16,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 204.9,
+      "delay_s": 0.2,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 206.9,
+      "delay_s": 0.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 208.9,
+      "delay_s": 0.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 210.9,
+      "delay_s": 0.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 212.9,
+      "delay_s": 0.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 214.9,
+      "delay_s": 0.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 216.9,
+      "delay_s": 0.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 218.9,
+      "delay_s": 0.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 221,
+      "delay_s": 0.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 223,
+      "delay_s": 0.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 225,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 227,
+      "delay_s": 0.12,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 229,
+      "delay_s": 0.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 231,
+      "delay_s": 0.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 233,
+      "delay_s": 0.19,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 235,
+      "delay_s": 0.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 237,
+      "delay_s": 0.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 239,
+      "delay_s": 0.28,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 241,
+      "delay_s": 0.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 243,
+      "delay_s": 0.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 245,
+      "delay_s": 0.39,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 247,
+      "delay_s": 0.43,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 249.1,
+      "delay_s": 0.46,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 251.1,
+      "delay_s": 0.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 253.1,
+      "delay_s": 0.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 255.1,
+      "delay_s": 0.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 257.1,
+      "delay_s": 0.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 259.1,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 261.1,
+      "delay_s": 0.11,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 263.1,
+      "delay_s": 0.15,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 265.1,
+      "delay_s": 0.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 267.2,
+      "delay_s": 0.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 269.2,
+      "delay_s": 0.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 271.2,
+      "delay_s": 0.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 273.2,
+      "delay_s": 0.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 275.2,
+      "delay_s": 0.35,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 277.2,
+      "delay_s": 0.38,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 279.2,
+      "delay_s": 0.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 281.2,
+      "delay_s": 0.42,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 283.2,
+      "delay_s": 0.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 285.2,
+      "delay_s": 0.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 287.2,
+      "delay_s": 0.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 289.3,
+      "delay_s": 0.03,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 291.3,
+      "delay_s": 0.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 293.3,
+      "delay_s": 0.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 295.3,
+      "delay_s": 0.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 297.3,
+      "delay_s": 0.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 299.3,
+      "delay_s": 0.21,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 301.3,
+      "delay_s": 0.24,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 303.3,
+      "delay_s": 0.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 305.3,
+      "delay_s": 0.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 307.3,
+      "delay_s": 0.32,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 309.3,
+      "delay_s": 0.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 311.3,
+      "delay_s": 0.4,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 313.3,
+      "delay_s": 0.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 315.4,
+      "delay_s": 0.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 317.4,
+      "delay_s": 0.5,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 319.4,
+      "delay_s": 0.04,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 321.4,
+      "delay_s": 0.07,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 323.4,
+      "delay_s": 0.1,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 325.4,
+      "delay_s": 0.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 327.4,
+      "delay_s": 0.14,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 329.4,
+      "delay_s": 0.18,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 331.4,
+      "delay_s": 0.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 333.4,
+      "delay_s": 0.23,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 335.4,
+      "delay_s": 0.27,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 337.4,
+      "delay_s": 0.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 339.4,
+      "delay_s": 0.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 341.4,
+      "delay_s": 0.37,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 343.4,
+      "delay_s": 0.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 345.5,
+      "delay_s": 0.44,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 347.5,
+      "delay_s": 0.47,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 349.5,
+      "delay_s": 0.52,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 351.5,
+      "delay_s": 0.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 353.5,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 355.5,
+      "delay_s": 0.13,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 357.5,
+      "delay_s": 0.17,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 359.5,
+      "delay_s": 0.22,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 361.5,
+      "delay_s": 0.26,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 363.5,
+      "delay_s": 0.3,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 365.5,
+      "delay_s": 0.33,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 367.5,
+      "delay_s": 0.36,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 369.5,
+      "delay_s": 0.41,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 371.5,
+      "delay_s": 0.45,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 373.5,
+      "delay_s": 0.48,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 375.5,
+      "delay_s": 0.51,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 377.5,
+      "delay_s": 0.05,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 379.5,
+      "delay_s": 0.08,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 381.6,
+      "delay_s": 0.11,
+      "post_failed": false
+    },
+    {
+      "posted_after_inject_s": 383.6,
+      "delay_s": 0.14,
+      "post_failed": false
+    }
+  ],
+  "timeline": {
+    "series": {
+      "backlog": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          51
+        ],
+        [
+          10,
+          178
+        ],
+        [
+          15,
+          306
+        ],
+        [
+          20,
+          433
+        ],
+        [
+          25,
+          561
+        ],
+        [
+          30,
+          688
+        ],
+        [
+          35,
+          816
+        ],
+        [
+          40,
+          943
+        ],
+        [
+          45,
+          1071
+        ],
+        [
+          50,
+          1198
+        ],
+        [
+          55,
+          1326
+        ],
+        [
+          60,
+          1453
+        ],
+        [
+          65,
+          1581
+        ],
+        [
+          70,
+          1708
+        ],
+        [
+          75,
+          1835
+        ],
+        [
+          80,
+          1963
+        ],
+        [
+          85,
+          2090
+        ],
+        [
+          90,
+          2218
+        ],
+        [
+          95,
+          2345
+        ],
+        [
+          100,
+          2473
+        ],
+        [
+          105,
+          2600
+        ],
+        [
+          110,
+          2728
+        ],
+        [
+          115,
+          2855
+        ],
+        [
+          120,
+          2983
+        ],
+        [
+          125,
+          3110
+        ],
+        [
+          130,
+          3238
+        ],
+        [
+          135,
+          3365
+        ],
+        [
+          140,
+          3493
+        ],
+        [
+          145,
+          3621
+        ],
+        [
+          150,
+          1833
+        ],
+        [
+          155,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          190,
+          0
+        ],
+        [
+          195,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          205,
+          0
+        ],
+        [
+          210,
+          0
+        ],
+        [
+          215,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          225,
+          0
+        ],
+        [
+          230,
+          0
+        ],
+        [
+          235,
+          0
+        ],
+        [
+          240,
+          0
+        ],
+        [
+          245,
+          0
+        ],
+        [
+          250,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          260,
+          0
+        ],
+        [
+          265,
+          0
+        ],
+        [
+          270,
+          0
+        ],
+        [
+          275,
+          0
+        ],
+        [
+          280,
+          0
+        ],
+        [
+          285,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          295,
+          0
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          305,
+          0
+        ],
+        [
+          310,
+          0
+        ],
+        [
+          315,
+          0
+        ],
+        [
+          320,
+          0
+        ],
+        [
+          325,
+          0
+        ],
+        [
+          330,
+          0
+        ],
+        [
+          335,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          345,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          355,
+          0
+        ],
+        [
+          360,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          370,
+          0
+        ],
+        [
+          375,
+          0
+        ],
+        [
+          380,
+          0
+        ]
+      ],
+      "freshness_s": [
+        [
+          -30,
+          0.273
+        ],
+        [
+          -25,
+          0.259
+        ],
+        [
+          -20,
+          0.28
+        ],
+        [
+          -15,
+          0.205
+        ],
+        [
+          -10,
+          0.225
+        ],
+        [
+          -5,
+          0.167
+        ],
+        [
+          0,
+          0.278
+        ],
+        [
+          140,
+          138.992
+        ],
+        [
+          145,
+          0.003
+        ],
+        [
+          150,
+          0.001
+        ],
+        [
+          155,
+          0.236
+        ],
+        [
+          160,
+          0.216
+        ],
+        [
+          165,
+          0.232
+        ],
+        [
+          170,
+          0.217
+        ],
+        [
+          175,
+          0.214
+        ],
+        [
+          180,
+          0.222
+        ],
+        [
+          185,
+          0.214
+        ],
+        [
+          190,
+          0.208
+        ],
+        [
+          195,
+          0.202
+        ],
+        [
+          200,
+          0.128
+        ],
+        [
+          205,
+          0.223
+        ],
+        [
+          210,
+          0.107
+        ],
+        [
+          215,
+          0.201
+        ],
+        [
+          220,
+          0.04
+        ],
+        [
+          225,
+          0.202
+        ],
+        [
+          230,
+          0.191
+        ],
+        [
+          235,
+          0.201
+        ],
+        [
+          240,
+          0.203
+        ],
+        [
+          245,
+          0.199
+        ],
+        [
+          250,
+          0.199
+        ],
+        [
+          255,
+          0.192
+        ],
+        [
+          260,
+          0.186
+        ],
+        [
+          265,
+          0.182
+        ],
+        [
+          270,
+          0.19
+        ],
+        [
+          275,
+          0.199
+        ],
+        [
+          280,
+          0.185
+        ],
+        [
+          285,
+          0.192
+        ],
+        [
+          290,
+          0.192
+        ],
+        [
+          295,
+          0.209
+        ],
+        [
+          300,
+          0.17
+        ],
+        [
+          305,
+          0.184
+        ],
+        [
+          310,
+          0.188
+        ],
+        [
+          315,
+          0.175
+        ],
+        [
+          320,
+          0.184
+        ],
+        [
+          325,
+          0.145
+        ],
+        [
+          330,
+          0.179
+        ],
+        [
+          335,
+          0.172
+        ],
+        [
+          340,
+          0.169
+        ],
+        [
+          345,
+          0.163
+        ],
+        [
+          350,
+          0.167
+        ],
+        [
+          355,
+          0.148
+        ],
+        [
+          360,
+          0.165
+        ],
+        [
+          365,
+          0.178
+        ],
+        [
+          370,
+          0.173
+        ],
+        [
+          375,
+          0.159
+        ],
+        [
+          380,
+          0.168
+        ]
+      ],
+      "oldest_unacked_age_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          1.552
+        ],
+        [
+          10,
+          6.553
+        ],
+        [
+          15,
+          11.55
+        ],
+        [
+          20,
+          16.553
+        ],
+        [
+          25,
+          21.521
+        ],
+        [
+          30,
+          26.52
+        ],
+        [
+          35,
+          31.521
+        ],
+        [
+          40,
+          36.519
+        ],
+        [
+          45,
+          41.521
+        ],
+        [
+          50,
+          46.523
+        ],
+        [
+          55,
+          51.487
+        ],
+        [
+          60,
+          56.49
+        ],
+        [
+          65,
+          61.488
+        ],
+        [
+          70,
+          66.488
+        ],
+        [
+          75,
+          71.486
+        ],
+        [
+          80,
+          76.491
+        ],
+        [
+          85,
+          81.456
+        ],
+        [
+          90,
+          86.459
+        ],
+        [
+          95,
+          91.457
+        ],
+        [
+          100,
+          96.458
+        ],
+        [
+          105,
+          101.458
+        ],
+        [
+          110,
+          106.459
+        ],
+        [
+          115,
+          111.43
+        ],
+        [
+          120,
+          116.428
+        ],
+        [
+          125,
+          121.431
+        ],
+        [
+          130,
+          126.429
+        ],
+        [
+          135,
+          131.428
+        ],
+        [
+          140,
+          136.427
+        ],
+        [
+          145,
+          141.398
+        ],
+        [
+          150,
+          71.438
+        ],
+        [
+          155,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          190,
+          0
+        ],
+        [
+          195,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          205,
+          0
+        ],
+        [
+          210,
+          0
+        ],
+        [
+          215,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          225,
+          0
+        ],
+        [
+          230,
+          0
+        ],
+        [
+          235,
+          0
+        ],
+        [
+          240,
+          0
+        ],
+        [
+          245,
+          0
+        ],
+        [
+          250,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          260,
+          0
+        ],
+        [
+          265,
+          0
+        ],
+        [
+          270,
+          0
+        ],
+        [
+          275,
+          0
+        ],
+        [
+          280,
+          0
+        ],
+        [
+          285,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          295,
+          0
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          305,
+          0
+        ],
+        [
+          310,
+          0
+        ],
+        [
+          315,
+          0
+        ],
+        [
+          320,
+          0
+        ],
+        [
+          325,
+          0
+        ],
+        [
+          330,
+          0
+        ],
+        [
+          335,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          345,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          355,
+          0
+        ],
+        [
+          360,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          370,
+          0
+        ],
+        [
+          375,
+          0
+        ],
+        [
+          380,
+          0
+        ]
+      ],
+      "processed_per_s": [
+        [
+          -30,
+          25.511
+        ],
+        [
+          -25,
+          25.473
+        ],
+        [
+          -20,
+          25.432
+        ],
+        [
+          -15,
+          25.472
+        ],
+        [
+          -10,
+          25.4
+        ],
+        [
+          -5,
+          25.475
+        ],
+        [
+          0,
+          25.515
+        ],
+        [
+          5,
+          23.512
+        ],
+        [
+          10,
+          18.385
+        ],
+        [
+          15,
+          13.298
+        ],
+        [
+          20,
+          8.16
+        ],
+        [
+          25,
+          3.084
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          45,
+          0
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          55,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          70,
+          0
+        ],
+        [
+          75,
+          0
+        ],
+        [
+          80,
+          0
+        ],
+        [
+          85,
+          0
+        ],
+        [
+          90,
+          0
+        ],
+        [
+          95,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          105,
+          0
+        ],
+        [
+          110,
+          0
+        ],
+        [
+          115,
+          0
+        ],
+        [
+          120,
+          0
+        ],
+        [
+          125,
+          0
+        ],
+        [
+          130,
+          0
+        ],
+        [
+          135,
+          0
+        ],
+        [
+          140,
+          0
+        ],
+        [
+          145,
+          0
+        ],
+        [
+          150,
+          75.29
+        ],
+        [
+          155,
+          155.232
+        ],
+        [
+          160,
+          160.359
+        ],
+        [
+          165,
+          165.439
+        ],
+        [
+          170,
+          170.36
+        ],
+        [
+          175,
+          100.364
+        ],
+        [
+          180,
+          25.552
+        ],
+        [
+          185,
+          25.512
+        ],
+        [
+          190,
+          25.552
+        ],
+        [
+          195,
+          25.511
+        ],
+        [
+          200,
+          25.519
+        ],
+        [
+          205,
+          25.512
+        ],
+        [
+          210,
+          25.551
+        ],
+        [
+          215,
+          25.512
+        ],
+        [
+          220,
+          25.552
+        ],
+        [
+          225,
+          25.512
+        ],
+        [
+          230,
+          25.52
+        ],
+        [
+          235,
+          25.512
+        ],
+        [
+          240,
+          25.551
+        ],
+        [
+          245,
+          25.512
+        ],
+        [
+          250,
+          25.552
+        ],
+        [
+          255,
+          25.511
+        ],
+        [
+          260,
+          25.481
+        ],
+        [
+          265,
+          25.512
+        ],
+        [
+          270,
+          25.511
+        ],
+        [
+          275,
+          25.512
+        ],
+        [
+          280,
+          25.511
+        ],
+        [
+          285,
+          25.551
+        ],
+        [
+          290,
+          25.48
+        ],
+        [
+          295,
+          25.551
+        ],
+        [
+          300,
+          25.511
+        ],
+        [
+          305,
+          25.552
+        ],
+        [
+          310,
+          25.511
+        ],
+        [
+          315,
+          25.55
+        ],
+        [
+          320,
+          25.481
+        ],
+        [
+          325,
+          25.551
+        ],
+        [
+          330,
+          25.511
+        ],
+        [
+          335,
+          25.55
+        ],
+        [
+          340,
+          25.511
+        ],
+        [
+          345,
+          25.55
+        ],
+        [
+          350,
+          25.479
+        ],
+        [
+          355,
+          25.552
+        ],
+        [
+          360,
+          25.513
+        ],
+        [
+          365,
+          25.554
+        ],
+        [
+          370,
+          25.514
+        ],
+        [
+          375,
+          25.553
+        ],
+        [
+          380,
+          25.481
+        ]
+      ],
+      "failed_per_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          10,
+          0.04
+        ],
+        [
+          15,
+          0.08
+        ],
+        [
+          20,
+          0.12
+        ],
+        [
+          25,
+          0.12
+        ],
+        [
+          30,
+          0.16
+        ],
+        [
+          35,
+          0.16
+        ],
+        [
+          40,
+          0.12
+        ],
+        [
+          45,
+          0.12
+        ],
+        [
+          50,
+          0.12
+        ],
+        [
+          55,
+          0.12
+        ],
+        [
+          60,
+          0.08
+        ],
+        [
+          65,
+          0.12
+        ],
+        [
+          70,
+          0.08
+        ],
+        [
+          75,
+          0.12
+        ],
+        [
+          80,
+          0.08
+        ],
+        [
+          85,
+          0.12
+        ],
+        [
+          90,
+          0.08
+        ],
+        [
+          95,
+          0.12
+        ],
+        [
+          100,
+          0.08
+        ],
+        [
+          105,
+          0.12
+        ],
+        [
+          110,
+          0.08
+        ],
+        [
+          115,
+          0.12
+        ],
+        [
+          120,
+          0.08
+        ],
+        [
+          125,
+          0.12
+        ],
+        [
+          130,
+          0.08
+        ],
+        [
+          135,
+          0.12
+        ],
+        [
+          140,
+          0.08
+        ],
+        [
+          145,
+          0.12
+        ],
+        [
+          150,
+          0.08
+        ],
+        [
+          155,
+          0.08
+        ],
+        [
+          160,
+          0.04
+        ],
+        [
+          165,
+          0.04
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          190,
+          0
+        ],
+        [
+          195,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          205,
+          0
+        ],
+        [
+          210,
+          0
+        ],
+        [
+          215,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          225,
+          0
+        ],
+        [
+          230,
+          0
+        ],
+        [
+          235,
+          0
+        ],
+        [
+          240,
+          0
+        ],
+        [
+          245,
+          0
+        ],
+        [
+          250,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          260,
+          0
+        ],
+        [
+          265,
+          0
+        ],
+        [
+          270,
+          0
+        ],
+        [
+          275,
+          0
+        ],
+        [
+          280,
+          0
+        ],
+        [
+          285,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          295,
+          0
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          305,
+          0
+        ],
+        [
+          310,
+          0
+        ],
+        [
+          315,
+          0
+        ],
+        [
+          320,
+          0
+        ],
+        [
+          325,
+          0
+        ],
+        [
+          330,
+          0
+        ],
+        [
+          335,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          345,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          355,
+          0
+        ],
+        [
+          360,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          370,
+          0
+        ],
+        [
+          375,
+          0
+        ],
+        [
+          380,
+          0
+        ]
+      ],
+      "tracker_up": [
+        [
+          -30,
+          1
+        ],
+        [
+          -25,
+          1
+        ],
+        [
+          -20,
+          1
+        ],
+        [
+          -15,
+          1
+        ],
+        [
+          -10,
+          1
+        ],
+        [
+          -5,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          30,
+          1
+        ],
+        [
+          35,
+          1
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          45,
+          1
+        ],
+        [
+          50,
+          1
+        ],
+        [
+          55,
+          1
+        ],
+        [
+          60,
+          1
+        ],
+        [
+          65,
+          1
+        ],
+        [
+          70,
+          1
+        ],
+        [
+          75,
+          1
+        ],
+        [
+          80,
+          1
+        ],
+        [
+          85,
+          1
+        ],
+        [
+          90,
+          1
+        ],
+        [
+          95,
+          1
+        ],
+        [
+          100,
+          1
+        ],
+        [
+          105,
+          1
+        ],
+        [
+          110,
+          1
+        ],
+        [
+          115,
+          1
+        ],
+        [
+          120,
+          1
+        ],
+        [
+          125,
+          1
+        ],
+        [
+          130,
+          1
+        ],
+        [
+          135,
+          1
+        ],
+        [
+          140,
+          1
+        ],
+        [
+          145,
+          1
+        ],
+        [
+          150,
+          1
+        ],
+        [
+          155,
+          1
+        ],
+        [
+          160,
+          1
+        ],
+        [
+          165,
+          1
+        ],
+        [
+          170,
+          1
+        ],
+        [
+          175,
+          1
+        ],
+        [
+          180,
+          1
+        ],
+        [
+          185,
+          1
+        ],
+        [
+          190,
+          1
+        ],
+        [
+          195,
+          1
+        ],
+        [
+          200,
+          1
+        ],
+        [
+          205,
+          1
+        ],
+        [
+          210,
+          1
+        ],
+        [
+          215,
+          1
+        ],
+        [
+          220,
+          1
+        ],
+        [
+          225,
+          1
+        ],
+        [
+          230,
+          1
+        ],
+        [
+          235,
+          1
+        ],
+        [
+          240,
+          1
+        ],
+        [
+          245,
+          1
+        ],
+        [
+          250,
+          1
+        ],
+        [
+          255,
+          1
+        ],
+        [
+          260,
+          1
+        ],
+        [
+          265,
+          1
+        ],
+        [
+          270,
+          1
+        ],
+        [
+          275,
+          1
+        ],
+        [
+          280,
+          1
+        ],
+        [
+          285,
+          1
+        ],
+        [
+          290,
+          1
+        ],
+        [
+          295,
+          1
+        ],
+        [
+          300,
+          1
+        ],
+        [
+          305,
+          1
+        ],
+        [
+          310,
+          1
+        ],
+        [
+          315,
+          1
+        ],
+        [
+          320,
+          1
+        ],
+        [
+          325,
+          1
+        ],
+        [
+          330,
+          1
+        ],
+        [
+          335,
+          1
+        ],
+        [
+          340,
+          1
+        ],
+        [
+          345,
+          1
+        ],
+        [
+          350,
+          1
+        ],
+        [
+          355,
+          1
+        ],
+        [
+          360,
+          1
+        ],
+        [
+          365,
+          1
+        ],
+        [
+          370,
+          1
+        ],
+        [
+          375,
+          1
+        ],
+        [
+          380,
+          1
+        ]
+      ],
+      "query_5xx_per_s": [
+        [
+          -30,
+          0
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          -20,
+          0
+        ],
+        [
+          -15,
+          0
+        ],
+        [
+          -10,
+          0
+        ],
+        [
+          -5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0.24
+        ],
+        [
+          10,
+          0.481
+        ],
+        [
+          15,
+          0.76
+        ],
+        [
+          20,
+          1.041
+        ],
+        [
+          25,
+          1.442
+        ],
+        [
+          30,
+          1.482
+        ],
+        [
+          35,
+          1.482
+        ],
+        [
+          40,
+          1.482
+        ],
+        [
+          45,
+          1.68
+        ],
+        [
+          50,
+          1.522
+        ],
+        [
+          55,
+          1.482
+        ],
+        [
+          60,
+          1.482
+        ],
+        [
+          65,
+          1.642
+        ],
+        [
+          70,
+          1.442
+        ],
+        [
+          75,
+          1.48
+        ],
+        [
+          80,
+          1.482
+        ],
+        [
+          85,
+          1.682
+        ],
+        [
+          90,
+          1.442
+        ],
+        [
+          95,
+          1.442
+        ],
+        [
+          100,
+          1.442
+        ],
+        [
+          105,
+          1.64
+        ],
+        [
+          110,
+          1.482
+        ],
+        [
+          115,
+          1.522
+        ],
+        [
+          120,
+          1.482
+        ],
+        [
+          125,
+          1.682
+        ],
+        [
+          130,
+          1.482
+        ],
+        [
+          135,
+          1.48
+        ],
+        [
+          140,
+          1.762
+        ],
+        [
+          145,
+          1.522
+        ],
+        [
+          150,
+          1.041
+        ],
+        [
+          155,
+          0.801
+        ],
+        [
+          160,
+          0.521
+        ],
+        [
+          165,
+          0
+        ],
+        [
+          170,
+          0
+        ],
+        [
+          175,
+          0
+        ],
+        [
+          180,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          190,
+          0
+        ],
+        [
+          195,
+          0
+        ],
+        [
+          200,
+          0
+        ],
+        [
+          205,
+          0
+        ],
+        [
+          210,
+          0
+        ],
+        [
+          215,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          225,
+          0
+        ],
+        [
+          230,
+          0
+        ],
+        [
+          235,
+          0
+        ],
+        [
+          240,
+          0
+        ],
+        [
+          245,
+          0
+        ],
+        [
+          250,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          260,
+          0
+        ],
+        [
+          265,
+          0
+        ],
+        [
+          270,
+          0
+        ],
+        [
+          275,
+          0
+        ],
+        [
+          280,
+          0
+        ],
+        [
+          285,
+          0
+        ],
+        [
+          290,
+          0
+        ],
+        [
+          295,
+          0
+        ],
+        [
+          300,
+          0
+        ],
+        [
+          305,
+          0
+        ],
+        [
+          310,
+          0
+        ],
+        [
+          315,
+          0
+        ],
+        [
+          320,
+          0
+        ],
+        [
+          325,
+          0
+        ],
+        [
+          330,
+          0
+        ],
+        [
+          335,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          345,
+          0
+        ],
+        [
+          350,
+          0
+        ],
+        [
+          355,
+          0
+        ],
+        [
+          360,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          370,
+          0
+        ],
+        [
+          375,
+          0
+        ],
+        [
+          380,
+          0
+        ]
+      ]
+    },
+    "alert_states": {
+      "QueryErrorRateHigh/firing": {
+        "from_s": 140,
+        "to_s": 190
+      },
+      "QueryErrorRateHigh/pending": {
+        "from_s": 20,
+        "to_s": 135
+      },
+      "QueryLatencyHigh/pending": {
+        "from_s": 70,
+        "to_s": 380
+      },
+      "RailcarEventsDelayed/firing": {
+        "from_s": 125,
+        "to_s": 150
+      },
+      "RailcarEventsDelayed/pending": {
+        "from_s": 65,
+        "to_s": 120
+      },
+      "TrackerProcessingErrors/firing": {
+        "from_s": 130,
+        "to_s": 195
+      },
+      "TrackerProcessingErrors/pending": {
+        "from_s": 10,
+        "to_s": 125
+      }
+    }
+  },
+  "environment": {
+    "git_commit": "28b22fcda965b852ca5daf7f509e4c261f8fcf2b",
+    "config_sha256": {
+      "observability/prometheus/rules/railcar.rules.yml": "e1d1f235e12e141218af4d1244c8f7cc5ec1e19fd004bd9a3bec56ecc7f25503",
+      "observability/prometheus/prometheus.yml": "39d8b698493346036ebd4a39391a87fbf418178929e976a485c5bae72950791e",
+      "observability/alertmanager/alertmanager.yml": "9ee4a1f4392ed3bc8f1ae86aebfa3dd514adcf62f445b71a33368add4a1e4ab1",
+      "src/tracker/tracker.ts": "76c5bda80c1f2cd3de2e1086867042b6b29e16a49fb4ee3bf3fb189a9a545f51",
+      "src/ingest/stream-stats.ts": "34fd318ef887a697649e330f302fcf37d9edc9858389d40eef27f456a956fbc0"
+    },
+    "tracker_image": "sha256:401b6a0cb7f4614c312d80f7b5bb2390501bb650b4d4808140abda4658aacf44",
+    "ingest_image": "sha256:2d5c93bc1ef01c49ff479243489d56476b4318a03ec17dbf8e995190fa98992d",
+    "loaded_alert_rules": [
+      {
+        "name": "IngestErrorRateHigh",
+        "for_seconds": 120,
+        "query": "sum(rate(http_server_requests_total{job=\"ingest\",route=\"/v1/events\",status_code=~\"5..\"}[1m])) / sum(rate(http_server_requests_total{job=\"ingest\",route=\"/v1/events\"}[1m])) > 0.05"
+      },
+      {
+        "name": "QueryErrorRateHigh",
+        "for_seconds": 120,
+        "query": "sum(rate(http_server_requests_total{job=\"query\",route=~\"/v1/.*\",status_code=~\"5..\"}[1m])) / sum(rate(http_server_requests_total{job=\"query\",route=~\"/v1/.*\"}[1m])) > 0.05"
+      },
+      {
+        "name": "QueryLatencyHigh",
+        "for_seconds": 600,
+        "query": "histogram_quantile(0.95, sum by (le) (rate(http_server_request_duration_seconds_bucket{job=\"query\",route=~\"/v1/.*\"}[5m]))) > 0.5"
+      },
+      {
+        "name": "ServiceDown",
+        "for_seconds": 300,
+        "query": "up{job=~\"ingest|tracker|query\"} == 0"
+      },
+      {
+        "name": "RailcarEventsDelayed",
+        "for_seconds": 60,
+        "query": "max(railcar_stream_oldest_unacked_age_seconds{group=\"tracker\"}) > 60"
+      },
+      {
+        "name": "RailcarPositionsStale",
+        "for_seconds": 300,
+        "query": "max(railcar_positions_freshness_seconds) > 300"
+      },
+      {
+        "name": "StreamBacklogHigh",
+        "for_seconds": 600,
+        "query": "sum(railcar_stream_group_lag{group=\"tracker\"}) + sum(railcar_stream_group_pending{group=\"tracker\"}) > 5000"
+      },
+      {
+        "name": "TrackerProcessingErrors",
+        "for_seconds": 120,
+        "query": "sum(rate(tracker_events_failed_total[1m])) > 0"
+      },
+      {
+        "name": "DeadLetteredEvents",
+        "for_seconds": 0,
+        "query": "sum(increase(tracker_events_dead_lettered_total[15m])) > 0"
+      }
+    ],
+    "toxics_after": []
+  }
+}
