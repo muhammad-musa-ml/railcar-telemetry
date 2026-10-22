@@ -5,6 +5,7 @@ Each cell is the median with the range (min-max) over the runs in brackets. Time
 | drill | label | runs | paged | time to page | first page | time to ticket | time to recover | impact | peak backlog |
 |---|---|---|---|---|---|---|---|---|---|
 | poison-event | baseline | 5 | 5/5 | 617.9s (615.2-620.4) | RailcarPositionsStale x5 | 318.2s (315.5-320.6) | 35.3s (32.7-37.9) | 655.4s (650.1-656.3) | 15811 (15759-15886) |
+| poison-event | dead-letter | 5 | 0/5 | - | none x5 | 19.6s (16.8-20.8) | 0.4s (0.1-0.5) | 301.9s (301.5-302) | 0 (0-0) |
 | poison-event | new-alerts | 5 | 5/5 | 137.3s (131.9-137.9) | RailcarEventsDelayed x5 | 137.3s (131.9-137.9) | 13s (12.3-13.7) | 150.6s (145.9-151.1) | 3596 (3468-3646) |
 | postgres-latency | baseline | 5 | 0/5 | - | none x5 | 928.7s (924.4-932.2) | 37.4s (36.5-38.8) | 1237.6s (1236.7-1239) | 19230 (19201-19263) |
 | postgres-latency | new-alerts | 5 | 5/5 | 173.7s (173.6-174.1) | RailcarEventsDelayed x5 | - | 5.6s (5.5-6.1) | 180.2s (179.5-180.8) | 2779 (2775-2796) |

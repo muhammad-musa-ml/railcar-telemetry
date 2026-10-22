@@ -95,6 +95,101 @@
   },
   {
     "drill": "poison-event",
+    "label": "dead-letter",
+    "runs": 5,
+    "first_injected_at": "2026-10-22T01:07:01.822Z",
+    "last_injected_at": "2026-10-22T01:59:36.040Z",
+    "observation_window_s": 300,
+    "paged_runs": 0,
+    "first_page_alerts": {
+      "none": 5
+    },
+    "ttd_page_s": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+    },
+    "first_ticket_alerts": {
+      "none": 1,
+      "DeadLetteredEvents": 4
+    },
+    "ttd_ticket_s": {
+      "n": 4,
+      "median": 19.55,
+      "min": 16.8,
+      "max": 20.8
+    },
+    "ttr_s": {
+      "n": 5,
+      "median": 0.4,
+      "min": 0.1,
+      "max": 0.5
+    },
+    "impact_s": {
+      "n": 5,
+      "median": 301.9,
+      "min": 301.5,
+      "max": 302
+    },
+    "max_canary_delay_s": {
+      "n": 5,
+      "median": 0.5,
+      "min": 0.5,
+      "max": 0.6
+    },
+    "peak_backlog": {
+      "n": 5,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "peak_freshness_s": {
+      "n": 5,
+      "median": 0.4,
+      "min": 0.1,
+      "max": 0.9
+    },
+    "failed_attempts": {
+      "n": 5,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "peak_oldest_unacked_age_s": {
+      "n": 5,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "alerts_clear_after_recovery_s": {
+      "n": 5,
+      "median": 605.5,
+      "min": 0.5,
+      "max": 606.3
+    },
+    "oldest_unacked_age_before_injection_s": {
+      "n": 5,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "canary_delay_before_injection_s": {
+      "n": 5,
+      "median": 0.43,
+      "min": 0.38,
+      "max": 0.53
+    },
+    "files": [
+      "runs/poison-event/dead-letter-01.json",
+      "runs/poison-event/dead-letter-02.json",
+      "runs/poison-event/dead-letter-03.json",
+      "runs/poison-event/dead-letter-04.json",
+      "runs/poison-event/dead-letter-05.json"
+    ]
+  },
+  {
+    "drill": "poison-event",
     "label": "new-alerts",
     "runs": 5,
     "first_injected_at": "2026-10-22T00:25:33.151Z",
