@@ -18,7 +18,6 @@ const webhook = {
       annotations: { summary: "tracker is down", runbook_url: "https://example.org/runbooks/service-down.md" },
       startsAt: "2026-10-21T12:00:00Z",
       endsAt: "0001-01-01T00:00:00Z",
-      generatorURL: "http://prometheus:9090/graph",
       fingerprint: "a1b2c3",
     },
   ],
