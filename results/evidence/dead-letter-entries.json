@@ -1,0 +1,59 @@
+{
+  "note": "entries of railcar:events:dead for each poison event, read with XRANGE",
+  "entries": [
+    {
+      "file": "runs/poison-event/dead-letter-01.json",
+      "poison_id": "1792631222171-0",
+      "dead_letter": {
+        "dead_letter_id": "1792631222176-0",
+        "source_id": "1792631222171-0",
+        "reason": "rejected by Postgres: 22021 invalid byte sequence for encoding \"UTF8\": 0x00"
+      }
+    },
+    {
+      "file": "runs/poison-event/dead-letter-02.json",
+      "poison_id": "1792631558263-0",
+      "dead_letter": {
+        "dead_letter_id": "1792631558301-0",
+        "source_id": "1792631558263-0",
+        "reason": "rejected by Postgres: 22021 invalid byte sequence for encoding \"UTF8\": 0x00"
+      }
+    },
+    {
+      "file": "runs/poison-event/dead-letter-03.json",
+      "poison_id": "1792632499198-0",
+      "dead_letter": {
+        "dead_letter_id": "1792632499207-0",
+        "source_id": "1792632499198-0",
+        "reason": "rejected by Postgres: 22021 invalid byte sequence for encoding \"UTF8\": 0x00"
+      }
+    },
+    {
+      "file": "runs/poison-event/dead-letter-04.json",
+      "poison_id": "1792633440653-0",
+      "dead_letter": {
+        "dead_letter_id": "1792633440690-0",
+        "source_id": "1792633440653-0",
+        "reason": "rejected by Postgres: 22021 invalid byte sequence for encoding \"UTF8\": 0x00"
+      }
+    },
+    {
+      "file": "runs/poison-event/dead-letter-05.json",
+      "poison_id": "1792634376392-0",
+      "dead_letter": {
+        "dead_letter_id": "1792634376396-0",
+        "source_id": "1792634376392-0",
+        "reason": "rejected by Postgres: 22021 invalid byte sequence for encoding \"UTF8\": 0x00"
+      }
+    },
+    {
+      "file": "evidence/first-dead-letter-after-restart.json",
+      "poison_id": "1792635896352-0",
+      "dead_letter": {
+        "dead_letter_id": "1792635896356-0",
+        "source_id": "1792635896352-0",
+        "reason": "event failed validation: must not contain control characters"
+      }
+    }
+  ]
+}
