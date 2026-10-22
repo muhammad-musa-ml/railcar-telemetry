@@ -5,8 +5,9 @@ import { round, seconds, spread } from "./lib/stats";
 
 // For every run, finds in the exported pager log (results/pager/pages.jsonl)
 // when each alert that fired during the run was resolved, measured from the
-// moment the pipeline had caught up ("recovered" marker). Answers "how long
-// did alerts keep firing after the fix?".
+// moment the pipeline had caught up ("recovered" marker; negative when the
+// alert resolved before that). Answers "how long did alerts keep firing
+// after the fix?".
 //
 //   npx tsx gamedays/resolve-times.ts
 
@@ -40,7 +41,10 @@ function main() {
       const recovered = at("recovered");
       const fired = pages.filter((p) => p.status === "firing" && p.received_at >= inject && p.received_at <= recovered);
       for (const alertname of new Set(fired.map((p) => p.alertname))) {
-        const resolved = pages.find((p) => p.status === "resolved" && p.alertname === alertname && p.received_at > recovered);
+        // The first resolution after this run's firing notification. It can
+        // come before the pipeline has caught up, which gives a negative time.
+        const firedAt = fired.find((p) => p.alertname === alertname)!.received_at;
+        const resolved = pages.find((p) => p.status === "resolved" && p.alertname === alertname && p.received_at > firedAt);
         rows.push({
           drill: run.drill,
           label: run.label,
