@@ -61,6 +61,16 @@ describe("POST /v1/events", () => {
     expect(res.statusCode).toBe(400);
   });
 
+  it("rejects control characters in the reader and location codes", async () => {
+    const { app, publisher } = setup();
+    for (const bad of [{ location: "YD04\u0000" }, { reader_id: "AEI-YD04\n-E" }]) {
+      const res = await app.inject({ method: "POST", url: "/v1/events", payload: { events: [event(bad)] } });
+      expect(res.statusCode).toBe(400);
+      expect(res.json().issues[0].message).toBe("must not contain control characters");
+    }
+    expect(publisher.published).toHaveLength(0);
+  });
+
   it("rejects an empty batch and a batch over 500 events", async () => {
     const { app } = setup();
     const empty = await app.inject({ method: "POST", url: "/v1/events", payload: { events: [] } });

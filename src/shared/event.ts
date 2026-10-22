@@ -8,11 +8,15 @@ import { z } from "zod";
 // Reporting mark (2-4 letters) and car number, e.g. "RCTX 104233".
 export const CAR_ID_PATTERN = /^[A-Z]{2,4} \d{1,6}$/;
 
+// Reader and location codes never contain control characters, and Postgres
+// refuses to store a NUL in text (docs/incidents/004-poison-event.md).
+const NO_CONTROL_CHARACTERS = /^[^\p{Cc}]*$/u;
+
 export const locationEventSchema = z.object({
   event_id: z.uuid(),
   car_id: z.string().regex(CAR_ID_PATTERN, "car_id must look like 'RCTX 104233'"),
-  reader_id: z.string().min(1).max(32),
-  location: z.string().min(1).max(64),
+  reader_id: z.string().min(1).max(32).regex(NO_CONTROL_CHARACTERS, "must not contain control characters"),
+  location: z.string().min(1).max(64).regex(NO_CONTROL_CHARACTERS, "must not contain control characters"),
   observed_at: z.iso.datetime({ offset: true }),
 });
 
