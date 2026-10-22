@@ -45,8 +45,11 @@ export function decodeMessage(message: StreamMessage): Decoded {
   return { ok: true, event: parsed.data };
 }
 
+const OUTCOMES = ["applied", "stale"] as const;
+const DEAD_LETTER_REASONS = ["undecodable", "rejected"] as const;
+
 function createTrackerMetrics(registry: Registry) {
-  return {
+  const metrics = {
     processed: new Counter({
       name: "tracker_events_processed_total",
       help: "Events written to Postgres and acknowledged, by outcome (applied, or stale when a newer read was already stored)",
@@ -82,6 +85,13 @@ function createTrackerMetrics(registry: Registry) {
       registers: [registry],
     }),
   };
+  // Export every label value at 0 from start-up. A labelled counter that
+  // first appears with the value 1 shows no increase() in Prometheus, so the
+  // first dead letter after a tracker start never reached DeadLetteredEvents
+  // (docs/incidents/004-poison-event.md).
+  for (const outcome of OUTCOMES) metrics.processed.inc({ outcome }, 0);
+  for (const reason of DEAD_LETTER_REASONS) metrics.deadLettered.inc({ reason }, 0);
+  return metrics;
 }
 
 export class Tracker {

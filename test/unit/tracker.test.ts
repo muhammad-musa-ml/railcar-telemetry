@@ -136,6 +136,16 @@ describe("Tracker", () => {
   });
 });
 
+describe("Tracker metrics", () => {
+  it("exports every dead-letter reason at 0 before anything happens", async () => {
+    const { registry } = setup();
+    const text = await registry.metrics();
+    expect(text).toContain('tracker_events_dead_lettered_total{reason="undecodable",service="tracker"} 0');
+    expect(text).toContain('tracker_events_dead_lettered_total{reason="rejected",service="tracker"} 0');
+    expect(text).toContain('tracker_events_processed_total{outcome="applied",service="tracker"} 0');
+  });
+});
+
 describe("Tracker and events Postgres rejects", () => {
   it("moves an event Postgres rejects to the dead-letter stream and keeps going", async () => {
     const { stream, store, tracker, registry } = setup();

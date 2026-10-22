@@ -104,6 +104,19 @@ tests:
         alertname: DeadLetteredEvents
         exp_alerts: []
 
+  # Why the tracker exports every reason at 0 from start-up: a series that
+  # first appears at 1 has no increase, so the alert never sees it
+  # (docs/incidents/004-poison-event.md).
+  - name: DeadLetteredEvents cannot see a counter that first appears at 1
+    interval: 1m
+    input_series:
+      - series: 'tracker_events_dead_lettered_total{job="tracker", reason="rejected"}'
+        values: "_x3 1x30"
+    alert_rule_test:
+      - eval_time: 5m
+        alertname: DeadLetteredEvents
+        exp_alerts: []
+
   - name: QueryLatencyHigh fires when p95 sits between 500 ms and 1 s for 10 minutes
     interval: 1m
     input_series:
