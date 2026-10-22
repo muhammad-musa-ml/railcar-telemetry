@@ -1,0 +1,9 @@
+{
+  "note": "single check, not a drill: first dead letter after a tracker restart",
+  "git_commit": "21f7dd1cc9f4c38b2b124d2da21e993b134cf463",
+  "tracker_restarted_at": "2026-10-22T02:24:25.994Z",
+  "injected_at": "2026-10-22T02:24:56.012Z",
+  "stream_id": "1792635896352-0",
+  "ticket_received": true,
+  "ticket_after_injection_s": 23.7
+}
