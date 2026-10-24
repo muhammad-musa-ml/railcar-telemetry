@@ -105,10 +105,16 @@ describe("console actions: input validation", () => {
     ["a discard without a reason", "/api/dead-letters/1761292860000-0/discard", {}],
     ["a reason with control characters", "/api/dead-letters/1761292860000-0/discard", { reason: "bad\u0000reason" }],
     ["a reason that is too long", "/api/dead-letters/1761292860000-0/discard", { reason: "x".repeat(501) }],
+    ["a reason of only spaces", "/api/dead-letters/1761292860000-0/discard", { reason: "    " }],
+    ["a reason shorter than 3 characters", "/api/dead-letters/1761292860000-0/discard", { reason: "ok" }],
     ["a silence without a duration", "/api/alerts/0123456789abcdef/silence", { reason: "deploying" }],
     ["a silence longer than 12 hours", "/api/alerts/0123456789abcdef/silence", { reason: "deploying", minutes: 721 }],
     ["a silence of no time", "/api/alerts/0123456789abcdef/silence", { reason: "deploying", minutes: 0 }],
+    ["a silence of part of a minute", "/api/alerts/0123456789abcdef/silence", { reason: "deploying", minutes: 1.5 }],
     ["an alert id that is not a fingerprint", "/api/alerts/ServiceDown/silence", { reason: "deploying", minutes: 30 }],
+    ["a replay with a field it does not take", "/api/dead-letters/1761292860000-0/replay", { reason: "valid reason", force: true }],
+    ["a discard with a field it does not take", "/api/dead-letters/1761292860000-0/discard", { reason: "valid reason", force: true }],
+    ["a silence with a field it does not take", "/api/alerts/0123456789abcdef/silence", { reason: "deploying", minutes: 30, matchers: [] }],
     ["a body that is not JSON", "/api/dead-letters/1761292860000-0/discard", "reason=oops"],
   ])("refuses %s with 400 and records it", async (_case, url, payload) => {
     const { app, audit, deadLetters, alertmanager } = setup();
@@ -123,8 +129,12 @@ describe("console actions: input validation", () => {
     expect(deadLetters.entries).toHaveLength(2);
     expect(alertmanager.silences).toEqual([]);
     expect(audit.rows).toEqual([expect.objectContaining({ operator: "alice", result: "invalid" })]);
-    // Nothing the caller sent reaches the audit table unescaped.
-    expect(JSON.stringify(audit.rows)).not.toContain("\u0000");
+    // What the caller sent reaches the audit row escaped and bounded.
+    const row = audit.rows[0]!;
+    for (const text of [row.target, row.reason ?? ""]) {
+      expect(text).not.toMatch(/\p{Cc}/u);
+      expect(text.length).toBeLessThanOrEqual(500);
+    }
   });
 });
 
