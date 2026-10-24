@@ -1,16 +1,48 @@
+import { execFile } from "node:child_process";
 import { randomInt, randomUUID } from "node:crypto";
+import { resolve } from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
+import { promisify } from "node:util";
 import type { LocationEvent } from "../../src/shared/event";
 
 export const urls = {
   ingest: process.env.INGEST_URL ?? "http://localhost:8081",
   query: process.env.QUERY_URL ?? "http://localhost:8083",
   pager: process.env.PAGER_URL ?? "http://localhost:8084",
+  console: process.env.CONSOLE_URL ?? "http://localhost:8085",
   prometheus: process.env.PROMETHEUS_URL ?? "http://localhost:9090",
   alertmanager: process.env.ALERTMANAGER_URL ?? "http://localhost:9093",
   jaeger: process.env.JAEGER_URL ?? "http://localhost:16686",
   grafana: process.env.GRAFANA_URL ?? "http://localhost:3000",
 };
+
+// The operator docker-compose.yml sets up when CONSOLE_OPERATOR_TOKENS is not
+// set. With your own tokens, give the tests one name and token to use.
+export const consoleOperator = {
+  name: process.env.CONSOLE_OPERATOR_NAME ?? "operator",
+  token: process.env.CONSOLE_OPERATOR_TOKEN ?? "local-only-not-a-secret",
+};
+
+const run = promisify(execFile);
+const repoRoot = resolve(__dirname, "..", "..");
+
+// `docker compose` in this repository, like the game-day drills use it.
+export async function compose(...args: string[]): Promise<string> {
+  const { stdout } = await run("docker", ["compose", ...args], { cwd: repoRoot, maxBuffer: 16 * 1024 * 1024 });
+  return stdout;
+}
+
+export async function redisCli(...args: string[]): Promise<string[]> {
+  const out = await compose("exec", "-T", "redis", "redis-cli", ...args);
+  return out.split("\n").map((l) => l.trim()).filter((l) => l !== "");
+}
+
+// Runs one statement in the railcar database as `user` and returns its rows,
+// one per line with columns separated by "|". Fails with Postgres's error.
+export async function psql(sql: string, user = "railcar"): Promise<string> {
+  const out = await compose("exec", "-T", "postgres", "psql", "-U", user, "-d", "railcar", "-At", "-v", "ON_ERROR_STOP=1", "-c", sql);
+  return out.trim();
+}
 
 // A car id no simulator car uses ("ITST" mark), unique per test run.
 export function testCarId(): string {
