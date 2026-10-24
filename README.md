@@ -3,7 +3,8 @@
 Small Node.js services that track where railcars are, plus everything needed
 to run them on call: Prometheus metrics, OpenTelemetry traces, Grafana
 dashboards, alert rules with unit tests, a local pager, a runbook for every
-alert, fault-injection drills, and a written retrospective for each drill.
+alert, an operations console, fault-injection drills, and a written
+retrospective for each drill.
 
 I built it to practise the operational side of running services: choosing
 what to alert on, measuring how long an alert takes to reach someone, and
@@ -30,6 +31,7 @@ reader-sim ─GET /v1/cars/:id────────────────�
 | tracker | consumes the stream and keeps each car's latest location and arrival time in Postgres | 8082 (metrics only) |
 | query | returns a car's position and dwell time, or the cars at a yard | 8083 |
 | pager | stands in for a paging service; records every alert notification with its arrival time | 8084 |
+| console | one screen for the pipeline, alerts, pages and dead letters, with the operator actions the runbooks need ([below](#operations-console)) | 8085 |
 | reader-sim | 25 tag reads/s for 2,000 made-up cars over 24 made-up yards, plus 5 lookups/s | |
 
 Observability around them:
@@ -62,7 +64,51 @@ curl -s "localhost:8083/v1/locations/YD03/cars?limit=5"
 ```
 
 Grafana is at http://localhost:3000 (anonymous read access), Jaeger at
-http://localhost:16686, the pager's log at http://localhost:8084/v1/pages.
+http://localhost:16686, the pager's log at http://localhost:8084/v1/pages,
+and the operations console at http://localhost:8085.
+
+## Operations console
+
+Running the stack on call meant visiting Prometheus, Alertmanager, Grafana,
+the pager's log and `redis-cli` separately, and the dead-letter runbook
+fixed things with Redis commands typed by hand. The console is one page for
+all of it, served by its own service on port 8085:
+
+- **Overview:** which scrape jobs are up, the pipeline numbers the alert
+  rules watch (oldest unprocessed event, stream backlog, time since the last
+  position write, the two 5xx ratios) next to each rule's threshold, firing
+  and pending alerts with their runbook links, pages and tickets from the
+  last 24 hours, and how many events are dead-lettered.
+- **Dead letters:** the entries in `railcar:events:dead` with their reason
+  and the stored event. **Replay** puts an event back into `railcar:events`
+  after checking it against the current event schema, and refuses one that
+  would be dead-lettered again. **Discard** removes one, with a reason.
+- **Lookup:** a car's position and dwell time, and the cars at a location.
+
+A firing alert can also be **silenced** from the overview, for 1 to 720
+minutes, with a reason. Every action needs an operator token and writes a
+row to `console_audit` in Postgres, which refuses `UPDATE`, `DELETE` and
+`TRUNCATE`; refused and unauthorised attempts are recorded too.
+
+It starts with the rest of the stack. Operator tokens come from the
+environment as `name:token` pairs, each token at least 16 characters:
+
+```
+CONSOLE_OPERATOR_TOKENS="alice:<long random token>,bob:<another one>" docker compose up -d --wait
+```
+
+Without the variable, `docker-compose.yml` sets up one operator, `operator`,
+with the placeholder token `local-only-not-a-secret`, which is fine for this
+local stack and nothing else. Paste a token into the page's *Operator token*
+field; it stays in that browser tab's memory. The audit trail:
+
+```
+docker compose exec postgres psql -U railcar -d railcar -c "SELECT at, operator, action, target, result FROM console_audit ORDER BY id DESC LIMIT 20"
+```
+
+Why there is a service between the browser and Prometheus, Alertmanager and
+Redis, why replay re-validates, and what token auth does not give you:
+[docs/console.md](docs/console.md).
 
 ## Tests
 
@@ -71,17 +117,32 @@ npm ci
 npm run lint
 npm run typecheck
 npm test                    # unit tests
+npm run test:ui             # the console page's component tests
+npm run build:ui            # builds the console page to dist/console-ui
 npm run check:alerting      # promtool check config, promtool test rules, amtool check-config
 npm run test:integration    # needs the compose stack running
+npx playwright install chromium
+npm run test:e2e            # browser test of the console page; needs the stack too
 ```
 
 The integration tests post reads and check they come out of the query API,
 check that every dashboard query evaluates, that one trace covers both the
 ingest request and the tracker's write, and that Alertmanager routes a
-critical alert to the `page` receiver and a warning to `ticket`.
+critical alert to the `page` receiver and a warning to `ticket`. For the
+console they check that the status shows the tracker down after
+`docker compose stop tracker`, that a valid dead-lettered event replays and
+its position appears through the query API, that an invalid one is refused
+and stays dead-lettered, that a silence reaches Alertmanager, that an action
+without a token is refused and recorded, and that `console_audit` refuses
+`UPDATE`, `DELETE` and `TRUNCATE`. The browser test opens the console in
+Chromium and replays a dead-lettered event from the page. If you set your
+own `CONSOLE_OPERATOR_TOKENS`, give the tests one of them in
+`CONSOLE_OPERATOR_NAME` and `CONSOLE_OPERATOR_TOKEN`.
+
 `.github/workflows/ci.yml` runs the same commands on GitHub Actions; the
-integration job starts the stack with `docker compose up` first. The drills
-are not part of CI: one round of all four took over an hour here.
+integration job starts the stack with `docker compose up` first and runs the
+browser test after the integration tests. The drills are not part of CI:
+one round of all four took over an hour here.
 
 ## Alerts and runbooks
 
@@ -172,13 +233,14 @@ What the drills found, and what changed (one blameless retrospective each):
 ## Repository layout
 
 ```
-src/              services (ingest, tracker, query, pager, sim) and shared code
-db/init.sql       schema
+src/              services (ingest, tracker, query, pager, sim, console) and shared code
+console-ui/       the console's page (React, Vite) and its component tests
+db/               schema (init.sql) and migrations (the console's audit table)
 docker/           toxiproxy configuration
 observability/    Prometheus, Alertmanager, Grafana, OTel Collector configuration
 scripts/          promtool and amtool checks
 gamedays/         drill harness, summary and evidence scripts
 results/          every drill run (JSON), runs.csv, summary, pager log, evidence
 docs/             design notes, game days, runbooks, incident retrospectives
-test/             unit and integration tests
+test/             unit, integration and browser tests
 ```

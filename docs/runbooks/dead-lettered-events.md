@@ -17,6 +17,12 @@ someone to find out where the bad events came from.
 
 ## Check
 
+Open the console's **Dead letters** view (http://localhost:8085/#/dead-letters,
+see [docs/console.md](../console.md)). It lists the newest entries with
+their reason and the stored event.
+
+If the console is not available:
+
 ```
 docker compose exec redis redis-cli XLEN railcar:events:dead
 docker compose exec redis redis-cli XREVRANGE railcar:events:dead + - COUNT 10
@@ -37,11 +43,28 @@ Entries parked by hand (reason `manual`) do not count in the metric.
 ## Fix
 
 - Find the producer and fix it.
+- If the event is valid as it is (parked by hand with reason `manual`, or
+  dead-lettered by a bug that has since been fixed), **replay** it from the
+  console with your operator token. The console checks it against the
+  current event schema first and refuses it, with the schema's errors, if
+  the tracker would dead-letter it again; a refused entry stays where it
+  is. A replayed entry goes back into `railcar:events` and leaves the
+  dead-letter stream.
 - If the data can be corrected, fix the JSON and post it through the ingest
   API (`POST /v1/events`) so it goes through validation. Do not write it
-  straight back into the stream.
-- Once handled, trim what was reviewed:
-  `docker compose exec redis redis-cli XTRIM railcar:events:dead MAXLEN 0`.
+  back into the stream by hand.
+- Once an entry is handled, **discard** it from the console with a reason.
+  The audit record keeps a copy of the entry.
+
+Every replay and discard, refused ones included, is recorded in the
+`console_audit` table with your operator name and reason.
+
+Without the console, remove reviewed entries by id, or all of them at once:
+
+```
+docker compose exec redis redis-cli XDEL railcar:events:dead <id>
+docker compose exec redis redis-cli XTRIM railcar:events:dead MAXLEN 0
+```
 
 ## After
 

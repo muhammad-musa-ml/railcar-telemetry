@@ -47,8 +47,16 @@ docker compose exec redis redis-cli XADD railcar:events:dead '*' source_id <id> 
 docker compose exec redis redis-cli XACK railcar:events tracker <id>
 ```
 
+The console has no step for this: it only acts on entries that are already
+in the dead-letter stream.
+
 ## After
 
 Failed attempts should stop and processed events should jump while the
 backlog drains. Open a ticket for any event that was parked by hand, with
 the error message from the log.
+
+Once the cause is fixed, the parked entry (reason `manual`) is in the
+console's **Dead letters** view: replay it there, which checks it against
+the current event schema first, or discard it with a reason. See
+[dead-lettered-events](dead-lettered-events.md).

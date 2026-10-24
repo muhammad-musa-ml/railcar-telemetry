@@ -20,8 +20,11 @@ reader-sim ──GET /v1/cars/:id───────────────�
   records every notification with the time it arrived.
 - **reader-sim** sends 25 synthetic reads per second for 2,000 made-up cars
   moving around 24 made-up yards, and 5 lookups per second.
+- **console** is one page over Prometheus, Alertmanager, the pager, the
+  dead-letter stream and the query service, with token-checked, audited
+  operator actions ([console.md](console.md)).
 
-All five run from one Node.js image; the compose file chooses the entry point.
+All six run from one Node.js image; the compose file chooses the entry point.
 They share one TypeScript package (`src/shared` holds the event schema,
 stream names, metrics and tracing setup), but each runs in its own container
 with its own health check, metrics endpoint and failure modes.
