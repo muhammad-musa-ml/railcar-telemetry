@@ -9,7 +9,7 @@ x-app: &app
     timeout: 3s
     retries: 10
 
-# Tracing settings shared by the three pipeline services.
+# Tracing settings shared by the three pipeline services and the console.
 x-otel: &otel
   OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
   OTEL_TRACES_SAMPLER: parentbased_always_on
@@ -60,6 +60,28 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  # Applies db/migrations (the console's audit table) on every start, then
+  # exits. The console waits for it to finish.
+  db-migrate:
+    image: postgres:16-alpine
+    command: ["sh", "/migrate.sh"]
+    environment:
+      PGHOST: toxiproxy
+      PGPORT: "15432"
+      PGUSER: railcar
+      PGPASSWORD: railcar
+      PGDATABASE: railcar
+      # Local development only, like the railcar password above.
+      CONSOLE_DB_PASSWORD: console-local-only
+    volumes:
+      - ./db/migrate.sh:/migrate.sh:ro
+      - ./db/migrations:/migrations:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      toxiproxy:
+        condition: service_started
 
   ingest:
     <<: *app
@@ -114,6 +136,34 @@ services:
       - pager-data:/data
     ports:
       - "8084:8080"
+
+  # The operations console (docs/console.md): one screen over Prometheus,
+  # Alertmanager, the pager, the dead-letter stream and the query service,
+  # and the operator actions the runbooks need. Every action needs a token
+  # from CONSOLE_OPERATOR_TOKENS and is recorded in console_audit.
+  console:
+    <<: *app
+    command: ["node", "--require", "./dist/shared/tracing.js", "dist/console/main.js"]
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: console
+      REDIS_URL: redis://redis:6379
+      # The console's own role, which may only insert audit rows.
+      DATABASE_URL: postgres://railcar_console:console-local-only@toxiproxy:15432/railcar
+      PROMETHEUS_URL: http://prometheus:9090
+      ALERTMANAGER_URL: http://alertmanager:9093
+      PAGER_URL: http://pager:8080
+      QUERY_URL: http://query:8080
+      # name:token pairs. The default is a placeholder for this local stack
+      # only; set your own in the environment (see README.md).
+      CONSOLE_OPERATOR_TOKENS: ${CONSOLE_OPERATOR_TOKENS:-operator:local-only-not-a-secret}
+    ports:
+      - "8085:8080"
+    depends_on:
+      redis:
+        condition: service_healthy
+      db-migrate:
+        condition: service_completed_successfully
 
   reader-sim:
     <<: *app

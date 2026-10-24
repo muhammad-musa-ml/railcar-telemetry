@@ -30,6 +30,9 @@ scrape_configs:
   - job_name: reader-sim
     static_configs:
       - targets: ["reader-sim:8080"]
+  - job_name: console
+    static_configs:
+      - targets: ["console:8080"]
   - job_name: prometheus
     static_configs:
       - targets: ["localhost:9090"]
