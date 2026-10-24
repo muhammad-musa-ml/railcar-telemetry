@@ -15,6 +15,7 @@
     "test": "vitest run --config vitest.config.mts",
     "test:ui": "vitest run --config console-ui/vite.config.mts",
     "test:integration": "vitest run --config vitest.integration.config.mts",
+    "test:e2e": "playwright test",
     "check:alerting": "sh scripts/check-alerting.sh"
   },
   "dependencies": {

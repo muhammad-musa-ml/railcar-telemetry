@@ -4,3 +4,5 @@ coverage/
 *.log
 .env
 results/tmp/
+test-results/
+playwright-report/
