@@ -15,5 +15,5 @@
     "sourceMap": true,
     "outDir": "dist"
   },
-  "include": ["src", "test", "gamedays", "vitest.config.mts", "vitest.integration.config.mts"]
+  "include": ["src", "test", "gamedays", "vitest.config.mts", "vitest.integration.config.mts", "console-ui/vite.config.mts"]
 }

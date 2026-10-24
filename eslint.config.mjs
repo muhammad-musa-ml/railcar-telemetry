@@ -14,4 +14,11 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     },
   },
+  {
+    // The console's page runs in the browser.
+    files: ["console-ui/src/**", "console-ui/test/**"],
+    languageOptions: {
+      globals: { ...globals.browser },
+    },
+  },
 );

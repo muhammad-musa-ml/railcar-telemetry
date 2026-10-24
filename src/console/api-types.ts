@@ -15,8 +15,10 @@ export interface Signal {
   label: string;
   unit: SignalUnit;
   rule: string;
-  // null when Prometheus has no sample (for example an error ratio with no
-  // traffic, or freshness while Postgres is unreachable).
+  // null when Prometheus has no sample: for an error ratio, when there has
+  // been no 5xx answer since the service started (the 5xx series does not
+  // exist yet) or no traffic at all; for freshness, while Postgres is
+  // unreachable.
   value: number | null;
   comparison: string | null;
   threshold: number | null;

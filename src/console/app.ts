@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import fastifyStatic from "@fastify/static";
 import Fastify, { type FastifyInstance, type FastifyReply, type FastifyRequest } from "fastify";
 import { Counter, type Registry } from "prom-client";
 import { z } from "zod";
@@ -26,6 +27,9 @@ export interface ConsoleDeps {
   registry: Registry;
   logger?: Logger;
   now?: () => Date;
+  // Folder of the built page (console-ui, built by Vite). Without it the
+  // console serves the API alone.
+  uiDir?: string;
 }
 
 const PAGES_WINDOW_MS = 24 * 3600 * 1000;
@@ -260,6 +264,21 @@ export function buildConsoleApp(deps: ConsoleDeps): FastifyInstance {
   registerActions(app, deps, now);
 
   app.get("/healthz", async () => ({ status: "ok" }));
+
+  // One route per file found at start-up and no catch-all, so nothing
+  // outside the folder can be asked for and unknown /api paths stay JSON
+  // 404s. Asset names carry a content hash; the page itself does not.
+  if (deps.uiDir !== undefined) {
+    app.register(fastifyStatic, {
+      root: deps.uiDir,
+      wildcard: false,
+      index: "index.html",
+      cacheControl: false,
+      setHeaders: (reply, path) => {
+        reply.header("cache-control", path.endsWith(".html") ? "no-cache" : "public, max-age=31536000, immutable");
+      },
+    });
+  }
 
   return app;
 }

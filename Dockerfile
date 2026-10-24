@@ -5,7 +5,9 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY tsconfig.json tsconfig.build.json ./
 COPY src ./src
-RUN npm run build && npm prune --omit=dev
+# The console's page, built to dist/console-ui and served by the console.
+COPY console-ui ./console-ui
+RUN npm run build && npm run build:ui && npm prune --omit=dev
 
 FROM node:22.17.0-alpine
 WORKDIR /app

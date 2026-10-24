@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { Redis } from "ioredis";
 import { Pool } from "pg";
 import { Counter } from "prom-client";
@@ -44,6 +46,13 @@ async function main() {
   });
   redis.on("error", (err) => logger.warn({ err: err.message }, "redis connection error"));
 
+  // The page from `npm run build:ui`, next to this file's folder in dist/.
+  const uiDir = env("CONSOLE_UI_DIR", join(__dirname, "..", "console-ui"));
+  const hasUi = existsSync(join(uiDir, "index.html"));
+  if (!hasUi) {
+    logger.warn({ uiDir }, "no built console page found; serving the API only");
+  }
+
   const app = buildConsoleApp({
     prometheus: new PrometheusHttpApi(client("prometheus", env("PROMETHEUS_URL", "http://localhost:9090"))),
     alertmanager: new AlertmanagerHttpApi(client("alertmanager", env("ALERTMANAGER_URL", "http://localhost:9093"))),
@@ -55,6 +64,7 @@ async function main() {
     rateLimiter: new RateLimiter(envInt("CONSOLE_ACTIONS_PER_MINUTE", 30), 60_000),
     registry,
     logger,
+    uiDir: hasUi ? uiDir : undefined,
   });
 
   const close = async () => {
