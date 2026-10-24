@@ -1,4 +1,5 @@
 import type { DeadLetter } from "../../src/console/api-types";
+import type { AuditEntry, AuditLog } from "../../src/console/audit";
 import type { DeadLetterStore } from "../../src/console/dead-letters";
 import {
   UpstreamError,
@@ -78,6 +79,8 @@ export class FakeQuery implements QueryApi {
 export class FakeDeadLetters implements DeadLetterStore {
   // Oldest first, like the stream.
   entries: DeadLetter[] = [];
+  // What replays appended to railcar:events.
+  replayed: { event: string; fields: Record<string, string> }[] = [];
   down = false;
 
   async count() {
@@ -87,6 +90,35 @@ export class FakeDeadLetters implements DeadLetterStore {
   async list(limit: number) {
     if (this.down) throw new Error("Connection is closed.");
     return [...this.entries].reverse().slice(0, limit);
+  }
+  async get(id: string) {
+    if (this.down) throw new Error("Connection is closed.");
+    return this.entries.find((e) => e.id === id) ?? null;
+  }
+  async replay(id: string, event: string, fields: Record<string, string>) {
+    if (this.down) throw new Error("Connection is closed.");
+    const index = this.entries.findIndex((e) => e.id === id);
+    if (index < 0) return null;
+    this.entries.splice(index, 1);
+    this.replayed.push({ event, fields });
+    return `1761300000000-${this.replayed.length - 1}`;
+  }
+  async discard(id: string) {
+    if (this.down) throw new Error("Connection is closed.");
+    const index = this.entries.findIndex((e) => e.id === id);
+    if (index < 0) return false;
+    this.entries.splice(index, 1);
+    return true;
+  }
+}
+
+export class FakeAudit implements AuditLog {
+  rows: AuditEntry[] = [];
+  down = false;
+
+  async record(entry: AuditEntry) {
+    if (this.down) throw new Error("connect ECONNREFUSED");
+    this.rows.push(entry);
   }
 }
 

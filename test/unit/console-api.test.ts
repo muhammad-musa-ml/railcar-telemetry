@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import type { AlertsResponse, DeadLettersResponse, PagesResponse, StatusResponse } from "../../src/console/api-types";
 import { buildConsoleApp } from "../../src/console/app";
+import { OperatorTokens } from "../../src/console/auth";
+import { RateLimiter } from "../../src/console/rate-limit";
 import { createRegistry } from "../../src/shared/metrics";
-import { amAlert, deadLetter, FakeAlertmanager, FakeDeadLetters, FakePager, FakePrometheus, FakeQuery } from "./console-fakes";
+import { amAlert, deadLetter, FakeAlertmanager, FakeAudit, FakeDeadLetters, FakePager, FakePrometheus, FakeQuery } from "./console-fakes";
 
 const now = new Date("2026-10-24T08:00:00.000Z");
 
@@ -13,6 +15,9 @@ function setup() {
     pager: new FakePager(),
     query: new FakeQuery(),
     deadLetters: new FakeDeadLetters(),
+    audit: new FakeAudit(),
+    operators: OperatorTokens.parse("alice:alice-token-0123456789"),
+    rateLimiter: new RateLimiter(10, 60_000),
     registry: createRegistry("console", false),
     now: () => now,
   };
